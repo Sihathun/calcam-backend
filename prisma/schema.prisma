@@ -1,0 +1,276 @@
+// CalorieScan AI data model.
+// Everything is stored in metric units. Unit preferences only affect display.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Sex {
+  male
+  female
+  other
+}
+
+enum HeightUnit {
+  ft_in
+  cm
+}
+
+enum WeightUnit {
+  kg
+  lbs
+}
+
+// Wire values are "0-2", "3-5" and "6+". Prisma identifiers cannot contain those characters.
+enum WorkoutsPerWeek {
+  W0_2    @map("0-2")
+  W3_5    @map("3-5")
+  W6_PLUS @map("6+")
+}
+
+enum ActivityLevel {
+  light
+  moderate
+  active
+}
+
+enum Goal {
+  lose
+  maintain
+  gain
+}
+
+enum Diet {
+  balanced
+  whole_food
+  mediterranean
+  flexitarian
+  pescatarian
+  vegetarian
+  vegan
+  low_carb
+  keto
+  paleo
+}
+
+enum Accomplishment {
+  eat_healthier
+  boost_energy_mood
+  stay_motivated
+  feel_better_body
+}
+
+enum ReferralSource {
+  instagram
+  facebook
+  tiktok
+  youtube
+  google
+  x
+  friend_or_family
+  play_store
+}
+
+enum GoalSource {
+  calculated
+  user_edited
+}
+
+enum MealSource {
+  photo
+  barcode
+  manual
+  text
+}
+
+enum MealStatus {
+  queued
+  analyzing
+  completed
+  failed
+}
+
+enum DevicePlatform {
+  ios
+  android
+}
+
+model User {
+  id                   String    @id @default(uuid()) @db.Uuid
+  email                String?   @unique
+  passwordHash         String?
+  appleSub             String?   @unique
+  googleSub            String?   @unique
+  locale               String    @default("en")
+  timezone             String    @default("UTC")
+  notificationsEnabled Boolean   @default(true)
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+  deletedAt            DateTime?
+
+  profile             Profile?
+  goals               NutritionGoal[]
+  weightLogs          WeightLog[]
+  meals               Meal[]
+  deviceTokens        DeviceToken[]
+  refreshTokens       RefreshToken[]
+  passwordResetTokens PasswordResetToken[]
+}
+
+model Profile {
+  userId                String          @id @db.Uuid
+  sex                   Sex
+  birthDate             DateTime        @db.Date
+  heightCm              Float
+  heightUnitPref        HeightUnit      @default(cm)
+  weightUnitPref        WeightUnit      @default(kg)
+  workoutsPerWeek       WorkoutsPerWeek
+  activityLevel         ActivityLevel
+  goal                  Goal
+  targetWeightKg        Float?
+  diet                  Diet
+  // Personalisation and analytics only. These never enter the plan formula.
+  accomplishment        Accomplishment?
+  referralSource        ReferralSource?
+  triedOtherApps        Boolean?
+  worksWithProfessional Boolean?
+  commitmentAt          DateTime?
+  onboardingCompletedAt DateTime        @default(now())
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Versioned: rows are never updated. The active goal on a given instant is the
+// row with the greatest effectiveFrom that is <= that instant.
+model NutritionGoal {
+  id             String     @id @default(uuid()) @db.Uuid
+  userId         String     @db.Uuid
+  calories       Int
+  proteinG       Int
+  carbsG         Int
+  fatG           Int
+  source         GoalSource
+  bmr            Float?
+  tdee           Float?
+  // Profile values the plan was calculated from, used to suggest recalculation.
+  inputsSnapshot Json?
+  effectiveFrom  DateTime   @default(now())
+  createdAt      DateTime   @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, effectiveFrom(sort: Desc)])
+}
+
+model WeightLog {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  weightKg  Float
+  loggedAt  DateTime @default(now())
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, loggedAt(sort: Desc)])
+}
+
+model Meal {
+  id               String     @id @default(uuid()) @db.Uuid
+  userId           String     @db.Uuid
+  name             String?
+  source           MealSource
+  captureMethod    String? // camera | gallery, for photo meals
+  status           MealStatus
+  progress         Int        @default(0)
+  errorCode        String?
+  imageKey         String?
+  thumbKey         String?
+  externalImageUrl String?
+  hint             String?
+  description      String?
+  barcode          String?
+  idempotencyKey   String?
+  quantity         Float      @default(1)
+
+  // Per-serving values. Null until the first analysis completes.
+  calories    Int?
+  proteinG    Float?
+  carbsG      Float?
+  fatG        Float?
+  healthScore Int?
+  items       Json?
+  aiRaw       Json?
+
+  // Set when nutrition values first exist. Meals with analyzedAt = null are
+  // listed but never counted in daily totals.
+  analyzedAt DateTime?
+  loggedAt   DateTime  @default(now())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?
+
+  user        User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  corrections MealCorrection[]
+
+  @@unique([userId, idempotencyKey])
+  @@index([userId, loggedAt(sort: Desc)])
+}
+
+model MealCorrection {
+  id          String   @id @default(uuid()) @db.Uuid
+  mealId      String   @db.Uuid
+  instruction String
+  createdAt   DateTime @default(now())
+
+  meal Meal @relation(fields: [mealId], references: [id], onDelete: Cascade)
+
+  @@index([mealId, createdAt])
+}
+
+model DeviceToken {
+  id         String         @id @default(uuid()) @db.Uuid
+  userId     String         @db.Uuid
+  token      String         @unique
+  platform   DevicePlatform
+  lastSeenAt DateTime       @default(now())
+  createdAt  DateTime       @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model RefreshToken {
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @db.Uuid
+  tokenHash String    @unique
+  familyId  String    @db.Uuid
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([familyId])
+}
+
+model PasswordResetToken {
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @db.Uuid
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}

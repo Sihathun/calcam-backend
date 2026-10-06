@@ -1,0 +1,1521 @@
+{
+  "info": {
+    "name": "CalorieScan AI API",
+    "description": "Generated from the route registry (npm run postman). Start with Auth > Register; its test script stores the tokens. POST /meals/analyze: pick an image file in the form-data body, then poll GET /meals/{{mealId}}.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "accessToken",
+      "value": ""
+    },
+    {
+      "key": "refreshToken",
+      "value": ""
+    },
+    {
+      "key": "mealId",
+      "value": ""
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Create an account (optionally with the whole onboarding payload)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"me@example.com\",\n  \"password\": \"correct horse battery\",\n  \"onboarding\": {\n    \"sex\": \"female\",\n    \"workoutsPerWeek\": \"0-2\",\n    \"referralSource\": \"tiktok\",\n    \"heightCm\": 167.6,\n    \"weightKg\": 54,\n    \"birthDate\": \"2001-01-01\",\n    \"goal\": \"maintain\",\n    \"targetWeightKg\": null,\n    \"triedOtherApps\": true,\n    \"worksWithProfessional\": false,\n    \"diet\": \"balanced\",\n    \"accomplishment\": \"eat_healthier\",\n    \"heightUnitPref\": \"ft_in\",\n    \"weightUnitPref\": \"kg\",\n    \"locale\": \"en\",\n    \"timezone\": \"Asia/Phnom_Penh\",\n    \"commitment\": {\n      \"committedAt\": \"2026-10-06T16:30:08.114Z\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "When `onboarding` is present, the profile, nutrition goal, first weight log and commitment are stored in the same transaction as the account, so signing up after the funnel is a single call."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const body = pm.response.json();",
+                  "if (body.tokens) { pm.collectionVariables.set('accessToken', body.tokens.accessToken); pm.collectionVariables.set('refreshToken', body.tokens.refreshToken); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Sign in with email and password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"me@example.com\",\n  \"password\": \"correct horse battery\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Sign in with email and password"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const body = pm.response.json();",
+                  "if (body.tokens) { pm.collectionVariables.set('accessToken', body.tokens.accessToken); pm.collectionVariables.set('refreshToken', body.tokens.refreshToken); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Sign in with Apple",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/oauth/apple",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "oauth",
+                "apple"
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idToken\": \"<identity token from Sign in with Apple>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Verifies the identity token server-side, then creates or links the user."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const body = pm.response.json();",
+                  "if (body.tokens) { pm.collectionVariables.set('accessToken', body.tokens.accessToken); pm.collectionVariables.set('refreshToken', body.tokens.refreshToken); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Sign in with Google",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/oauth/google",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "oauth",
+                "google"
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idToken\": \"<ID token from Google Sign-In>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Verifies the identity token server-side, then creates or links the user."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const body = pm.response.json();",
+                  "if (body.tokens) { pm.collectionVariables.set('accessToken', body.tokens.accessToken); pm.collectionVariables.set('refreshToken', body.tokens.refreshToken); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Rotate the refresh token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/refresh",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "refresh"
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Returns a new access token and a new refresh token. The old refresh token stops working. Presenting an already-rotated token revokes the whole token family (REFRESH_TOKEN_REUSED)."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const body = pm.response.json();",
+                  "if (body.tokens) { pm.collectionVariables.set('accessToken', body.tokens.accessToken); pm.collectionVariables.set('refreshToken', body.tokens.refreshToken); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Revoke the refresh token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/logout",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "logout"
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Idempotent. Also unregister the FCM token with DELETE /me/devices/{token}."
+          }
+        },
+        {
+          "name": "Email a password reset link",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/password/forgot",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "password",
+                "forgot"
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"me@example.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Behind FEATURE_PASSWORD_RESET. Always answers 202, whether or not the email has an account."
+          }
+        },
+        {
+          "name": "Choose a new password with a reset token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/password/reset",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "password",
+                "reset"
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<token from the email>\",\n  \"password\": \"a brand new password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Behind FEATURE_PASSWORD_RESET. Signs the user out of every device."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Onboarding",
+      "item": [
+        {
+          "name": "Selectable values for every onboarding screen",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/onboarding/options",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "onboarding",
+                "options"
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "Codes with English display labels for sex, workouts per week, referral sources, diets, goals and accomplishments, plus supported locales and the edit limits for the plan screen. The client localises labels by code."
+          }
+        },
+        {
+          "name": "Calculate a nutrition plan without saving anything",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/onboarding/plan-preview",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "onboarding",
+                "plan-preview"
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sex\": \"female\",\n  \"birthDate\": \"2001-01-01\",\n  \"heightCm\": 167.6,\n  \"weightKg\": 54,\n  \"workoutsPerWeek\": \"0-2\",\n  \"goal\": \"maintain\",\n  \"diet\": \"balanced\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Stateless. Powers the \"great potential\" chart, the \"setting everything up\" screen and the daily recommendation screen. Returns 422 GOAL_NOT_SUPPORTED when a \"lose\" goal is not advisable (BMI below 18.5), and 422 UNDER_MINIMUM_AGE below 13."
+          }
+        },
+        {
+          "name": "Save the onboarding answers for the signed-in user",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/onboarding/complete",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "onboarding",
+                "complete"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sex\": \"female\",\n  \"workoutsPerWeek\": \"0-2\",\n  \"referralSource\": \"tiktok\",\n  \"heightCm\": 167.6,\n  \"weightKg\": 54,\n  \"birthDate\": \"2001-01-01\",\n  \"goal\": \"maintain\",\n  \"targetWeightKg\": null,\n  \"triedOtherApps\": true,\n  \"worksWithProfessional\": false,\n  \"diet\": \"balanced\",\n  \"accomplishment\": \"eat_healthier\",\n  \"heightUnitPref\": \"ft_in\",\n  \"weightUnitPref\": \"kg\",\n  \"locale\": \"en\",\n  \"timezone\": \"Asia/Phnom_Penh\",\n  \"commitment\": {\n    \"committedAt\": \"2026-10-06T16:30:08.114Z\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Same effect as the onboarding payload inside /auth/register, for users who signed up first. Idempotent: if the profile already exists, the stored state is returned unchanged."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Profile",
+      "item": [
+        {
+          "name": "The signed-in user with profile and active goal",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "me"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "The signed-in user with profile and active goal"
+          }
+        },
+        {
+          "name": "Edit profile fields",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/me/profile",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "me",
+                "profile"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workoutsPerWeek\": \"3-5\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Changing sex, birthDate, height, weight, goal, activity (workoutsPerWeek) or diet returns a `recalculation` offer. Nothing is recalculated until the client calls POST /me/goals/recalculate. A `weightKg` value is logged as a new weight entry."
+          }
+        },
+        {
+          "name": "Language, timezone, units and notifications",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/me/preferences",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "me",
+                "preferences"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"timezone\": \"Asia/Phnom_Penh\",\n  \"weightUnitPref\": \"kg\",\n  \"notificationsEnabled\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Units only affect display; everything stays metric on the wire."
+          }
+        },
+        {
+          "name": "Delete the account",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "me"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "The account is disabled immediately and all tokens are revoked. A background job then hard-deletes every row and stored image."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Goals",
+      "item": [
+        {
+          "name": "The active nutrition goal",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/me/goals",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "me",
+                "goals"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "The active nutrition goal"
+          }
+        },
+        {
+          "name": "Edit calories or macros (the pencil icons)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/me/goals",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "me",
+                "goals"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"calories\": 2000,\n  \"proteinG\": 130\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Fields you omit keep their current value. Calories are clamped to 800-6000 and macros to their configured limits. Creates a new `user_edited` version; earlier days keep the goal that was active then."
+          }
+        },
+        {
+          "name": "Recalculate the plan from the current profile and latest weight",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/me/goals/recalculate",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "me",
+                "goals",
+                "recalculate"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "Recalculate the plan from the current profile and latest weight"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Weight",
+      "item": [
+        {
+          "name": "Log a weight",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/me/weight-logs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "me",
+                "weight-logs"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"weightKg\": 54.2\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Weight is metric on the wire (the client converts lbs). The response includes a recalculation offer when the new weight moves the plan."
+          }
+        },
+        {
+          "name": "Weight history for charts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/me/weight-logs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "me",
+                "weight-logs"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "Oldest first. `from` and `to` are inclusive ISO timestamps."
+          }
+        },
+        {
+          "name": "Delete a weight entry",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/me/weight-logs/{{mealId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "me",
+                "weight-logs",
+                "{{mealId}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "Delete a weight entry"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Devices",
+      "item": [
+        {
+          "name": "Register an FCM token for push notifications",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/me/devices",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "me",
+                "devices"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"fcm-token-from-the-device-0123456789\",\n  \"platform\": \"ios\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Idempotent. A token that was registered by another user (shared device) moves to the caller."
+          }
+        },
+        {
+          "name": "Unregister an FCM token (call on logout)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/me/devices/{{token}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "me",
+                "devices",
+                "{{token}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "Idempotent. Only the caller's own tokens are affected."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Meals",
+      "item": [
+        {
+          "name": "Upload a food photo for AI analysis",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Idempotency-Key",
+                "value": "{{$guid}}"
+              },
+              {
+                "key": "X-Timezone",
+                "value": "Asia/Phnom_Penh",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/meals/analyze",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "meals",
+                "analyze"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": []
+                },
+                {
+                  "key": "source",
+                  "value": "camera",
+                  "type": "text"
+                },
+                {
+                  "key": "hint",
+                  "value": "",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Used for both camera and gallery photos (`source`). The file type is checked by magic bytes (JPEG, PNG, WebP, HEIC; max 10 MB). The image is resized to 1280 px, stripped of EXIF and stored privately. The meal is created immediately with `status=queued`; poll GET /meals/{id} while it is `queued` or `analyzing`. A push notification is sent on completion. Send an `Idempotency-Key` header to make retries safe."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const m = pm.response.json().meal; if (m) pm.collectionVariables.set('mealId', m.id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Log a packaged product by barcode",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Timezone",
+                "value": "Asia/Phnom_Penh",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/meals/barcode",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "meals",
+                "barcode"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"barcode\": \"3017620422003\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Looks the barcode up in Open Food Facts (cached) and creates a completed meal from the per-serving data. Answers 404 PRODUCT_NOT_FOUND so the client can fall back to manual entry."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const m = pm.response.json().meal; if (m) pm.collectionVariables.set('mealId', m.id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Manual entry, or a text description for an AI estimate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Timezone",
+                "value": "Asia/Phnom_Penh",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/meals",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "meals"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Greek yogurt\",\n  \"calories\": 150,\n  \"proteinG\": 15,\n  \"carbsG\": 8,\n  \"fatG\": 5.5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "With `name`, `calories`, `proteinG`, `carbsG` and `fatG` the meal is created as completed (201). With only `description` an AI estimate is queued (202), exactly like a photo."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const m = pm.response.json().meal; if (m) pm.collectionVariables.set('mealId', m.id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "List meals, newest first",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Timezone",
+                "value": "Asia/Phnom_Penh",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/meals?date=today&limit=30",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "meals"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "today"
+                },
+                {
+                  "key": "limit",
+                  "value": "30"
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "With `date` (YYYY-MM-DD, `today` or `yesterday`) returns that calendar day in the user's timezone, or in the `X-Timezone` header when sent. Paginate with `cursor`."
+          }
+        },
+        {
+          "name": "Meal detail for the Nutrition screen",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Timezone",
+                "value": "Asia/Phnom_Penh",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/meals/{{mealId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "meals",
+                "{{mealId}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "Includes signed image URLs (15 minute expiry), per-serving values, totals, health score and analysis progress."
+          }
+        },
+        {
+          "name": "Edit a meal",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Timezone",
+                "value": "Asia/Phnom_Penh",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/meals/{{mealId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "meals",
+                "{{mealId}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": 2\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Calories and macros are per serving; `quantity` (0.25 to 20) scales them and totals are computed on read. A meal that failed analysis becomes completed when all four nutrition values are supplied."
+          }
+        },
+        {
+          "name": "Fix Results: re-analyze with a correction",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Timezone",
+                "value": "Asia/Phnom_Penh",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/meals/{{mealId}}/fix",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "meals",
+                "{{mealId}}",
+                "fix"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"instruction\": \"that was chicken, not turkey, and no chips\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Saves the instruction (for example \"that was chicken, not turkey, and no chips\") and re-queues analysis with the original image plus every correction so far. The previous values stay in place until the new result completes."
+          }
+        },
+        {
+          "name": "Delete a meal",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-Timezone",
+                "value": "Asia/Phnom_Penh",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/meals/{{mealId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "meals",
+                "{{mealId}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "Soft delete. Deleted meals disappear from lists and daily totals."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Home screen: calories and macros left for a day",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Timezone",
+                "value": "Asia/Phnom_Penh",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/dashboard/daily?date=today",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "dashboard",
+                "daily"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "today"
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "Powers Today / Yesterday. `date` is YYYY-MM-DD, `today` or `yesterday` (default today), resolved in the user's timezone, or the `X-Timezone` header when sent. Meals still analyzing are listed but not counted. `remaining` may be negative. The goal returned is the one active on that day."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "Calories vs goal, macro averages, streak and weight trend",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/analytics/summary?range=7d",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "analytics",
+                "summary"
+              ],
+              "query": [
+                {
+                  "key": "range",
+                  "value": "7d"
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "The window ends today in the user's timezone (or the `X-Timezone` header). Each day is compared with the goal that was active on that day. The streak is capped by the window."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ops",
+      "item": [
+        {
+          "name": "Liveness",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "health"
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "Always 200 while the process is up. Does not touch dependencies."
+          }
+        },
+        {
+          "name": "Readiness",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/ready",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ready"
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "Checks the database, Redis (when used) and object storage. Answers 503 if any check fails."
+          }
+        },
+        {
+          "name": "OpenAPI 3.1 document",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/openapi.json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "openapi.json"
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "Generated from the same route definitions that validate requests, so it matches the implementation. Swagger UI is at /docs."
+          }
+        }
+      ]
+    }
+  ]
+}

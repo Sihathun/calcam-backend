@@ -1,0 +1,118 @@
+# `docker compose up --build` starts the whole stack: PostgreSQL, Redis, MinIO (S3), the API and the worker.
+# It runs with AI_PROVIDER=fake by default, so it works without any API key. To use a real model:
+#   AI_PROVIDER=anthropic ANTHROPIC_API_KEY=sk-ant-... docker compose up --build
+#
+# Host port 3000 busy? Set API_PORT=3300 in your shell or a .env file.
+#
+# For development with `npm run dev` on your machine, start only the backing services:
+#   docker compose up postgres redis minio createbucket
+
+x-app-env: &app-env
+  NODE_ENV: development
+  PORT: 3000
+  PUBLIC_BASE_URL: http://localhost:${API_PORT:-3000}
+  DATABASE_URL: postgresql://calcam:calcam@postgres:5432/calcam
+  REDIS_URL: redis://redis:6379
+  JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-dev-only-secret-change-me-please-0123456789}
+  STORAGE_DRIVER: s3
+  S3_BUCKET: calcam-meals
+  S3_ENDPOINT: http://minio:9000
+  # Presigned URLs are opened by the phone or browser, which cannot resolve the "minio" hostname.
+  S3_PUBLIC_ENDPOINT: http://localhost:9000
+  S3_FORCE_PATH_STYLE: "true"
+  S3_ACCESS_KEY_ID: minioadmin
+  S3_SECRET_ACCESS_KEY: minioadmin
+  QUEUE_DRIVER: bullmq
+  AI_PROVIDER: ${AI_PROVIDER:-fake}
+  AI_MODEL: ${AI_MODEL:-}
+  ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+  OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+  PUSH_DRIVER: ${PUSH_DRIVER:-log}
+  FIREBASE_SERVICE_ACCOUNT_JSON: ${FIREBASE_SERVICE_ACCOUNT_JSON:-}
+  FEATURE_PASSWORD_RESET: "false"
+  LOG_LEVEL: info
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: calcam
+      POSTGRES_PASSWORD: calcam
+      POSTGRES_DB: calcam
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U calcam -d calcam"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  minio:
+    image: minio/minio:latest
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports: ["9000:9000", "9001:9001"]
+    volumes: [miniodata:/data]
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  createbucket:
+    image: minio/mc:latest
+    depends_on:
+      minio: { condition: service_healthy }
+    entrypoint: >
+      /bin/sh -c "mc alias set local http://minio:9000 minioadmin minioadmin &&
+      mc mb --ignore-existing local/calcam-meals"
+    restart: "no"
+
+  # Applies the committed migrations once, then exits. In production run this as a one-off deploy step.
+  migrate:
+    build: .
+    command: ["npx", "prisma", "migrate", "deploy"]
+    environment: *app-env
+    depends_on:
+      postgres: { condition: service_healthy }
+    restart: "no"
+
+  api:
+    build: .
+    command: ["node", "dist/server.js"]
+    environment: *app-env
+    ports: ["${API_PORT:-3000}:3000"]
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/ready').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      start_period: 20s
+      retries: 5
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+      redis: { condition: service_healthy }
+      createbucket: { condition: service_completed_successfully }
+
+  worker:
+    build: .
+    command: ["node", "dist/worker.js"]
+    environment: *app-env
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+      redis: { condition: service_healthy }
+      createbucket: { condition: service_completed_successfully }
+
+volumes:
+  pgdata:
+  miniodata:
