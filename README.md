@@ -197,7 +197,7 @@ Everything comes from environment variables, validated at startup (the app refus
 | `JWT_ACCESS_SECRET` | Signs access tokens. 32+ characters in production |
 | `APP_NAME` | The product name (OpenAPI title, e-mail and push copy) |
 | `AI_PROVIDER`, `AI_MODEL`, `ANTHROPIC_API_KEY`, `OPENAI_API_KEY` | Which model analyses meals |
-| `STORAGE_DRIVER`, `S3_*` | Where meal images go |
+| `STORAGE_DRIVER`, `CLOUDINARY_*`, `S3_*` | Where meal images go (`cloudinary`, `s3`, `fs` for development) |
 | `QUEUE_DRIVER` | `bullmq` (production) or `memory` (single-process development) |
 | `PUSH_DRIVER`, `FIREBASE_SERVICE_ACCOUNT_JSON` | Push notifications |
 | `GOOGLE_OAUTH_CLIENT_IDS`, `APPLE_CLIENT_IDS` | Allowed audiences for sign-in tokens |
@@ -205,6 +205,35 @@ Everything comes from environment variables, validated at startup (the app refus
 
 In production the app refuses to start with development-only drivers (`QUEUE_DRIVER=memory`, `STORAGE_DRIVER=fs|memory`,
 `AI_PROVIDER=fake`).
+
+### Storing photos in Cloudinary
+
+```dotenv
+STORAGE_DRIVER=cloudinary
+CLOUDINARY_URL=cloudinary://API_KEY:API_SECRET@CLOUD_NAME   # dashboard > Settings > API keys
+# or CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY and CLOUDINARY_API_SECRET (these win over the URL)
+CLOUDINARY_FOLDER=calcam/prod                               # optional: keeps environments apart in one account
+CLOUDINARY_AUTH_TOKEN_KEY=                                  # optional, see below
+```
+
+* Photos and thumbnails are uploaded as `authenticated` assets, so they are **private**: the original cannot be fetched
+  without a link issued by this backend, and re-uploading the same key replaces the old file.
+* **Link expiry.** Responses carry signed links (`imageUrl`, `thumbnailUrl`). Without `CLOUDINARY_AUTH_TOKEN_KEY` a link
+  is signed but does not expire. If your Cloudinary account has *token-based authentication* enabled, put its key in
+  `CLOUDINARY_AUTH_TOKEN_KEY` and links expire after `SIGNED_URL_TTL_SECONDS` (15 minutes), as they do with S3.
+* The worker downloads the photo through a short-lived signed link, so it needs outbound HTTPS to `res.cloudinary.com`.
+* `/ready` calls the Cloudinary Admin API (`ping`) at most once every 30 seconds.
+* Deleting an account removes every file under `users/<id>/` (with `CLOUDINARY_FOLDER` in front).
+
+**Moving existing photos.** Object keys are identical across drivers, so the database does not change. With the new
+driver configured as above:
+
+```bash
+npm run storage:migrate -- --from fs --dry-run   # lists what would be copied and what is missing in the source
+npm run storage:migrate -- --from fs             # or --from s3; safe to run again
+```
+
+then restart the API and the worker. The S3 and filesystem drivers stay available, so switching back is a one-line change.
 
 ### Swapping the AI provider
 
@@ -274,6 +303,9 @@ What is not covered by automated tests:
 
 ## Deploying to AWS
 
+(With `STORAGE_DRIVER=cloudinary` skip the S3 bucket and the S3 steps below, and keep the Cloudinary credentials in
+Secrets Manager with the other secrets.)
+
 The image is built for ECS Fargate (or any container platform). It is not a serverless function: the worker is a
 long-running process.
 
@@ -301,6 +333,7 @@ long-running process.
 | `npm run migrate` | Apply migrations (`prisma migrate deploy`) |
 | `npm run migrate:dev` | Create a new migration after editing `prisma/schema.prisma` |
 | `npm run seed` | Demo account `demo@example.com` / `Password123!` |
+| `npm run storage:migrate -- --from fs\|s3` | Copy stored photos to the configured `STORAGE_DRIVER` (add `--dry-run` first) |
 | `npm run openapi` | Regenerate `openapi/openapi.json` |
 | `npm run postman` | Regenerate the Postman collection |
 | `npm run db:embedded` | Local PostgreSQL without Docker |

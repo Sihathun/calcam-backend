@@ -33,7 +33,7 @@ const EnvSchema = z.object({
   PASSWORD_RESET_TTL_MINUTES: int(30),
   FEATURE_PASSWORD_RESET: bool(false),
 
-  STORAGE_DRIVER: z.enum(['s3', 'fs', 'memory']).default('s3'),
+  STORAGE_DRIVER: z.enum(['s3', 'cloudinary', 'fs', 'memory']).default('s3'),
   STORAGE_FS_DIR: z.string().default('.local/storage'),
   STORAGE_SIGNING_SECRET: z.string().optional(),
   S3_BUCKET: z.string().default('calcam-meals'),
@@ -45,6 +45,12 @@ const EnvSchema = z.object({
   S3_FORCE_PATH_STYLE: bool(false),
   S3_SSE: z.enum(['AES256', 'aws:kms', 'none']).default('none'),
   SIGNED_URL_TTL_SECONDS: int(900),
+  CLOUDINARY_URL: z.string().optional(),
+  CLOUDINARY_CLOUD_NAME: z.string().optional(),
+  CLOUDINARY_API_KEY: z.string().optional(),
+  CLOUDINARY_API_SECRET: z.string().optional(),
+  CLOUDINARY_FOLDER: z.string().default(''),
+  CLOUDINARY_AUTH_TOKEN_KEY: z.string().regex(/^[0-9a-fA-F]+$/, 'must be the hex key from Cloudinary token-based authentication').optional(),
 
   QUEUE_DRIVER: z.enum(['bullmq', 'memory']).default('bullmq'),
   QUEUE_CONCURRENCY: int(4),
@@ -98,6 +104,34 @@ const EnvSchema = z.object({
 
 type Env = z.infer<typeof EnvSchema>;
 
+export interface CloudinaryConfig {
+  cloudName: string;
+  apiKey: string;
+  apiSecret: string;
+  /** Optional prefix for every public id, e.g. "calcam/prod", to keep environments apart in one Cloudinary account. */
+  folder: string;
+  /** Key of Cloudinary's token-based authentication. When set, signed links expire after SIGNED_URL_TTL_SECONDS. */
+  authTokenKey?: string;
+}
+
+/** CLOUDINARY_CLOUD_NAME / _API_KEY / _API_SECRET win; otherwise CLOUDINARY_URL=cloudinary://KEY:SECRET@CLOUD_NAME. */
+function readCloudinary(e: Env): CloudinaryConfig | undefined {
+  const rest = { folder: e.CLOUDINARY_FOLDER, ...(e.CLOUDINARY_AUTH_TOKEN_KEY ? { authTokenKey: e.CLOUDINARY_AUTH_TOKEN_KEY } : {}) };
+  if (e.CLOUDINARY_CLOUD_NAME && e.CLOUDINARY_API_KEY && e.CLOUDINARY_API_SECRET) {
+    return { cloudName: e.CLOUDINARY_CLOUD_NAME, apiKey: e.CLOUDINARY_API_KEY, apiSecret: e.CLOUDINARY_API_SECRET, ...rest };
+  }
+  if (!e.CLOUDINARY_URL) return undefined;
+  try {
+    const u = new URL(e.CLOUDINARY_URL);
+    if (u.protocol === 'cloudinary:' && u.username && u.password && u.hostname) {
+      return { cloudName: u.hostname, apiKey: decodeURIComponent(u.username), apiSecret: decodeURIComponent(u.password), ...rest };
+    }
+  } catch {
+    /* reported below */
+  }
+  throw new Error('Invalid environment configuration:\n  CLOUDINARY_URL: expected cloudinary://API_KEY:API_SECRET@CLOUD_NAME');
+}
+
 export interface Config {
   env: Env['NODE_ENV'];
   isProd: boolean;
@@ -132,6 +166,8 @@ export interface Config {
     forcePathStyle: boolean;
     sse?: 'AES256' | 'aws:kms';
     signedUrlTtlSeconds: number;
+    /** Present when Cloudinary credentials were supplied (required when driver is "cloudinary"). */
+    cloudinary?: CloudinaryConfig;
   };
   queue: { driver: Env['QUEUE_DRIVER']; concurrency: number; attempts: number; backoffMs: number };
   ai: {
@@ -216,6 +252,7 @@ export function loadConfig(source: NodeJS.ProcessEnv = process.env): Config {
       forcePathStyle: e.S3_FORCE_PATH_STYLE,
       sse: e.S3_SSE === 'none' ? undefined : e.S3_SSE,
       signedUrlTtlSeconds: e.SIGNED_URL_TTL_SECONDS,
+      cloudinary: readCloudinary(e),
     },
     queue: {
       driver: e.QUEUE_DRIVER,
@@ -261,6 +298,12 @@ export function loadConfig(source: NodeJS.ProcessEnv = process.env): Config {
     metricsEnabled: e.METRICS_ENABLED,
   };
 
+  if (config.storage.driver === 'cloudinary' && !config.storage.cloudinary) {
+    throw new Error(
+      'Invalid environment configuration:\n  STORAGE_DRIVER=cloudinary needs CLOUDINARY_URL, or CLOUDINARY_CLOUD_NAME + CLOUDINARY_API_KEY + CLOUDINARY_API_SECRET',
+    );
+  }
+
   assertProductionSafe(config);
   return config;
 }
@@ -270,7 +313,7 @@ function assertProductionSafe(c: Config): void {
   if (!c.isProd) return;
   const problems: string[] = [];
   if (c.queue.driver === 'memory') problems.push('QUEUE_DRIVER=memory runs the worker inside the API process');
-  if (c.storage.driver !== 's3') problems.push(`STORAGE_DRIVER=${c.storage.driver} is not durable`);
+  if (c.storage.driver !== 's3' && c.storage.driver !== 'cloudinary') problems.push(`STORAGE_DRIVER=${c.storage.driver} is not durable`);
   if (c.ai.provider === 'fake') problems.push('AI_PROVIDER=fake returns canned results');
   if (c.auth.accessSecret.length < 32) problems.push('JWT_ACCESS_SECRET must be at least 32 characters');
   if (c.ai.provider === 'anthropic' && !c.ai.anthropicApiKey) problems.push('ANTHROPIC_API_KEY is required');

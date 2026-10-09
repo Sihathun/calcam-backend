@@ -1,4 +1,5 @@
 import type { Config } from '../../config/env';
+import { CloudinaryStorage } from './cloudinary';
 import { FsStorage } from './fs';
 import { MemoryStorage } from './memory';
 import { S3Storage } from './s3';
@@ -23,6 +24,8 @@ export function createStorage(config: Config): ObjectStorage {
   switch (config.storage.driver) {
     case 's3':
       return new S3Storage(config);
+    case 'cloudinary':
+      return new CloudinaryStorage(config);
     case 'fs':
       return new FsStorage(config);
     case 'memory':
