@@ -26,7 +26,7 @@ describe('every query is scoped to the signed-in user (other users\' resources a
     expect((await ctx.http.get(`${api}/meals`).set(b.auth)).body.items).toHaveLength(0);
     expect((await ctx.http.get(`${api}/dashboard/daily`).set(b.auth)).body.meals).toHaveLength(0);
     const after = (await ctx.http.get(`${api}/meals/${id}`).set(a.auth)).body.meal;
-    expect(after.name).toBe('Turkey Sandwich With Potato Chips');
+    expect(after.name).toBe('Turkey Sandwich, Potato Chips');
     expect(after.status).toBe('completed');
     expect(await ctx.deps.prisma.mealCorrection.count({ where: { mealId: id } })).toBe(0);
   });

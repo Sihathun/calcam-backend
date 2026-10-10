@@ -1,0 +1,2317 @@
+[
+  {
+    "slug": "bai-sach-chrouk",
+    "nameEn": "Pork and Rice (Bai Sach Chrouk)",
+    "nameKm": "បាយសាច់ជ្រូក",
+    "aliases": [
+      "bai sach chrouk",
+      "bai sach jrouk",
+      "bai sach chrouk ang",
+      "grilled pork rice",
+      "cambodian pork and rice"
+    ],
+    "category": "rice_dish",
+    "servingDescription": "1 plate (about 300 g): rice, sliced grilled pork, pickles",
+    "servingGrams": 300,
+    "calories": 511,
+    "proteinG": 21.4,
+    "carbsG": 58.2,
+    "fatG": 20.6,
+    "healthScore": 5,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 170 g cooked jasmine/long-grain white rice, 70 g cooked pork shoulder (lean and fat), 10 g canned coconut milk, 8 g white sugar, 30 g cucumber, 10 g carrot, 3 g soybean oil (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked). Cross-check: NIPH student study weighed rice with fried pork and stewed egg at 439 kcal (P 18.7, F 23.7, C 36.9) for one dish, a slightly smaller rice portion.",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168878): Rice, white, long-grain, regular, enriched, cooked",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 167844): Pork, fresh, shoulder, whole, separable lean and fat, cooked, roasted",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170173): Nuts, coconut milk, canned (liquid expressed from grated meat and water)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168409): Cucumber, with peel, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170393): Carrots, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "NIPH Cambodia, Nutrition Laboratory Cookbook: Traditional Cambodian Recipes (2025), analysis sections and breakfast poster notes",
+        "url": "https://niph.org.kh/niph/uploads/library/pdf/GL388_2-Cookbook-Print-latest-for_Submit-.pdf"
+      }
+    ]
+  },
+  {
+    "slug": "bai-sror",
+    "nameEn": "Plain Steamed Rice (Bai Sor)",
+    "nameKm": "បាយស",
+    "aliases": [
+      "bai sor",
+      "bai sror",
+      "bai",
+      "steamed white rice",
+      "white rice",
+      "cooked rice"
+    ],
+    "category": "rice_dish",
+    "servingDescription": "1 bowl (about 160 g cooked)",
+    "servingGrams": 160,
+    "calories": 208,
+    "proteinG": 4.3,
+    "carbsG": 45.1,
+    "fatG": 0.4,
+    "healthScore": 4,
+    "confidence": "high",
+    "method": "Sum of ingredients for a typical street-stall portion: 160 g cooked jasmine/long-grain white rice (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked). Matches the cooked rice portions used in the NIPH cookbook (126 g with lok lak, 168 g with kako soup).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168878): Rice, white, long-grain, regular, enriched, cooked",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "NIPH Cambodia, Nutrition Laboratory Cookbook: Traditional Cambodian Recipes (2025), analysis sections and breakfast poster notes",
+        "url": "https://niph.org.kh/niph/uploads/library/pdf/GL388_2-Cookbook-Print-latest-for_Submit-.pdf"
+      }
+    ]
+  },
+  {
+    "slug": "bai-cha",
+    "nameEn": "Cambodian Fried Rice (Bai Cha)",
+    "nameKm": "បាយឆា",
+    "aliases": [
+      "bai cha",
+      "bai char",
+      "khmer fried rice",
+      "fried rice"
+    ],
+    "category": "rice_dish",
+    "servingDescription": "1 plate (about 330 g)",
+    "servingGrams": 330,
+    "calories": 591,
+    "proteinG": 21.1,
+    "carbsG": 67.7,
+    "fatG": 25.5,
+    "healthScore": 4,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 220 g cooked jasmine/long-grain white rice, 50 g fried egg, 25 g cooked ground pork (84% lean), 12 g soybean oil, 20 g green beans, 20 g tomato, 15 g onion, 8 g soy sauce, 4 g garlic (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168878): Rice, white, long-grain, regular, enriched, cooked",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 173423): Egg, whole, cooked, fried",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168374): Pork, ground, 84% lean / 16% fat, cooked, pan-broiled",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169961): Beans, snap, green, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170457): Tomatoes, red, ripe, raw, year round average",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170000): Onions, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174277): Soy sauce made from soy and wheat (shoyu)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169230): Garlic, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "bai-damnaub",
+    "nameEn": "Sticky Rice (Bai Damnaub)",
+    "nameKm": "បាយដំណើប",
+    "aliases": [
+      "bai damnaub",
+      "bai domnoub",
+      "glutinous rice",
+      "sticky rice"
+    ],
+    "category": "rice_dish",
+    "servingDescription": "1 serving (about 150 g steamed)",
+    "servingGrams": 150,
+    "calories": 146,
+    "proteinG": 3.0,
+    "carbsG": 31.6,
+    "fatG": 0.3,
+    "healthScore": 3,
+    "confidence": "high",
+    "method": "Sum of ingredients for a typical street-stall portion: 150 g cooked glutinous rice (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked). Plain steamed glutinous rice, as eaten with grilled meat or papaya salad.",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169711): Rice, white, glutinous, unenriched, cooked",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "num-banh-chok",
+    "nameEn": "Khmer Rice Noodles with Fish Gravy (Num Banh Chok)",
+    "nameKm": "នំបញ្ចុក",
+    "aliases": [
+      "num banh chok",
+      "nom banh chok",
+      "nom banhchok",
+      "khmer noodles",
+      "num banchok",
+      "samlor khmer"
+    ],
+    "category": "noodle_dish",
+    "servingDescription": "1 bowl or plate (about 480 g) with fresh vegetables",
+    "servingGrams": 480,
+    "calories": 493,
+    "proteinG": 18.0,
+    "carbsG": 62.9,
+    "fatG": 21.0,
+    "healthScore": 6,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 200 g fresh rice noodles (SMILING), 60 g snakehead fish (SMILING), 70 g canned coconut milk, 10 g lemongrass (SMILING), 5 g ginger (SMILING), 5 g fermented fish/shrimp paste as prahok proxy (SMILING), 3 g soybean oil, 30 g mung bean sprouts, 30 g cucumber, 20 g green beans, 3 g palm sugar (SMILING), 4 g fish sauce (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked). Typical fish-and-kroeung coconut gravy over fresh rice vermicelli; the fish-gravy portion is kept moderate (70 g coconut milk).",
+    "sources": [
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Noodle, rice flour, wet",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Striped snake-head fish, raw",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170173): Nuts, coconut milk, canned (liquid expressed from grated meat and water)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Lemon grass, leaf, fresh",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Ginger, root, mature, fresh",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Shrimp, fermented (proxy for prahok)",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169957): Mung beans, mature seeds, sprouted, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168409): Cucumber, with peel, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169961): Beans, snap, green, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Toddy palm, thickened sap (palm sugar)",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174531): Sauce, fish, ready-to-serve",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "kuy-teav",
+    "nameEn": "Phnom Penh Noodle Soup (Kuy Teav)",
+    "nameKm": "គុយទាវ",
+    "aliases": [
+      "kuy teav",
+      "kuyteav",
+      "kuy tiev",
+      "kuy teav phnom penh",
+      "pork noodle soup",
+      "khmer noodle soup"
+    ],
+    "category": "noodle_dish",
+    "servingDescription": "1 bowl (about 580 g incl. broth)",
+    "servingGrams": 580,
+    "calories": 560,
+    "proteinG": 23.7,
+    "carbsG": 68.6,
+    "fatG": 20.6,
+    "healthScore": 6,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 260 g cooked rice noodles, 40 g cooked ground pork (84% lean), 30 g cooked pork shoulder (lean and fat), 5 g soybean oil, 30 g mung bean sprouts, 15 g lettuce, 10 g onion, 3 g white sugar (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked). Cross-check: NIPH student study analysed a Cambodian beef noodle soup at 616 kcal (P 29, F 15.2, C 89.2) for one breakfast bowl, so this value sits slightly below a large published bowl.",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168914): Rice noodles, cooked",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168374): Pork, ground, 84% lean / 16% fat, cooked, pan-broiled",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 167844): Pork, fresh, shoulder, whole, separable lean and fat, cooked, roasted",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169957): Mung beans, mature seeds, sprouted, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169249): Lettuce, green leaf, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170000): Onions, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "NIPH Cambodia, Nutrition Laboratory Cookbook: Traditional Cambodian Recipes (2025), analysis sections and breakfast poster notes",
+        "url": "https://niph.org.kh/niph/uploads/library/pdf/GL388_2-Cookbook-Print-latest-for_Submit-.pdf"
+      }
+    ]
+  },
+  {
+    "slug": "kuy-teav-sngout",
+    "nameEn": "Dry Noodles with Pork (Kuy Teav Sngout)",
+    "nameKm": "គុយទាវស្ងួត",
+    "aliases": [
+      "kuy teav sngout",
+      "kuy teav kho",
+      "kuy teav khor",
+      "dry kuy teav",
+      "dry noodles",
+      "hu tieu kho"
+    ],
+    "category": "noodle_dish",
+    "servingDescription": "1 plate (about 400 g) with side of broth",
+    "servingGrams": 400,
+    "calories": 624,
+    "proteinG": 25.5,
+    "carbsG": 71.1,
+    "fatG": 26.1,
+    "healthScore": 5,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 260 g cooked rice noodles, 40 g cooked ground pork (84% lean), 30 g cooked pork shoulder (lean and fat), 8 g soybean oil, 8 g soy sauce, 5 g white sugar, 30 g mung bean sprouts, 15 g lettuce, 5 g roasted peanuts (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168914): Rice noodles, cooked",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168374): Pork, ground, 84% lean / 16% fat, cooked, pan-broiled",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 167844): Pork, fresh, shoulder, whole, separable lean and fat, cooked, roasted",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174277): Soy sauce made from soy and wheat (shoyu)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169957): Mung beans, mature seeds, sprouted, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169249): Lettuce, green leaf, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 173806): Peanuts, all types, dry-roasted, without salt",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "mi-cha",
+    "nameEn": "Cambodian Fried Egg Noodles (Mi Cha)",
+    "nameKm": "មីឆា",
+    "aliases": [
+      "mi cha",
+      "mee cha",
+      "mi char",
+      "fried noodles",
+      "stir fried egg noodles"
+    ],
+    "category": "noodle_dish",
+    "servingDescription": "1 plate (about 350 g)",
+    "servingGrams": 350,
+    "calories": 701,
+    "proteinG": 28.7,
+    "carbsG": 71.5,
+    "fatG": 33.7,
+    "healthScore": 3,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 250 g cooked egg noodles, 14 g soybean oil, 50 g fried egg, 30 g cooked ground pork (84% lean), 15 g onion, 40 g leafy greens (kale as proxy), 15 g carrot, 12 g soy sauce, 3 g white sugar (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169732): Noodles, egg, enriched, cooked",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 173423): Egg, whole, cooked, fried",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168374): Pork, ground, 84% lean / 16% fat, cooked, pan-broiled",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170000): Onions, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168421): Kale, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170393): Carrots, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174277): Soy sauce made from soy and wheat (shoyu)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "lort-cha",
+    "nameEn": "Fried Short Rice Noodles with Egg (Lort Cha)",
+    "nameKm": "ឡុតឆា",
+    "aliases": [
+      "lort cha",
+      "lot cha",
+      "lort char",
+      "fried rice noodle worms",
+      "short noodle stir fry"
+    ],
+    "category": "noodle_dish",
+    "servingDescription": "1 plate (about 330 g)",
+    "servingGrams": 330,
+    "calories": 567,
+    "proteinG": 21.3,
+    "carbsG": 56.2,
+    "fatG": 28.4,
+    "healthScore": 3,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 200 g cooked rice noodles, 14 g soybean oil, 50 g fried egg, 30 g cooked ground pork (84% lean), 50 g mung bean sprouts, 12 g soy sauce, 5 g fish sauce, 4 g white sugar (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168914): Rice noodles, cooked",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 173423): Egg, whole, cooked, fried",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168374): Pork, ground, 84% lean / 16% fat, cooked, pan-broiled",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169957): Mung beans, mature seeds, sprouted, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174277): Soy sauce made from soy and wheat (shoyu)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174531): Sauce, fish, ready-to-serve",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "samlor-korko",
+    "nameEn": "Khmer Kako Soup (Samlor Korko)",
+    "nameKm": "សម្លកកូរ",
+    "aliases": [
+      "samlor korko",
+      "samlor kako",
+      "samlor kakou",
+      "somlar korko",
+      "kako soup",
+      "khmer stirring soup"
+    ],
+    "category": "soup_curry",
+    "servingDescription": "1 bowl (570 g), eaten with rice",
+    "servingGrams": 570,
+    "calories": 712,
+    "proteinG": 47.5,
+    "carbsG": 40.6,
+    "fatG": 42.5,
+    "healthScore": 5,
+    "confidence": "high",
+    "method": "Published laboratory-software analysis (NutriSurvey) of the NIPH recipe, one 570 g serving of soup only; add about 218 kcal for the 168 g of rice usually eaten with it. The recipe is rich in fatty pork belly and catfish.",
+    "sources": [
+      {
+        "name": "NIPH Cambodia, Nutrition Laboratory Cookbook: Traditional Cambodian Recipes (2025), analysis sections and breakfast poster notes",
+        "url": "https://niph.org.kh/niph/uploads/library/pdf/GL388_2-Cookbook-Print-latest-for_Submit-.pdf"
+      }
+    ]
+  },
+  {
+    "slug": "samlor-machu-trey",
+    "nameEn": "Sour Fish Soup (Samlor Machu Trey)",
+    "nameKm": "សម្លម្ជូរត្រី",
+    "aliases": [
+      "samlor machu trey",
+      "somlor machu trei",
+      "machu trey",
+      "sour fish soup",
+      "tamarind fish soup"
+    ],
+    "category": "soup_curry",
+    "servingDescription": "1 bowl (about 420 g), eaten with rice",
+    "servingGrams": 420,
+    "calories": 257,
+    "proteinG": 20.3,
+    "carbsG": 16.8,
+    "fatG": 12.4,
+    "healthScore": 8,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 100 g cooked farmed catfish, 40 g pineapple, 50 g tomato, 30 g mung bean sprouts, 15 g celery, 5 g soybean oil, 6 g white sugar, 3 g garlic, 5 g lime juice (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 175166): Fish, catfish, channel, farmed, cooked, dry heat",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169124): Pineapple, raw, all varieties",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170457): Tomatoes, red, ripe, raw, year round average",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169957): Mung beans, mature seeds, sprouted, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169988): Celery, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169230): Garlic, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168156): Lime juice, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "samlor-machu-yuon",
+    "nameEn": "Vietnamese-style Sour Soup with Shrimp (Samlor Machu Yuon)",
+    "nameKm": "សម្លម្ជូរយួន",
+    "aliases": [
+      "samlor machu yuon",
+      "somlar machu yuon",
+      "machu yuon",
+      "sweet and sour soup",
+      "canh chua"
+    ],
+    "category": "soup_curry",
+    "servingDescription": "1 bowl (about 420 g), eaten with rice",
+    "servingGrams": 420,
+    "calories": 199,
+    "proteinG": 19.3,
+    "carbsG": 20.6,
+    "fatG": 5.5,
+    "healthScore": 8,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 70 g cooked shrimp, 50 g pineapple, 50 g tomato, 40 g mung bean sprouts, 15 g celery, 5 g soybean oil, 8 g white sugar, 3 g garlic, 5 g fish sauce (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 175180): Crustaceans, shrimp, cooked",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169124): Pineapple, raw, all varieties",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170457): Tomatoes, red, ripe, raw, year round average",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169957): Mung beans, mature seeds, sprouted, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169988): Celery, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169230): Garlic, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174531): Sauce, fish, ready-to-serve",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "kari-sach-moan",
+    "nameEn": "Khmer Chicken Curry (Kari Sach Moan)",
+    "nameKm": "សម្លការីសាច់មាន់",
+    "aliases": [
+      "kari sach moan",
+      "samlor kari",
+      "somlor kari sach moan",
+      "khmer chicken curry",
+      "cambodian red curry chicken"
+    ],
+    "category": "soup_curry",
+    "servingDescription": "1 bowl (about 400 g), eaten with rice or baguette",
+    "servingGrams": 400,
+    "calories": 539,
+    "proteinG": 32.7,
+    "carbsG": 24.8,
+    "fatG": 35.2,
+    "healthScore": 5,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 120 g roasted chicken leg with skin, 60 g cooked sweet potato, 90 g canned coconut milk, 25 g onion, 5 g soybean oil, 5 g palm sugar (SMILING), 8 g lemongrass (SMILING), 4 g garlic, 4 g fish sauce (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 173617): Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168483): Sweet potato, cooked, baked in skin, flesh, without salt",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170173): Nuts, coconut milk, canned (liquid expressed from grated meat and water)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170000): Onions, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Toddy palm, thickened sap (palm sugar)",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Lemon grass, leaf, fresh",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169230): Garlic, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174531): Sauce, fish, ready-to-serve",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "fish-amok",
+    "nameEn": "Steamed Fish Curry (Fish Amok)",
+    "nameKm": "អាម៉ុកត្រី",
+    "aliases": [
+      "fish amok",
+      "amok trey",
+      "amok trei",
+      "amok",
+      "steamed fish curry"
+    ],
+    "category": "soup_curry",
+    "servingDescription": "1 portion (about 250 g)",
+    "servingGrams": 250,
+    "calories": 443,
+    "proteinG": 25.3,
+    "carbsG": 17.7,
+    "fatG": 31.3,
+    "healthScore": 5,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 100 g cooked farmed catfish, 100 g canned coconut milk, 20 g whole egg, 8 g lemongrass (SMILING), 4 g ginger (SMILING), 4 g garlic, 40 g leafy greens (kale as proxy), 5 g palm sugar (SMILING), 5 g fish sauce, 5 g rice flour, 10 g shallot (SMILING) (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked). Estimated 250 g portion; a nutrition site quotes about 280 kcal for 200 g, but a coconut-rich recipe with egg gives more.",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 175166): Fish, catfish, channel, farmed, cooked, dry heat",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170173): Nuts, coconut milk, canned (liquid expressed from grated meat and water)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 171287): Egg, whole, raw, fresh",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Lemon grass, leaf, fresh",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Ginger, root, mature, fresh",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169230): Garlic, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168421): Kale, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Toddy palm, thickened sap (palm sugar)",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174531): Sauce, fish, ready-to-serve",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169714): Rice flour, white, unenriched",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Shallot, bulb, raw",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "NutriScan: amok trey (Cambodian fish curry), about 280 kcal per 200 g (cross-check only)",
+        "url": "https://nutriscan.app/calories-nutrition/amok-trey-cambodian-fish-curry"
+      }
+    ]
+  },
+  {
+    "slug": "samlor-proher",
+    "nameEn": "Khmer Pork and Vegetable Soup (Samlor Proher)",
+    "nameKm": "សម្លប្រហើរ",
+    "aliases": [
+      "samlor proher",
+      "samlor prahar",
+      "samlor pror her",
+      "somlar proher",
+      "khmer vegetable soup"
+    ],
+    "category": "soup_curry",
+    "servingDescription": "1 bowl (about 480 g), eaten with rice",
+    "servingGrams": 480,
+    "calories": 310,
+    "proteinG": 27.0,
+    "carbsG": 19.0,
+    "fatG": 13.5,
+    "healthScore": 8,
+    "confidence": "low",
+    "method": "Sum of ingredients for a typical street-stall portion: 90 g braised pork shoulder, 20 g mushroom, 40 g pumpkin, 40 g eggplant, 30 g green beans, 30 g morning glory (SMILING), 10 g fermented fish/shrimp paste as prahok proxy (SMILING), 8 g rice flour, 8 g lemongrass (SMILING), 4 g garlic, 4 g fish sauce (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked). Composition based on a typical home recipe; recipe varies a lot.",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168256): Pork, fresh, shoulder, arm picnic, separable lean and fat, cooked, braised",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168434): Mushrooms, brown, italian, or crimini, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168448): Pumpkin, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169228): Eggplant, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169961): Beans, snap, green, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Water spinach / morning glory, raw",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Shrimp, fermented (proxy for prahok)",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169714): Rice flour, white, unenriched",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Lemon grass, leaf, fresh",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169230): Garlic, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174531): Sauce, fish, ready-to-serve",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "sach-chrouk-ko",
+    "nameEn": "Pork Braised with Eggs (Sach Chrouk Ko)",
+    "nameKm": "សាច់ជ្រូកស្ងោរពងទា",
+    "aliases": [
+      "sach chrouk ko",
+      "sach chrouk ngam",
+      "pork and egg stew",
+      "braised pork belly with egg",
+      "caramel pork and eggs"
+    ],
+    "category": "soup_curry",
+    "servingDescription": "1 portion (about 220 g incl. sauce)",
+    "servingGrams": 220,
+    "calories": 418,
+    "proteinG": 14.0,
+    "carbsG": 9.8,
+    "fatG": 35.6,
+    "healthScore": 3,
+    "confidence": "low",
+    "method": "Sum of ingredients for a typical street-stall portion: 55 g pork belly, 60 g duck egg (SMILING), 6 g palm sugar (SMILING), 6 g soy sauce, 3 g garlic, 50 g coconut water (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked). Composition based on a typical home recipe; fat content depends on how much belly fat is eaten.",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 167812): Pork, fresh, belly, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Egg, duck, whole, raw",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Toddy palm, thickened sap (palm sugar)",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174277): Soy sauce made from soy and wheat (shoyu)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169230): Garlic, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170174): Nuts, coconut water (liquid from coconuts)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "beef-lok-lak",
+    "nameEn": "Beef Lok Lak with Rice and Fried Egg (Lok Lak)",
+    "nameKm": "ឡុកឡាក់",
+    "aliases": [
+      "lok lak",
+      "loc lac",
+      "beef lok lak",
+      "lok lak with rice",
+      "shaking beef"
+    ],
+    "category": "stir_fry",
+    "servingDescription": "1 plate (447 g): beef, lettuce, tomato, fried egg, pepper-lime sauce and 126 g rice",
+    "servingGrams": 447,
+    "calories": 621,
+    "proteinG": 40.0,
+    "carbsG": 47.5,
+    "fatG": 28.9,
+    "healthScore": 6,
+    "confidence": "high",
+    "method": "Published NutriSurvey analysis of the NIPH recipe for one serving including 126 g cooked rice, a fried egg, vegetables and pepper-lime sauce (117 g stir-fried beef).",
+    "sources": [
+      {
+        "name": "NIPH Cambodia, Nutrition Laboratory Cookbook: Traditional Cambodian Recipes (2025), analysis sections and breakfast poster notes",
+        "url": "https://niph.org.kh/niph/uploads/library/pdf/GL388_2-Cookbook-Print-latest-for_Submit-.pdf"
+      }
+    ]
+  },
+  {
+    "slug": "cha-trakuon",
+    "nameEn": "Stir-fried Morning Glory (Cha Trakuon)",
+    "nameKm": "ឆាត្រកួន",
+    "aliases": [
+      "cha trakuon",
+      "cha trokuon",
+      "stir fried morning glory",
+      "water spinach stir fry"
+    ],
+    "category": "stir_fry",
+    "servingDescription": "1 plate (about 220 g)",
+    "servingGrams": 220,
+    "calories": 274,
+    "proteinG": 13.9,
+    "carbsG": 14.5,
+    "fatG": 18.2,
+    "healthScore": 6,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 200 g morning glory (SMILING), 12 g soybean oil, 8 g garlic, 8 g soy sauce, 25 g cooked ground pork (84% lean), 4 g white sugar, 3 g fish sauce (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Water spinach / morning glory, raw",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169230): Garlic, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174277): Soy sauce made from soy and wheat (shoyu)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168374): Pork, ground, 84% lean / 16% fat, cooked, pan-broiled",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174531): Sauce, fish, ready-to-serve",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "cha-kdam",
+    "nameEn": "Stir-fried Crab with Kampot Pepper (Cha Kdam)",
+    "nameKm": "ឆាក្តាម",
+    "aliases": [
+      "cha kdam",
+      "cha k dam",
+      "stir fried crab",
+      "kampot pepper crab",
+      "crab with green pepper"
+    ],
+    "category": "stir_fry",
+    "servingDescription": "1 plate (about 300 g incl. shell, about 100 g crab meat)",
+    "servingGrams": 300,
+    "calories": 296,
+    "proteinG": 19.3,
+    "carbsG": 12.1,
+    "fatG": 19.1,
+    "healthScore": 5,
+    "confidence": "low",
+    "method": "Sum of ingredients for a typical street-stall portion: 100 g crab meat, 18 g soybean oil, 10 g soy sauce, 5 g white sugar, 8 g garlic, 20 g onion, 20 g green beans (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked). Meat yield per plate is estimated; oil use varies widely.",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 171968): Crustaceans, crab, dungeness, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174277): Soy sauce made from soy and wheat (shoyu)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169230): Garlic, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170000): Onions, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169961): Beans, snap, green, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "cha-kroeung-sach-chrouk",
+    "nameEn": "Stir-fried Pork with Kroeung (Cha Kroeung Sach Chrouk)",
+    "nameKm": "ឆាគ្រឿងសាច់ជ្រូក",
+    "aliases": [
+      "cha kroeung",
+      "cha kreung",
+      "cha kroeung sach chrouk",
+      "lemongrass pork stir fry"
+    ],
+    "category": "stir_fry",
+    "servingDescription": "1 plate (about 230 g)",
+    "servingGrams": 230,
+    "calories": 433,
+    "proteinG": 23.0,
+    "carbsG": 14.4,
+    "fatG": 31.6,
+    "healthScore": 4,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 90 g cooked pork shoulder (lean and fat), 12 g soybean oil, 50 g green beans, 12 g lemongrass (SMILING), 5 g garlic, 10 g shallot (SMILING), 5 g palm sugar (SMILING), 5 g fish sauce, 20 g eggplant (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 167844): Pork, fresh, shoulder, whole, separable lean and fat, cooked, roasted",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169961): Beans, snap, green, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Lemon grass, leaf, fresh",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169230): Garlic, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Shallot, bulb, raw",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Toddy palm, thickened sap (palm sugar)",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174531): Sauce, fish, ready-to-serve",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169228): Eggplant, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "cha-khnhei-sach-moan",
+    "nameEn": "Stir-fried Chicken with Ginger (Cha Khnhei Sach Moan)",
+    "nameKm": "ឆាខ្ញីសាច់មាន់",
+    "aliases": [
+      "cha khnhei sach moan",
+      "chha khnhei",
+      "ginger chicken",
+      "stir fried chicken with ginger"
+    ],
+    "category": "stir_fry",
+    "servingDescription": "1 serving (214 g)",
+    "servingGrams": 214,
+    "calories": 296,
+    "proteinG": 22.2,
+    "carbsG": 9.9,
+    "fatG": 18.5,
+    "healthScore": 6,
+    "confidence": "high",
+    "method": "Published NutriSurvey analysis of the NIPH recipe (free-range chicken with skin, 250 g ginger per kg chicken), one 214 g serving.",
+    "sources": [
+      {
+        "name": "NIPH Cambodia, Nutrition Laboratory Cookbook: Traditional Cambodian Recipes (2025), analysis sections and breakfast poster notes",
+        "url": "https://niph.org.kh/niph/uploads/library/pdf/GL388_2-Cookbook-Print-latest-for_Submit-.pdf"
+      }
+    ]
+  },
+  {
+    "slug": "sach-chrouk-ang",
+    "nameEn": "Grilled Pork (Sach Chrouk Ang)",
+    "nameKm": "សាច់ជ្រូកអាំង",
+    "aliases": [
+      "sach chrouk ang",
+      "sach jrouk ang",
+      "grilled pork",
+      "khmer grilled pork",
+      "bbq pork"
+    ],
+    "category": "grilled_fried",
+    "servingDescription": "1 serving (about 130 g cooked)",
+    "servingGrams": 130,
+    "calories": 413,
+    "proteinG": 28.5,
+    "carbsG": 6.5,
+    "fatG": 29.8,
+    "healthScore": 5,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 120 g cooked pork shoulder (lean and fat), 6 g white sugar, 10 g canned coconut milk, 4 g soy sauce, 2 g soybean oil (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 167844): Pork, fresh, shoulder, whole, separable lean and fat, cooked, roasted",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170173): Nuts, coconut milk, canned (liquid expressed from grated meat and water)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174277): Soy sauce made from soy and wheat (shoyu)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "sach-ko-ang",
+    "nameEn": "Grilled Beef (Sach Ko Ang)",
+    "nameKm": "សាច់គោអាំង",
+    "aliases": [
+      "sach ko ang",
+      "grilled beef",
+      "khmer beef skewers",
+      "bbq beef"
+    ],
+    "category": "grilled_fried",
+    "servingDescription": "1 serving (about 130 g cooked)",
+    "servingGrams": 130,
+    "calories": 353,
+    "proteinG": 32.9,
+    "carbsG": 6.2,
+    "fatG": 21.1,
+    "healthScore": 6,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 120 g broiled beef sirloin (lean and fat), 5 g white sugar, 5 g soy sauce, 4 g soybean oil, 3 g garlic (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168727): Beef, top sirloin, steak, separable lean and fat, trimmed to 1/8\" fat, all grades, cooked, broiled",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174277): Soy sauce made from soy and wheat (shoyu)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169230): Garlic, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "trey-ang",
+    "nameEn": "Grilled Fish (Trey Ang)",
+    "nameKm": "ត្រីអាំង",
+    "aliases": [
+      "trey ang",
+      "trei ang",
+      "grilled fish",
+      "grilled snakehead",
+      "grilled tilapia"
+    ],
+    "category": "grilled_fried",
+    "servingDescription": "1 small whole fish (about 350 g with bones, 150 g flesh)",
+    "servingGrams": 160,
+    "calories": 265,
+    "proteinG": 39.8,
+    "carbsG": 7.0,
+    "fatG": 9.0,
+    "healthScore": 8,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 150 g cooked tilapia, 5 g soybean oil, 3 g garlic, 5 g fish sauce, 5 g white sugar, 20 g tomato (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 175177): Fish, tilapia, cooked, dry heat",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169230): Garlic, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174531): Sauce, fish, ready-to-serve",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170457): Tomatoes, red, ripe, raw, year round average",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "moan-ang",
+    "nameEn": "Grilled Chicken (Moan Ang)",
+    "nameKm": "មាន់អាំង",
+    "aliases": [
+      "moan ang",
+      "mouan ang",
+      "grilled chicken",
+      "khmer bbq chicken"
+    ],
+    "category": "grilled_fried",
+    "servingDescription": "1 leg quarter (about 250 g with bone, 150 g edible)",
+    "servingGrams": 160,
+    "calories": 337,
+    "proteinG": 36.7,
+    "carbsG": 8.1,
+    "fatG": 16.6,
+    "healthScore": 7,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 150 g roasted chicken leg with skin, 6 g white sugar, 3 g soybean oil, 5 g soy sauce, 3 g garlic, 5 g lemongrass (SMILING) (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 173617): Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174277): Soy sauce made from soy and wheat (shoyu)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169230): Garlic, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Lemon grass, leaf, fresh",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      }
+    ]
+  },
+  {
+    "slug": "trey-chien",
+    "nameEn": "Fried Fish (Trey Chien)",
+    "nameKm": "ត្រីចៀន",
+    "aliases": [
+      "trey chien",
+      "trei chien",
+      "fried fish",
+      "fried fish with ginger sauce"
+    ],
+    "category": "grilled_fried",
+    "servingDescription": "1 small whole fish (about 350 g with bones, 130 g flesh)",
+    "servingGrams": 170,
+    "calories": 335,
+    "proteinG": 34.7,
+    "carbsG": 10.5,
+    "fatG": 17.6,
+    "healthScore": 5,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 130 g cooked tilapia, 14 g soybean oil, 10 g ginger (SMILING), 8 g white sugar, 5 g fish sauce, 3 g garlic, 20 g tomato (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 175177): Fish, tilapia, cooked, dry heat",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Ginger, root, mature, fresh",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174531): Sauce, fish, ready-to-serve",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169230): Garlic, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170457): Tomatoes, red, ripe, raw, year round average",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "khmer-omelet",
+    "nameEn": "Khmer Pork Omelet (Sot Chien)",
+    "nameKm": "ស៊ុតចៀន",
+    "aliases": [
+      "sot chien",
+      "som chien",
+      "khmer omelette",
+      "pork omelet",
+      "fried eggs with pork"
+    ],
+    "category": "grilled_fried",
+    "servingDescription": "1 omelet (2 eggs, about 160 g)",
+    "servingGrams": 160,
+    "calories": 355,
+    "proteinG": 20.1,
+    "carbsG": 2.2,
+    "fatG": 29.3,
+    "healthScore": 5,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 110 g omelet egg, 30 g cooked ground pork (84% lean), 10 g soybean oil, 15 g onion, 3 g fish sauce (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172185): Egg, whole, cooked, omelet",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168374): Pork, ground, 84% lean / 16% fat, cooked, pan-broiled",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170000): Onions, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174531): Sauce, fish, ready-to-serve",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "bok-lhong",
+    "nameEn": "Green Papaya Salad (Bok L'hong)",
+    "nameKm": "បុកល្ហុង",
+    "aliases": [
+      "bok l'hong",
+      "bok lhong",
+      "bok lahong",
+      "papaya salad",
+      "green papaya salad",
+      "som tam khmer"
+    ],
+    "category": "salad",
+    "servingDescription": "1 plate (about 250 g)",
+    "servingGrams": 250,
+    "calories": 165,
+    "proteinG": 7.5,
+    "carbsG": 23.4,
+    "fatG": 5.4,
+    "healthScore": 8,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 130 g green papaya (SMILING), 40 g tomato, 25 g green beans, 10 g roasted peanuts, 8 g cooked shrimp, 8 g palm sugar (SMILING), 15 g lime juice, 8 g fermented fish/shrimp paste as prahok proxy (SMILING), 4 g garlic, 5 g fish sauce (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Papaya, unripe, peeled",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170457): Tomatoes, red, ripe, raw, year round average",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169961): Beans, snap, green, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 173806): Peanuts, all types, dry-roasted, without salt",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 175180): Crustaceans, shrimp, cooked",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Toddy palm, thickened sap (palm sugar)",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168156): Lime juice, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Shrimp, fermented (proxy for prahok)",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169230): Garlic, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174531): Sauce, fish, ready-to-serve",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "nhoam-svay",
+    "nameEn": "Green Mango Salad (Nhoam Svay)",
+    "nameKm": "ញាំស្វាយ",
+    "aliases": [
+      "nhoam svay",
+      "nyoum svay",
+      "green mango salad",
+      "mango salad"
+    ],
+    "category": "salad",
+    "servingDescription": "1 plate (about 220 g)",
+    "servingGrams": 220,
+    "calories": 237,
+    "proteinG": 12.5,
+    "carbsG": 33.8,
+    "fatG": 7.4,
+    "healthScore": 6,
+    "confidence": "low",
+    "method": "Sum of ingredients for a typical street-stall portion: 150 g mango, 15 g dried fish (SMILING), 8 g white sugar, 8 g roasted peanuts, 8 g fish sauce, 10 g onion, 5 g lime juice (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169910): Mangos, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Fish, Rasbora, dried",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 173806): Peanuts, all types, dry-roasted, without salt",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174531): Sauce, fish, ready-to-serve",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170000): Onions, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168156): Lime juice, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "nhoam-trayong-chaeur",
+    "nameEn": "Banana Flower and Chicken Salad (Nhoam Trayong Chaeur)",
+    "nameKm": "ញាំត្រយ៉ូងចេកសាច់មាន់",
+    "aliases": [
+      "nhoam trayong chaeur",
+      "nyoum troyoung chek",
+      "banana blossom salad",
+      "banana flower chicken salad"
+    ],
+    "category": "salad",
+    "servingDescription": "1 serving (265 g)",
+    "servingGrams": 265,
+    "calories": 297,
+    "proteinG": 34.7,
+    "carbsG": 16.0,
+    "fatG": 12.6,
+    "healthScore": 8,
+    "confidence": "high",
+    "method": "Published NutriSurvey analysis of the NIPH recipe, one 265 g serving (chicken breast, banana flower, peanuts, herbs).",
+    "sources": [
+      {
+        "name": "NIPH Cambodia, Nutrition Laboratory Cookbook: Traditional Cambodian Recipes (2025), analysis sections and breakfast poster notes",
+        "url": "https://niph.org.kh/niph/uploads/library/pdf/GL388_2-Cookbook-Print-latest-for_Submit-.pdf"
+      }
+    ]
+  },
+  {
+    "slug": "prahok-ktis",
+    "nameEn": "Prahok Coconut Dip with Vegetables (Prahok Ktis)",
+    "nameKm": "ប្រហុកខ្ទិះ",
+    "aliases": [
+      "prahok ktis",
+      "prahok k'tis",
+      "prahok ktiss",
+      "prahok khtis",
+      "prahok dip",
+      "fermented fish dip"
+    ],
+    "category": "salad",
+    "servingDescription": "1 portion (about 100 g dip with 140 g raw vegetables)",
+    "servingGrams": 240,
+    "calories": 274,
+    "proteinG": 14.2,
+    "carbsG": 16.4,
+    "fatG": 17.6,
+    "healthScore": 6,
+    "confidence": "low",
+    "method": "Sum of ingredients for a typical street-stall portion: 40 g cooked ground pork (84% lean), 40 g canned coconut milk, 10 g fermented fish/shrimp paste as prahok proxy (SMILING), 50 g eggplant, 10 g lemongrass (SMILING), 5 g palm sugar (SMILING), 8 g shallot (SMILING), 60 g cucumber, 30 g green beans (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked). Dip of minced pork, coconut milk and prahok served with raw vegetables; prahok proxied by fermented shrimp from SMILING.",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168374): Pork, ground, 84% lean / 16% fat, cooked, pan-broiled",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170173): Nuts, coconut milk, canned (liquid expressed from grated meat and water)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Shrimp, fermented (proxy for prahok)",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169228): Eggplant, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Lemon grass, leaf, fresh",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Toddy palm, thickened sap (palm sugar)",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Shallot, bulb, raw",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168409): Cucumber, with peel, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169961): Beans, snap, green, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "nom-krok",
+    "nameEn": "Coconut Rice Pancakes (Nom Krok)",
+    "nameKm": "នំគ្រក់",
+    "aliases": [
+      "nom krok",
+      "num krok",
+      "coconut rice cakes",
+      "khmer mini pancakes"
+    ],
+    "category": "snack_street_food",
+    "servingDescription": "5 pieces (about 125 g)",
+    "servingGrams": 125,
+    "calories": 332,
+    "proteinG": 3.5,
+    "carbsG": 42.1,
+    "fatG": 17.3,
+    "healthScore": 3,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 40 g rice flour, 55 g canned coconut milk, 8 g white sugar, 5 g soybean oil, 5 g onion (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169714): Rice flour, white, unenriched",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170173): Nuts, coconut milk, canned (liquid expressed from grated meat and water)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170000): Onions, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "num-ansom",
+    "nameEn": "Savory Sticky Rice Cake (Num Ansom)",
+    "nameKm": "នំអន្សម",
+    "aliases": [
+      "num ansom",
+      "nom ansom",
+      "nom ansom chrouk",
+      "pork sticky rice cake"
+    ],
+    "category": "snack_street_food",
+    "servingDescription": "1 cake (about 150 g)",
+    "servingGrams": 150,
+    "calories": 223,
+    "proteinG": 5.6,
+    "carbsG": 20.8,
+    "fatG": 13.0,
+    "healthScore": 4,
+    "confidence": "low",
+    "method": "Sum of ingredients for a typical street-stall portion: 70 g cooked glutinous rice, 30 g cooked mung beans, 20 g pork belly, 10 g canned coconut milk (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169711): Rice, white, glutinous, unenriched, cooked",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174257): Mung beans, mature seeds, cooked, boiled, without salt",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 167812): Pork, fresh, belly, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170173): Nuts, coconut milk, canned (liquid expressed from grated meat and water)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "kralan",
+    "nameEn": "Sticky Rice in Bamboo (Kralan)",
+    "nameKm": "ក្រឡាន",
+    "aliases": [
+      "kralan",
+      "krolan",
+      "sticky rice in bamboo"
+    ],
+    "category": "snack_street_food",
+    "servingDescription": "1 stick (about 150 g)",
+    "servingGrams": 150,
+    "calories": 207,
+    "proteinG": 3.9,
+    "carbsG": 33.2,
+    "fatG": 6.7,
+    "healthScore": 4,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 130 g cooked glutinous rice, 30 g canned coconut milk, 10 g cooked mung beans, 3 g white sugar (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169711): Rice, white, glutinous, unenriched, cooked",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170173): Nuts, coconut milk, canned (liquid expressed from grated meat and water)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 174257): Mung beans, mature seeds, cooked, boiled, without salt",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "pong-tea-koon",
+    "nameEn": "Balut Duck Egg (Pong Tea Koon)",
+    "nameKm": "ពងទាកូន",
+    "aliases": [
+      "pong tea koon",
+      "pong tia koon",
+      "balut",
+      "fertilized duck egg"
+    ],
+    "category": "snack_street_food",
+    "servingDescription": "1 egg (about 65 g edible)",
+    "servingGrams": 65,
+    "calories": 112,
+    "proteinG": 8.3,
+    "carbsG": 1.4,
+    "fatG": 8.1,
+    "healthScore": 5,
+    "confidence": "medium",
+    "method": "Scaled from the Philippine Food Composition Table value for boiled balut (about 172 kcal, 12.8 g protein, 12.4 g fat, 2.2 g carbohydrate per 100 g edible portion, as reported in a web search summary) to 65 g edible; USDA raw duck egg (185 kcal per 100 g) used as a cross-check.",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172189): Egg, duck, whole, fresh, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "chek-chien",
+    "nameEn": "Fried Banana Fritters (Chek Chien)",
+    "nameKm": "ចេកចៀន",
+    "aliases": [
+      "chek chien",
+      "chek chean",
+      "fried banana",
+      "banana fritters"
+    ],
+    "category": "snack_street_food",
+    "servingDescription": "5 pieces (about 130 g)",
+    "servingGrams": 130,
+    "calories": 300,
+    "proteinG": 3.0,
+    "carbsG": 45.7,
+    "fatG": 12.7,
+    "healthScore": 2,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 90 g ripe banana, 20 g rice flour, 8 g wheat flour, 3 g white sugar, 12 g soybean oil (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 173944): Bananas, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169714): Rice flour, white, unenriched",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168894): Wheat flour, white, all-purpose, enriched, bleached",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "poat-ang",
+    "nameEn": "Grilled Corn (Poat Ang)",
+    "nameKm": "ពោតអាំង",
+    "aliases": [
+      "poat ang",
+      "pout ang",
+      "grilled corn",
+      "corn on the cob"
+    ],
+    "category": "snack_street_food",
+    "servingDescription": "1 ear (about 150 g edible kernels)",
+    "servingGrams": 150,
+    "calories": 162,
+    "proteinG": 5.2,
+    "carbsG": 27.5,
+    "fatG": 3.3,
+    "healthScore": 6,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 150 g boiled sweet corn, 5 g canned coconut milk, 2 g white sugar (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked). Carbohydrate is reported net of fibre so macros reconcile with the USDA energy value.",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169999): Corn, sweet, yellow, cooked, boiled, drained, without salt",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170173): Nuts, coconut milk, canned (liquid expressed from grated meat and water)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "num-ansom-chek",
+    "nameEn": "Banana Sticky Rice Cake (Num Ansom Chek)",
+    "nameKm": "នំអន្សមចេក",
+    "aliases": [
+      "num ansom chek",
+      "nom ansom chek",
+      "banana sticky rice cake",
+      "banana leaf sticky rice"
+    ],
+    "category": "dessert",
+    "servingDescription": "1 cake (about 150 g)",
+    "servingGrams": 150,
+    "calories": 193,
+    "proteinG": 3.0,
+    "carbsG": 36.1,
+    "fatG": 4.6,
+    "healthScore": 3,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 100 g cooked glutinous rice, 50 g ripe banana, 20 g canned coconut milk, 3 g white sugar (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169711): Rice, white, glutinous, unenriched, cooked",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 173944): Bananas, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170173): Nuts, coconut milk, canned (liquid expressed from grated meat and water)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "chek-ktis",
+    "nameEn": "Banana in Coconut Milk (Chek Ktis)",
+    "nameKm": "ចេកខ្ទិះ",
+    "aliases": [
+      "chek ktis",
+      "chek k'tis",
+      "banana coconut milk dessert",
+      "banana in coconut cream"
+    ],
+    "category": "dessert",
+    "servingDescription": "1 bowl (about 250 g)",
+    "servingGrams": 250,
+    "calories": 343,
+    "proteinG": 2.9,
+    "carbsG": 40.2,
+    "fatG": 21.6,
+    "healthScore": 3,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 80 g ripe banana, 100 g canned coconut milk, 12 g white sugar, 8 g tapioca pearls (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 173944): Bananas, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170173): Nuts, coconut milk, canned (liquid expressed from grated meat and water)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169717): Tapioca, pearl, dry",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "sangkhya-lpeou",
+    "nameEn": "Pumpkin Custard (Sangkhya Lpeou)",
+    "nameKm": "សង្ខយាល្ពៅ",
+    "aliases": [
+      "sangkhya lpeou",
+      "sankhya lpov",
+      "sankya lapov",
+      "pumpkin custard",
+      "kabocha custard"
+    ],
+    "category": "dessert",
+    "servingDescription": "1 wedge (about 170 g)",
+    "servingGrams": 170,
+    "calories": 241,
+    "proteinG": 7.8,
+    "carbsG": 23.9,
+    "fatG": 13.4,
+    "healthScore": 3,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 50 g whole egg, 40 g canned coconut milk, 20 g palm sugar (SMILING), 60 g pumpkin (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 171287): Egg, whole, raw, fresh",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170173): Nuts, coconut milk, canned (liquid expressed from grated meat and water)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "FAO/INFOODS SMILING Food Composition Table for Cambodia (2013): Toddy palm, thickened sap (palm sugar)",
+        "url": "https://www.fao.org/fileadmin/templates/food_composition/documents/FCT_SMILING_PROJECT_ASIA/D3_5a_SMILING_FCT__Cambodia_010813_protected.xlsx"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168448): Pumpkin, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "bai-damnaub-svay",
+    "nameEn": "Mango Sticky Rice (Bai Damnaub Svay)",
+    "nameKm": "បាយដំណើបស្វាយ",
+    "aliases": [
+      "mango sticky rice",
+      "bai damnaub svay",
+      "khao niao mamuang"
+    ],
+    "category": "dessert",
+    "servingDescription": "1 plate (about 250 g)",
+    "servingGrams": 250,
+    "calories": 362,
+    "proteinG": 5.0,
+    "carbsG": 63.0,
+    "fatG": 11.4,
+    "healthScore": 3,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 150 g cooked glutinous rice, 120 g mango, 50 g canned coconut milk, 12 g white sugar (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169711): Rice, white, glutinous, unenriched, cooked",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169910): Mangos, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170173): Nuts, coconut milk, canned (liquid expressed from grated meat and water)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "kafe-tuk-doh-ko",
+    "nameEn": "Iced Coffee with Condensed Milk (Kafe Tuk Doh Ko)",
+    "nameKm": "កាហ្វេទឹកដោះគោខាប់",
+    "aliases": [
+      "kafe tuk doh ko",
+      "cafe tuk doh ko",
+      "kafe tek dos ko",
+      "iced coffee",
+      "iced coffee with condensed milk",
+      "khmer iced coffee"
+    ],
+    "category": "drink",
+    "servingDescription": "1 glass (about 250 ml with ice)",
+    "servingGrams": 250,
+    "calories": 188,
+    "proteinG": 5.0,
+    "carbsG": 30.5,
+    "fatG": 5.4,
+    "healthScore": 2,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 100 g brewed coffee, 45 g sweetened condensed milk, 20 g evaporated milk, 4 g white sugar (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 171890): Beverages, coffee, brewed, prepared with tap water",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 171275): Milk, canned, condensed, sweetened",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172194): Milk, canned, evaporated, with added vitamin A",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "tuk-oumpov",
+    "nameEn": "Sugarcane Juice (Tuk Oum Pov)",
+    "nameKm": "ទឹកអំពៅ",
+    "aliases": [
+      "tuk oum pov",
+      "tuk umpov",
+      "teuk ampov",
+      "sugarcane juice",
+      "sugar cane juice"
+    ],
+    "category": "drink",
+    "servingDescription": "1 glass (about 300 ml with ice, about 250 ml juice)",
+    "servingGrams": 300,
+    "calories": 183,
+    "proteinG": 0.8,
+    "carbsG": 45.5,
+    "fatG": 0.3,
+    "healthScore": 2,
+    "confidence": "medium",
+    "method": "About 73 kcal and 18.2 g carbohydrate per 100 ml of juice (calculator and database cross-check), x 250 ml, with trace protein and fat; juice sugar varies 13 to 20 g per 100 ml.",
+    "sources": [
+      {
+        "name": "Sugarcane juice nutrition calculator (about 73 kcal and 18.2 g carbohydrate per 100 ml)",
+        "url": "https://foodnutrify.com/tools/sugarcane-juice-nutrition-calculator/"
+      },
+      {
+        "name": "FatSecret generic sugarcane juice entry (cross-check)",
+        "url": "https://www.fatsecret.co.nz/calories-nutrition/generic/sugarcane-juice"
+      }
+    ]
+  },
+  {
+    "slug": "tuk-a-lok",
+    "nameEn": "Fruit Shake with Condensed Milk (Tuk-a-lok)",
+    "nameKm": "ទឹកត្រឡុក",
+    "aliases": [
+      "tuk a lok",
+      "tuk krolok",
+      "teuk krolok",
+      "fruit shake",
+      "mango banana smoothie",
+      "khmer smoothie"
+    ],
+    "category": "drink",
+    "servingDescription": "1 glass (about 350 ml)",
+    "servingGrams": 350,
+    "calories": 245,
+    "proteinG": 3.8,
+    "carbsG": 54.3,
+    "fatG": 3.1,
+    "healthScore": 3,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 80 g mango, 70 g ripe banana, 30 g sweetened condensed milk, 10 g white sugar (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169910): Mangos, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 173944): Bananas, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 171275): Milk, canned, condensed, sweetened",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "tuk-dong",
+    "nameEn": "Fresh Coconut Water (Tuk Dong)",
+    "nameKm": "ទឹកដូង",
+    "aliases": [
+      "tuk dong",
+      "teuk dong",
+      "coconut water",
+      "young coconut"
+    ],
+    "category": "drink",
+    "servingDescription": "1 young coconut (about 300 ml)",
+    "servingGrams": 300,
+    "calories": 57,
+    "proteinG": 2.2,
+    "carbsG": 11.1,
+    "fatG": 0.6,
+    "healthScore": 8,
+    "confidence": "high",
+    "method": "Sum of ingredients for a typical street-stall portion: 300 g coconut water (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170174): Nuts, coconut water (liquid from coconuts)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "tuk-santek",
+    "nameEn": "Sweetened Soy Milk (Tuk Santek)",
+    "nameKm": "ទឹកសណ្តែក",
+    "aliases": [
+      "tuk santek",
+      "tuk sandek",
+      "soy milk",
+      "sweet soy milk"
+    ],
+    "category": "drink",
+    "servingDescription": "1 bag or glass (about 250 ml)",
+    "servingGrams": 250,
+    "calories": 174,
+    "proteinG": 8.2,
+    "carbsG": 25.7,
+    "fatG": 4.4,
+    "healthScore": 5,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 250 g soymilk, 10 g white sugar (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172446): Soymilk, original and vanilla, unfortified",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "tuk-krouch-chhma",
+    "nameEn": "Sweet Lime Juice (Tuk Krouch Chhma)",
+    "nameKm": "ទឹកក្រូចឆ្មា",
+    "aliases": [
+      "tuk krouch chhma",
+      "tuk krauch chhma",
+      "lime juice",
+      "sweet lime juice",
+      "limeade"
+    ],
+    "category": "drink",
+    "servingDescription": "1 glass (about 300 ml with ice)",
+    "servingGrams": 300,
+    "calories": 107,
+    "proteinG": 0.2,
+    "carbsG": 28.4,
+    "fatG": 0.0,
+    "healthScore": 3,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 40 g lime juice, 25 g white sugar (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168156): Lime juice, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169655): Sugars, granulated",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "num-pang-sach",
+    "nameEn": "Khmer Baguette Sandwich (Num Pang)",
+    "nameKm": "នំបុ័ងសាច់",
+    "aliases": [
+      "num pang",
+      "nom pang",
+      "nom pan",
+      "num pang pate",
+      "khmer sandwich",
+      "cambodian baguette sandwich"
+    ],
+    "category": "bread_sandwich",
+    "servingDescription": "1 sandwich (about 200 g)",
+    "servingGrams": 200,
+    "calories": 448,
+    "proteinG": 20.4,
+    "carbsG": 44.4,
+    "fatG": 21.0,
+    "healthScore": 4,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 80 g French bread, 40 g cooked pork shoulder (lean and fat), 15 g liver pate, 8 g mayonnaise, 20 g carrot, 20 g cucumber (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172675): Bread, french or vienna (includes sourdough)",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 167844): Pork, fresh, shoulder, whole, separable lean and fat, cooked, roasted",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172930): Pate, liver, not specified, canned",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 167736): Mayonnaise dressing, no cholesterol",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170393): Carrots, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168409): Cucumber, with peel, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  },
+  {
+    "slug": "bobor-sach-moan",
+    "nameEn": "Chicken Rice Porridge (Bobor Sach Moan)",
+    "nameKm": "បបរសាច់មាន់",
+    "aliases": [
+      "bobor sach moan",
+      "borbor sach moan",
+      "bobor",
+      "rice porridge",
+      "chicken porridge"
+    ],
+    "category": "breakfast",
+    "servingDescription": "1 bowl (about 450 g)",
+    "servingGrams": 450,
+    "calories": 340,
+    "proteinG": 21.3,
+    "carbsG": 39.6,
+    "fatG": 9.9,
+    "healthScore": 7,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 130 g cooked jasmine/long-grain white rice, 70 g cooked chicken leg meat, 5 g ginger, 4 g soybean oil, 10 g onion, 20 g mung bean sprouts (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked). A recipe blog quotes about 624 kcal for a large bowl; this is a typical street bowl at 450 g.",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168878): Rice, white, long-grain, regular, enriched, cooked",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172380): Chicken, broilers or fryers, leg, meat only, cooked, roasted",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169231): Ginger root, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170000): Onions, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169957): Mung beans, mature seeds, sprouted, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "Grantourismo: Cambodian chicken rice porridge (Borbor Sach Moan), about 624 kcal per large serving (cross-check only)",
+        "url": "https://grantourismotravels.com/wprm_print/55335"
+      }
+    ]
+  },
+  {
+    "slug": "bobor-trey",
+    "nameEn": "Fish Rice Porridge (Bobor Trey)",
+    "nameKm": "បបរត្រី",
+    "aliases": [
+      "bobor trey",
+      "borbor trei",
+      "bobor trei",
+      "fish porridge",
+      "fish congee"
+    ],
+    "category": "breakfast",
+    "servingDescription": "1 bowl (about 450 g)",
+    "servingGrams": 450,
+    "calories": 308,
+    "proteinG": 22.6,
+    "carbsG": 39.6,
+    "fatG": 6.3,
+    "healthScore": 7,
+    "confidence": "medium",
+    "method": "Sum of ingredients for a typical street-stall portion: 130 g cooked jasmine/long-grain white rice, 70 g cooked tilapia, 5 g ginger, 4 g soybean oil, 10 g onion, 20 g mung bean sprouts (USDA SR Legacy values per 100 g; SMILING Cambodian table where marked).",
+    "sources": [
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 168878): Rice, white, long-grain, regular, enriched, cooked",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 175177): Fish, tilapia, cooked, dry heat",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169231): Ginger root, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 172370): Oil, vegetable, soybean, refined",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 170000): Onions, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      },
+      {
+        "name": "USDA FoodData Central SR Legacy (fdcId 169957): Mung beans, mature seeds, sprouted, raw",
+        "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
+      }
+    ]
+  }
+]

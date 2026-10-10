@@ -1,12 +1,13 @@
 import type { Prisma } from '@prisma/client';
 import type { WorkerDeps } from '../../deps';
 import type { AnalyzerInput, AnalyzerOutput } from '../../lib/analyzer';
-import { PROMPT_VERSION } from '../../lib/analyzer/prompts/meal-analysis.v1';
-import { aiMealSchema, normalizeMeal, type AiMeal } from '../../lib/analyzer/schema';
+import { PROMPT_VERSION } from '../../lib/analyzer/prompts/meal-analysis.v2';
+import { aiMealSchema, type AiMeal } from '../../lib/analyzer/schema';
 import type { MealErrorCode } from '../../lib/enums';
 import { TransientError } from '../../lib/errors';
 import { notifyMeal } from '../../lib/notify';
 import type { JobAttempt } from '../../lib/queue';
+import { createDishResolver, summarize, type ResolvedComponent } from './dish-resolver';
 
 /** Progress is stage-based on purpose: the client never sees fake smooth percentages. */
 const PROGRESS = { imageReady: 20, modelAnswered: 50, validated: 90, done: 100 } as const;
@@ -23,6 +24,31 @@ class SchemaViolation extends Error {}
 export function createAnalysisProcessor(deps: WorkerDeps) {
   const { prisma, storage, analyzer, config, logger, clock } = deps;
   const OPEN = ['queued', 'analyzing'] as const;
+  const resolver = createDishResolver(prisma, { maxCalories: config.ai.maxCaloriesPerServing, now: clock });
+
+  /**
+   * The same photo uploaded again by the same user gets the dishes and portions found the first time,
+   * without asking the model (the numbers are recomputed, so a correction made since still applies).
+   */
+  async function reusedComponents(meal: { id: string; userId: string; imageSha256: string | null }) {
+    if (!meal.imageSha256) return null;
+    const earlier = await prisma.meal.findFirst({
+      where: {
+        userId: meal.userId,
+        imageSha256: meal.imageSha256,
+        id: { not: meal.id },
+        status: 'completed',
+        components: { some: {} },
+      },
+      orderBy: { analyzedAt: 'desc' },
+      include: { components: { orderBy: { position: 'asc' }, include: { dish: true } } },
+    });
+    if (!earlier) return null;
+    return resolver.compute(
+      meal.userId,
+      earlier.components.map((c) => ({ dish: c.dish, portion: c.portion })),
+    );
+  }
 
   const setStage = (id: string, status: 'analyzing', progress: number) =>
     prisma.meal.updateMany({
@@ -66,8 +92,67 @@ export function createAnalysisProcessor(deps: WorkerDeps) {
       }
     };
 
+    /** Writes the components and the meal's totals in one transaction, then notifies. */
+    const save = async (components: ResolvedComponent[], aiRaw: Record<string, unknown>) => {
+      const totals = summarize(components, config.ai.maxCaloriesPerServing);
+      const done = await prisma.$transaction(async (tx) => {
+        const res = await tx.meal.updateMany({
+          where: { id: mealId, deletedAt: null, status: { in: [...OPEN] } },
+          data: {
+            name: totals.name,
+            nameKm: totals.nameKm,
+            calories: totals.calories,
+            proteinG: totals.proteinG,
+            carbsG: totals.carbsG,
+            fatG: totals.fatG,
+            healthScore: totals.healthScore,
+            // Kept for older clients: one item per recognised dish.
+            items: components.map((c) => ({
+              name: c.dish.nameEn,
+              portion: `${c.portion} x ${c.dish.servingDescription}`,
+              calories: c.calories,
+              proteinG: c.proteinG,
+              carbsG: c.carbsG,
+              fatG: c.fatG,
+            })) as Prisma.InputJsonValue,
+            aiRaw: aiRaw as Prisma.InputJsonValue,
+            status: 'completed',
+            progress: PROGRESS.done,
+            errorCode: null,
+            analyzedAt: clock(),
+          },
+        });
+        if (!res.count) return 0;
+        await tx.mealComponent.deleteMany({ where: { mealId } });
+        await tx.mealComponent.createMany({
+          data: components.map((c, position) => ({
+            mealId,
+            dishId: c.dish.id,
+            position,
+            portion: c.portion,
+            calories: c.calories,
+            proteinG: c.proteinG,
+            carbsG: c.carbsG,
+            fatG: c.fatG,
+            healthScore: c.healthScore,
+            valueSource: c.valueSource,
+          })),
+        });
+        return res.count;
+      });
+      if (done) await notifyMeal(deps, meal.userId, locale, 'ready', { mealId, status: 'completed' });
+    };
+
     try {
       await setStage(mealId, 'analyzing', PROGRESS.imageReady);
+
+      // A first analysis without a note can reuse an identical earlier photo; a fix or a note always asks the model.
+      const reusable = meal.source === 'photo' && !hadResult && !meal.hint && meal.corrections.length === 0;
+      const reused = reusable ? await reusedComponents(meal) : null;
+      if (reused) {
+        await save(reused, { reusedFromHash: meal.imageSha256 });
+        return;
+      }
 
       let image: AnalyzerInput['image'];
       if (meal.source === 'photo') {
@@ -75,6 +160,7 @@ export function createAnalysisProcessor(deps: WorkerDeps) {
         image = { data: await storage.get(meal.imageKey), mimeType: 'image/jpeg' };
       }
       const input: AnalyzerInput = {
+        dishes: await resolver.promptEntries(),
         image,
         description: meal.description ?? undefined,
         hint: meal.hint ?? undefined,
@@ -109,32 +195,16 @@ export function createAnalysisProcessor(deps: WorkerDeps) {
       if (!ai.isFood) return await fail('NOT_FOOD');
       if (ai.confidence < config.ai.minConfidence) return await fail('LOW_CONFIDENCE');
 
-      const meal2 = normalizeMeal(ai, config.ai.maxCaloriesPerServing);
-      await setStage(mealId, 'analyzing', PROGRESS.validated);
+      if (ai.dishes.length === 0) return await fail('LOW_CONFIDENCE');
 
-      const done = await prisma.meal.updateMany({
-        where: { id: mealId, deletedAt: null, status: { in: [...OPEN] } },
-        data: {
-          name: meal2.name,
-          calories: meal2.calories,
-          proteinG: meal2.proteinG,
-          carbsG: meal2.carbsG,
-          fatG: meal2.fatG,
-          healthScore: meal2.healthScore,
-          items: meal2.items as Prisma.InputJsonValue,
-          aiRaw: {
-            promptVersion: PROMPT_VERSION,
-            provider: output.provider,
-            model: output.model,
-            response: output.raw,
-          } as Prisma.InputJsonValue,
-          status: 'completed',
-          progress: PROGRESS.done,
-          errorCode: null,
-          analyzedAt: clock(),
-        },
+      const components = await resolver.resolve(meal.userId, mealId, ai.dishes);
+      await setStage(mealId, 'analyzing', PROGRESS.validated);
+      await save(components, {
+        promptVersion: PROMPT_VERSION,
+        provider: output.provider,
+        model: output.model,
+        response: output.raw,
       });
-      if (done.count) await notifyMeal(deps, meal.userId, locale, 'ready', { mealId, status: 'completed' });
     } catch (err) {
       // Unexpected failure (database hiccup, storage outage, bug). Retry while attempts remain, then give up cleanly.
       if (attempt.attempt < attempt.maxAttempts) {

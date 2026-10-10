@@ -6,6 +6,7 @@ import { MemoryCache, RedisCache, type Cache } from './lib/cache';
 import { createErrorReporter, noopReporter, type ErrorReporter } from './lib/error-reporter';
 import { createLogger } from './lib/logger';
 import { createMailer, type Mailer } from './lib/mail';
+import { pendingMigrations } from './lib/migrations';
 import { JoseOAuthVerifier, type OAuthVerifier } from './lib/oauth';
 import { CachedProductLookup, OpenFoodFactsLookup, type ProductLookup } from './lib/product-lookup';
 import { createPushSender, type PushSender } from './lib/push';
@@ -103,6 +104,14 @@ export async function buildApiDeps(
     { name: 'database', check: async () => void (await prisma.$queryRaw`SELECT 1`) },
     { name: 'storage', check: () => storage.ping() },
     { name: 'queue', check: () => queue.ping() },
+    // The code expects every shipped migration; a missing one fails queries with "column does not exist".
+    {
+      name: 'migrations',
+      check: async () => {
+        const pending = await pendingMigrations(prisma);
+        if (pending.length) throw new Error(`pending migrations: ${pending.join(', ')}`);
+      },
+    },
   ];
   if (redis) probes.push({ name: 'redis', check: async () => void (await redis.ping()) });
 

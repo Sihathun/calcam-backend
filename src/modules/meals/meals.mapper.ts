@@ -1,11 +1,11 @@
-import type { Meal } from '@prisma/client';
+import type { Meal, PrismaClient } from '@prisma/client';
 import type { ObjectStorage } from '../../lib/storage';
 import { mealTotals } from '../../lib/nutrition';
-import type { MealDetail, MealSummary } from './meals.schemas';
+import type { MealComponentDto, MealDetail, MealSummary } from './meals.schemas';
 
 type MealErrorCode = NonNullable<MealSummary['errorCode']>;
 
-export function createMealMapper(storage: ObjectStorage) {
+export function createMealMapper(storage: ObjectStorage, prisma: PrismaClient) {
   const thumb = async (m: Meal) => (m.thumbKey ? storage.signedUrl(m.thumbKey) : (m.externalImageUrl ?? null));
   const image = async (m: Meal) => (m.imageKey ? storage.signedUrl(m.imageKey) : (m.externalImageUrl ?? null));
 
@@ -15,6 +15,7 @@ export function createMealMapper(storage: ObjectStorage) {
       return {
         id: m.id,
         name: m.name,
+        nameKm: m.nameKm,
         source: m.source,
         status: m.status,
         progress: m.progress,
@@ -32,9 +33,26 @@ export function createMealMapper(storage: ObjectStorage) {
 
     async detail(m: Meal): Promise<MealDetail> {
       const t = mealTotals(m);
+      const rows = await prisma.mealComponent.findMany({
+        where: { mealId: m.id },
+        orderBy: { position: 'asc' },
+        include: { dish: true },
+      });
+      const components: MealComponentDto[] = rows.map((c) => ({
+        dishSlug: c.dish.slug,
+        nameEn: c.dish.nameEn,
+        nameKm: c.dish.nameKm,
+        portion: c.portion,
+        calories: c.calories,
+        proteinG: c.proteinG,
+        carbsG: c.carbsG,
+        fatG: c.fatG,
+        valueSource: c.valueSource,
+      }));
       return {
         id: m.id,
         name: m.name,
+        nameKm: m.nameKm,
         source: m.source,
         status: m.status,
         progress: m.progress,
@@ -49,6 +67,7 @@ export function createMealMapper(storage: ObjectStorage) {
         totals: t ?? { calories: null, proteinG: null, carbsG: null, fatG: null },
         healthScore: m.healthScore,
         items: (m.items as MealDetail['items']) ?? null,
+        components,
         barcode: m.barcode,
       };
     },

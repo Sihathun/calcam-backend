@@ -100,12 +100,26 @@ enum DevicePlatform {
   android
 }
 
+enum DishKind {
+  catalog
+  learned
+}
+
+enum ComponentValueSource {
+  catalog
+  learned
+  personal
+}
+
 model User {
   id                   String    @id @default(uuid()) @db.Uuid
   email                String?   @unique
   passwordHash         String?
   appleSub             String?   @unique
   googleSub            String?   @unique
+  // Copied from the Google profile on every Google sign-in.
+  displayName          String?
+  avatarUrl            String?
   locale               String    @default("en")
   timezone             String    @default("UTC")
   notificationsEnabled Boolean   @default(true)
@@ -120,6 +134,7 @@ model User {
   deviceTokens        DeviceToken[]
   refreshTokens       RefreshToken[]
   passwordResetTokens PasswordResetToken[]
+  dishOverrides       UserDishOverride[]
 }
 
 model Profile {
@@ -182,22 +197,29 @@ model WeightLog {
 }
 
 model Meal {
-  id               String     @id @default(uuid()) @db.Uuid
-  userId           String     @db.Uuid
-  name             String?
-  source           MealSource
-  captureMethod    String? // camera | gallery, for photo meals
-  status           MealStatus
-  progress         Int        @default(0)
-  errorCode        String?
-  imageKey         String?
-  thumbKey         String?
-  externalImageUrl String?
-  hint             String?
-  description      String?
-  barcode          String?
-  idempotencyKey   String?
-  quantity         Float      @default(1)
+  id                String     @id @default(uuid()) @db.Uuid
+  userId            String     @db.Uuid
+  name              String?
+  source            MealSource
+  captureMethod     String? // camera | gallery, for photo meals
+  status            MealStatus
+  progress          Int        @default(0)
+  errorCode         String?
+  imageKey          String?
+  thumbKey          String?
+  externalImageUrl  String?
+  hint              String?
+  description       String?
+  barcode           String?
+  idempotencyKey    String?
+  quantity          Float      @default(1)
+  nameKm            String?
+  // SHA-256 of the uploaded file. The same photo uploaded again reuses the dishes and portions found before.
+  imageSha256       String?
+  // Set when the user edits the nutrition values (a correction, the strongest training label).
+  userEditedAt      DateTime?
+  // The values before the first edit: {calories, proteinG, carbsG, fatG}.
+  originalNutrition Json?
 
   // Per-serving values. Null until the first analysis completes.
   calories    Int?
@@ -218,9 +240,83 @@ model Meal {
 
   user        User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   corrections MealCorrection[]
+  components  MealComponent[]
 
   @@unique([userId, idempotencyKey])
   @@index([userId, loggedAt(sort: Desc)])
+  @@index([userId, imageSha256])
+}
+
+// A dish the analysis can recognise. `catalog` rows come from prisma/data/khmer-dishes.json (reviewed, with
+// sources); `learned` rows are created the first time the model names a dish that is not listed, so the
+// next scan of it gets the same reference values. Values are for ONE standard serving.
+model FoodDish {
+  id                 String   @id @default(uuid()) @db.Uuid
+  slug               String   @unique
+  kind               DishKind
+  nameEn             String
+  nameKm             String?
+  normalizedName     String   @unique
+  aliases            String[] @default([])
+  category           String?
+  servingDescription String
+  servingGrams       Float?
+  calories           Int
+  proteinG           Float
+  carbsG             Float
+  fatG               Float
+  healthScore        Int
+  confidence         String?
+  sources            Json?
+  // Learned dishes only. No foreign key: the meal may be deleted later.
+  createdFromMealId  String?  @db.Uuid
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  components MealComponent[]
+  overrides  UserDishOverride[]
+
+  @@index([kind])
+}
+
+// What a meal was made of: one row per recognised dish, with the nutrition it adds per serving of the meal.
+// Shared, labelled data: the training record of what the model saw and how the numbers were made.
+model MealComponent {
+  id          String               @id @default(uuid()) @db.Uuid
+  mealId      String               @db.Uuid
+  dishId      String               @db.Uuid
+  position    Int
+  portion     Float
+  calories    Int
+  proteinG    Float
+  carbsG      Float
+  fatG        Float
+  healthScore Int
+  valueSource ComponentValueSource
+  createdAt   DateTime             @default(now())
+
+  meal Meal     @relation(fields: [mealId], references: [id], onDelete: Cascade)
+  dish FoodDish @relation(fields: [dishId], references: [id], onDelete: Restrict)
+
+  @@index([mealId])
+  @@index([dishId])
+}
+
+// A user's own values for a dish (per standard serving), learned from their corrections. Used for that user only.
+model UserDishOverride {
+  userId       String   @db.Uuid
+  dishId       String   @db.Uuid
+  calories     Int
+  proteinG     Float
+  carbsG       Float
+  fatG         Float
+  sourceMealId String?  @db.Uuid
+  updatedAt    DateTime @updatedAt
+
+  user User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  dish FoodDish @relation(fields: [dishId], references: [id], onDelete: Cascade)
+
+  @@id([userId, dishId])
 }
 
 model MealCorrection {

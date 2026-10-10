@@ -18,16 +18,28 @@ import { MemoryStorage } from '../src/lib/storage/memory';
 import { buildProcessors } from '../src/modules';
 import { unauthorized } from '../src/lib/errors';
 
-/** "fake:<provider>:<sub>:<email>:<verified>" tokens, so tests can sign in as anyone. */
+/** "fake:<provider>:<sub>:<email>:<verified>[:<name>:<picture>]" tokens (name and picture URI-encoded), so tests can sign in as anyone. */
 export class FakeOAuth implements OAuthVerifier {
   async verify(provider: OAuthProvider, idToken: string): Promise<OAuthIdentity> {
-    const [prefix, p, sub, email, verified] = idToken.split(':');
+    const [prefix, p, sub, email, verified, name, picture] = idToken.split(':');
     if (prefix !== 'fake' || p !== provider || !sub) throw unauthorized('INVALID_ID_TOKEN', 'bad token');
-    return { sub, email: email || undefined, emailVerified: verified === 'true' };
+    return {
+      sub,
+      email: email || undefined,
+      emailVerified: verified === 'true',
+      name: name ? decodeURIComponent(name) : undefined,
+      pictureUrl: picture ? decodeURIComponent(picture) : undefined,
+    };
   }
 }
-export const oauthToken = (provider: OAuthProvider, sub: string, email = '', verified = true) =>
-  `fake:${provider}:${sub}:${email}:${verified}`;
+export const oauthToken = (
+  provider: OAuthProvider,
+  sub: string,
+  email = '',
+  verified = true,
+  profile: { name?: string; picture?: string } = {},
+) =>
+  `fake:${provider}:${sub}:${email}:${verified}:${encodeURIComponent(profile.name ?? '')}:${encodeURIComponent(profile.picture ?? '')}`;
 
 export class FakeProductLookup implements ProductLookup {
   lookups = 0;

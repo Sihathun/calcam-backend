@@ -41,6 +41,13 @@ export default async function setup() {
     shell: process.platform === 'win32',
   });
 
+  // Analysis matches scans against the food catalog, so every test database starts with it.
+  execFileSync('npx', ['tsx', 'src/seed-catalog.ts'], {
+    env: { ...process.env, DATABASE_URL: url },
+    stdio: 'pipe',
+    shell: process.platform === 'win32',
+  });
+
   // Worker processes started after this point inherit the variable.
   process.env['TEST_DB_URL'] = url;
 

@@ -94,17 +94,27 @@ export function createAuthService(deps: AppDeps, onboarding: OnboardingService) 
       const subField = provider === 'apple' ? 'appleSub' : 'googleSub';
 
       let user = await prisma.user.findFirst({ where: { [subField]: identity.sub, deletedAt: null } });
+      const googleProfile =
+        provider === 'google' ? { displayName: identity.name ?? null, avatarUrl: identity.pictureUrl ?? null } : {};
 
       // Link to an existing account only when the provider vouches for the email address.
       if (!user && identity.email && identity.emailVerified) {
         const byEmail = await prisma.user.findFirst({ where: { email: identity.email, deletedAt: null } });
         if (byEmail) user = await prisma.user.update({ where: { id: byEmail.id }, data: { [subField]: identity.sub } });
       }
+      // Keep the name and photo in step with the Google account. A token without them leaves what we have.
+      if (user && provider === 'google') {
+        const changes = {
+          ...(identity.name && identity.name !== user.displayName ? { displayName: identity.name } : {}),
+          ...(identity.pictureUrl && identity.pictureUrl !== user.avatarUrl ? { avatarUrl: identity.pictureUrl } : {}),
+        };
+        if (Object.keys(changes).length) user = await prisma.user.update({ where: { id: user.id }, data: changes });
+      }
 
       const prep = input.onboarding ? onboarding.prepare(input.onboarding) : undefined;
       if (!user) {
         user = await createUserWithOnboarding(
-          { [subField]: identity.sub, email: identity.emailVerified ? (identity.email ?? null) : null },
+          { [subField]: identity.sub, email: identity.emailVerified ? (identity.email ?? null) : null, ...googleProfile },
           prep,
         );
       } else if (prep && !(await prisma.profile.findUnique({ where: { userId: user.id } }))) {

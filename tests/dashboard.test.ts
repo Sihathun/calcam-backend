@@ -36,7 +36,7 @@ describe('GET /dashboard/daily: the Home screen', () => {
     });
     expect(res.body.meals).toHaveLength(1);
     expect(res.body.meals[0]).toMatchObject({
-      name: 'Turkey Sandwich With Potato Chips',
+      name: 'Turkey Sandwich, Potato Chips',
       status: 'completed',
       progress: 100,
       calories: 460,
@@ -258,6 +258,38 @@ describe('analytics', () => {
       expect(res.body.days).toHaveLength(n);
     }
     expect((await ctx.http.get(`${api}/analytics/summary`).set(u.auth).query({ range: '1y' })).status).toBe(400);
+  });
+
+  it('accepts an explicit from/to window that overrides range', async () => {
+    const ctx = createTestContext({ now: new Date('2026-10-07T05:00:00Z') });
+    const u = await registerUser(ctx);
+    await manual(ctx, u, { calories: 400, loggedAt: '2026-10-02T03:00:00Z' });
+    await manual(ctx, u, { calories: 500, loggedAt: '2026-10-03T03:00:00Z' });
+    await manual(ctx, u, { calories: 600, loggedAt: '2026-10-06T03:00:00Z' });
+
+    const res = await ctx.http.get(`${api}/analytics/summary`).set(u.auth).query({ range: '90d', from: '2026-10-01', to: '2026-10-03' });
+    expect(res.status).toBe(200);
+    expect(res.body).toMatchObject({ range: 'custom', from: '2026-10-01', to: '2026-10-03' });
+    expect(res.body.days.map((d: any) => [d.date, d.calories])).toEqual([
+      ['2026-10-01', 0],
+      ['2026-10-02', 400],
+      ['2026-10-03', 500],
+    ]);
+    // The streak counts back from the window's last day.
+    expect(res.body.streak).toEqual({ current: 2, longest: 2 });
+
+    const year = await ctx.http.get(`${api}/analytics/summary`).set(u.auth).query({ from: '2025-10-07', to: '2026-10-07' });
+    expect(year.body.days).toHaveLength(366);
+  });
+
+  it('rejects an invalid from/to window', async () => {
+    const ctx = createTestContext();
+    const u = await registerUser(ctx);
+    const get = (query: Record<string, string>) => ctx.http.get(`${api}/analytics/summary`).set(u.auth).query(query);
+    expect((await get({ from: '2026-10-01' })).status).toBe(400);
+    expect((await get({ from: '2026-10-05', to: '2026-10-01' })).status).toBe(400);
+    expect((await get({ from: '2025-10-01', to: '2026-10-07' })).status).toBe(400);
+    expect((await get({ from: '2026-02-30', to: '2026-03-01' })).status).toBe(400);
   });
 
   it('is empty-safe for a new user', async () => {

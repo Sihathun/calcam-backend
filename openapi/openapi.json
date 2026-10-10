@@ -176,6 +176,18 @@
                             "null"
                           ]
                         },
+                        "displayName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "avatarUrl": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
                         "locale": {
                           "type": "string"
                         },
@@ -447,6 +459,8 @@
                       "required": [
                         "id",
                         "email",
+                        "displayName",
+                        "avatarUrl",
                         "locale",
                         "timezone",
                         "notificationsEnabled",
@@ -775,409 +789,13 @@
                             "null"
                           ]
                         },
-                        "locale": {
-                          "type": "string"
-                        },
-                        "timezone": {
-                          "type": "string"
-                        },
-                        "notificationsEnabled": {
-                          "type": "boolean"
-                        },
-                        "createdAt": {
-                          "type": "string",
-                          "format": "date-time",
-                          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
-                        },
-                        "onboardingCompleted": {
-                          "type": "boolean"
-                        },
-                        "profile": {
-                          "anyOf": [
-                            {
-                              "type": "object",
-                              "properties": {
-                                "sex": {
-                                  "type": "string",
-                                  "enum": [
-                                    "male",
-                                    "female",
-                                    "other"
-                                  ]
-                                },
-                                "birthDate": {
-                                  "type": "string",
-                                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-                                },
-                                "heightCm": {
-                                  "type": "number"
-                                },
-                                "heightUnitPref": {
-                                  "type": "string",
-                                  "enum": [
-                                    "ft_in",
-                                    "cm"
-                                  ]
-                                },
-                                "weightUnitPref": {
-                                  "type": "string",
-                                  "enum": [
-                                    "kg",
-                                    "lbs"
-                                  ]
-                                },
-                                "workoutsPerWeek": {
-                                  "type": "string",
-                                  "enum": [
-                                    "0-2",
-                                    "3-5",
-                                    "6+"
-                                  ]
-                                },
-                                "activityLevel": {
-                                  "type": "string",
-                                  "enum": [
-                                    "light",
-                                    "moderate",
-                                    "active"
-                                  ]
-                                },
-                                "goal": {
-                                  "type": "string",
-                                  "enum": [
-                                    "lose",
-                                    "maintain",
-                                    "gain"
-                                  ]
-                                },
-                                "targetWeightKg": {
-                                  "type": [
-                                    "number",
-                                    "null"
-                                  ]
-                                },
-                                "weightKg": {
-                                  "type": [
-                                    "number",
-                                    "null"
-                                  ]
-                                },
-                                "diet": {
-                                  "type": "string",
-                                  "enum": [
-                                    "balanced",
-                                    "whole_food",
-                                    "mediterranean",
-                                    "flexitarian",
-                                    "pescatarian",
-                                    "vegetarian",
-                                    "vegan",
-                                    "low_carb",
-                                    "keto",
-                                    "paleo"
-                                  ]
-                                },
-                                "accomplishment": {
-                                  "anyOf": [
-                                    {
-                                      "type": "string",
-                                      "enum": [
-                                        "eat_healthier",
-                                        "boost_energy_mood",
-                                        "stay_motivated",
-                                        "feel_better_body"
-                                      ]
-                                    },
-                                    {
-                                      "type": "null"
-                                    }
-                                  ]
-                                },
-                                "referralSource": {
-                                  "anyOf": [
-                                    {
-                                      "type": "string",
-                                      "enum": [
-                                        "instagram",
-                                        "facebook",
-                                        "tiktok",
-                                        "youtube",
-                                        "google",
-                                        "x",
-                                        "friend_or_family",
-                                        "play_store"
-                                      ]
-                                    },
-                                    {
-                                      "type": "null"
-                                    }
-                                  ]
-                                },
-                                "triedOtherApps": {
-                                  "type": [
-                                    "boolean",
-                                    "null"
-                                  ]
-                                },
-                                "worksWithProfessional": {
-                                  "type": [
-                                    "boolean",
-                                    "null"
-                                  ]
-                                },
-                                "commitmentAt": {
-                                  "anyOf": [
-                                    {
-                                      "type": "string",
-                                      "format": "date-time",
-                                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
-                                    },
-                                    {
-                                      "type": "null"
-                                    }
-                                  ]
-                                },
-                                "onboardingCompletedAt": {
-                                  "type": "string",
-                                  "format": "date-time",
-                                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
-                                }
-                              },
-                              "required": [
-                                "sex",
-                                "birthDate",
-                                "heightCm",
-                                "heightUnitPref",
-                                "weightUnitPref",
-                                "workoutsPerWeek",
-                                "activityLevel",
-                                "goal",
-                                "targetWeightKg",
-                                "weightKg",
-                                "diet",
-                                "accomplishment",
-                                "referralSource",
-                                "triedOtherApps",
-                                "worksWithProfessional",
-                                "commitmentAt",
-                                "onboardingCompletedAt"
-                              ],
-                              "additionalProperties": false
-                            },
-                            {
-                              "type": "null"
-                            }
+                        "displayName": {
+                          "type": [
+                            "string",
+                            "null"
                           ]
                         },
-                        "goal": {
-                          "anyOf": [
-                            {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "string",
-                                  "format": "uuid",
-                                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-                                },
-                                "calories": {
-                                  "type": "integer",
-                                  "minimum": -9007199254740991,
-                                  "maximum": 9007199254740991
-                                },
-                                "proteinG": {
-                                  "type": "integer",
-                                  "minimum": -9007199254740991,
-                                  "maximum": 9007199254740991
-                                },
-                                "carbsG": {
-                                  "type": "integer",
-                                  "minimum": -9007199254740991,
-                                  "maximum": 9007199254740991
-                                },
-                                "fatG": {
-                                  "type": "integer",
-                                  "minimum": -9007199254740991,
-                                  "maximum": 9007199254740991
-                                },
-                                "source": {
-                                  "type": "string",
-                                  "enum": [
-                                    "calculated",
-                                    "user_edited"
-                                  ]
-                                },
-                                "bmr": {
-                                  "type": [
-                                    "number",
-                                    "null"
-                                  ]
-                                },
-                                "tdee": {
-                                  "type": [
-                                    "number",
-                                    "null"
-                                  ]
-                                },
-                                "effectiveFrom": {
-                                  "type": "string",
-                                  "format": "date-time",
-                                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
-                                }
-                              },
-                              "required": [
-                                "id",
-                                "calories",
-                                "proteinG",
-                                "carbsG",
-                                "fatG",
-                                "source",
-                                "bmr",
-                                "tdee",
-                                "effectiveFrom"
-                              ],
-                              "additionalProperties": false
-                            },
-                            {
-                              "type": "null"
-                            }
-                          ]
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "email",
-                        "locale",
-                        "timezone",
-                        "notificationsEnabled",
-                        "createdAt",
-                        "onboardingCompleted",
-                        "profile",
-                        "goal"
-                      ],
-                      "additionalProperties": false
-                    },
-                    "tokens": {
-                      "type": "object",
-                      "properties": {
-                        "accessToken": {
-                          "type": "string"
-                        },
-                        "refreshToken": {
-                          "type": "string"
-                        },
-                        "tokenType": {
-                          "type": "string",
-                          "const": "Bearer"
-                        },
-                        "expiresIn": {
-                          "type": "integer",
-                          "minimum": -9007199254740991,
-                          "maximum": 9007199254740991
-                        }
-                      },
-                      "required": [
-                        "accessToken",
-                        "refreshToken",
-                        "tokenType",
-                        "expiresIn"
-                      ],
-                      "additionalProperties": false
-                    }
-                  },
-                  "required": [
-                    "user",
-                    "tokens"
-                  ],
-                  "additionalProperties": false
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "INVALID_CREDENTIALS",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Rate limit exceeded",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        },
-        "security": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "email": {
-                    "type": "string",
-                    "maxLength": 254,
-                    "format": "email",
-                    "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
-                  },
-                  "password": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 128
-                  }
-                },
-                "required": [
-                  "email",
-                  "password"
-                ]
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/auth/oauth/apple": {
-      "post": {
-        "summary": "Sign in with Apple",
-        "tags": [
-          "Auth"
-        ],
-        "operationId": "post_auth_oauth_apple",
-        "responses": {
-          "200": {
-            "description": "Signed in",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "user": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string",
-                          "format": "uuid",
-                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-                        },
-                        "email": {
+                        "avatarUrl": {
                           "type": [
                             "string",
                             "null"
@@ -1454,6 +1072,430 @@
                       "required": [
                         "id",
                         "email",
+                        "displayName",
+                        "avatarUrl",
+                        "locale",
+                        "timezone",
+                        "notificationsEnabled",
+                        "createdAt",
+                        "onboardingCompleted",
+                        "profile",
+                        "goal"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "tokens": {
+                      "type": "object",
+                      "properties": {
+                        "accessToken": {
+                          "type": "string"
+                        },
+                        "refreshToken": {
+                          "type": "string"
+                        },
+                        "tokenType": {
+                          "type": "string",
+                          "const": "Bearer"
+                        },
+                        "expiresIn": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        }
+                      },
+                      "required": [
+                        "accessToken",
+                        "refreshToken",
+                        "tokenType",
+                        "expiresIn"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "user",
+                    "tokens"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "INVALID_CREDENTIALS",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "maxLength": 254,
+                    "format": "email",
+                    "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128
+                  }
+                },
+                "required": [
+                  "email",
+                  "password"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/oauth/apple": {
+      "post": {
+        "summary": "Sign in with Apple",
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "post_auth_oauth_apple",
+        "responses": {
+          "200": {
+            "description": "Signed in",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                        },
+                        "email": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "displayName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "avatarUrl": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "locale": {
+                          "type": "string"
+                        },
+                        "timezone": {
+                          "type": "string"
+                        },
+                        "notificationsEnabled": {
+                          "type": "boolean"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+                        },
+                        "onboardingCompleted": {
+                          "type": "boolean"
+                        },
+                        "profile": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "sex": {
+                                  "type": "string",
+                                  "enum": [
+                                    "male",
+                                    "female",
+                                    "other"
+                                  ]
+                                },
+                                "birthDate": {
+                                  "type": "string",
+                                  "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                                },
+                                "heightCm": {
+                                  "type": "number"
+                                },
+                                "heightUnitPref": {
+                                  "type": "string",
+                                  "enum": [
+                                    "ft_in",
+                                    "cm"
+                                  ]
+                                },
+                                "weightUnitPref": {
+                                  "type": "string",
+                                  "enum": [
+                                    "kg",
+                                    "lbs"
+                                  ]
+                                },
+                                "workoutsPerWeek": {
+                                  "type": "string",
+                                  "enum": [
+                                    "0-2",
+                                    "3-5",
+                                    "6+"
+                                  ]
+                                },
+                                "activityLevel": {
+                                  "type": "string",
+                                  "enum": [
+                                    "light",
+                                    "moderate",
+                                    "active"
+                                  ]
+                                },
+                                "goal": {
+                                  "type": "string",
+                                  "enum": [
+                                    "lose",
+                                    "maintain",
+                                    "gain"
+                                  ]
+                                },
+                                "targetWeightKg": {
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
+                                },
+                                "weightKg": {
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
+                                },
+                                "diet": {
+                                  "type": "string",
+                                  "enum": [
+                                    "balanced",
+                                    "whole_food",
+                                    "mediterranean",
+                                    "flexitarian",
+                                    "pescatarian",
+                                    "vegetarian",
+                                    "vegan",
+                                    "low_carb",
+                                    "keto",
+                                    "paleo"
+                                  ]
+                                },
+                                "accomplishment": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "eat_healthier",
+                                        "boost_energy_mood",
+                                        "stay_motivated",
+                                        "feel_better_body"
+                                      ]
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
+                                },
+                                "referralSource": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string",
+                                      "enum": [
+                                        "instagram",
+                                        "facebook",
+                                        "tiktok",
+                                        "youtube",
+                                        "google",
+                                        "x",
+                                        "friend_or_family",
+                                        "play_store"
+                                      ]
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
+                                },
+                                "triedOtherApps": {
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                },
+                                "worksWithProfessional": {
+                                  "type": [
+                                    "boolean",
+                                    "null"
+                                  ]
+                                },
+                                "commitmentAt": {
+                                  "anyOf": [
+                                    {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+                                    },
+                                    {
+                                      "type": "null"
+                                    }
+                                  ]
+                                },
+                                "onboardingCompletedAt": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+                                }
+                              },
+                              "required": [
+                                "sex",
+                                "birthDate",
+                                "heightCm",
+                                "heightUnitPref",
+                                "weightUnitPref",
+                                "workoutsPerWeek",
+                                "activityLevel",
+                                "goal",
+                                "targetWeightKg",
+                                "weightKg",
+                                "diet",
+                                "accomplishment",
+                                "referralSource",
+                                "triedOtherApps",
+                                "worksWithProfessional",
+                                "commitmentAt",
+                                "onboardingCompletedAt"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "goal": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "format": "uuid",
+                                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                },
+                                "calories": {
+                                  "type": "integer",
+                                  "minimum": -9007199254740991,
+                                  "maximum": 9007199254740991
+                                },
+                                "proteinG": {
+                                  "type": "integer",
+                                  "minimum": -9007199254740991,
+                                  "maximum": 9007199254740991
+                                },
+                                "carbsG": {
+                                  "type": "integer",
+                                  "minimum": -9007199254740991,
+                                  "maximum": 9007199254740991
+                                },
+                                "fatG": {
+                                  "type": "integer",
+                                  "minimum": -9007199254740991,
+                                  "maximum": 9007199254740991
+                                },
+                                "source": {
+                                  "type": "string",
+                                  "enum": [
+                                    "calculated",
+                                    "user_edited"
+                                  ]
+                                },
+                                "bmr": {
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
+                                },
+                                "tdee": {
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
+                                },
+                                "effectiveFrom": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "calories",
+                                "proteinG",
+                                "carbsG",
+                                "fatG",
+                                "source",
+                                "bmr",
+                                "tdee",
+                                "effectiveFrom"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "email",
+                        "displayName",
+                        "avatarUrl",
                         "locale",
                         "timezone",
                         "notificationsEnabled",
@@ -1778,6 +1820,18 @@
                             "null"
                           ]
                         },
+                        "displayName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "avatarUrl": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
                         "locale": {
                           "type": "string"
                         },
@@ -2049,6 +2103,8 @@
                       "required": [
                         "id",
                         "email",
+                        "displayName",
+                        "avatarUrl",
                         "locale",
                         "timezone",
                         "notificationsEnabled",
@@ -2373,6 +2429,18 @@
                             "null"
                           ]
                         },
+                        "displayName": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "avatarUrl": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
                         "locale": {
                           "type": "string"
                         },
@@ -2644,6 +2712,8 @@
                       "required": [
                         "id",
                         "email",
+                        "displayName",
+                        "avatarUrl",
                         "locale",
                         "timezone",
                         "notificationsEnabled",
@@ -3586,547 +3656,13 @@
                         "null"
                       ]
                     },
-                    "locale": {
-                      "type": "string"
-                    },
-                    "timezone": {
-                      "type": "string"
-                    },
-                    "notificationsEnabled": {
-                      "type": "boolean"
-                    },
-                    "createdAt": {
-                      "type": "string",
-                      "format": "date-time",
-                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
-                    },
-                    "onboardingCompleted": {
-                      "type": "boolean"
-                    },
-                    "profile": {
-                      "anyOf": [
-                        {
-                          "type": "object",
-                          "properties": {
-                            "sex": {
-                              "type": "string",
-                              "enum": [
-                                "male",
-                                "female",
-                                "other"
-                              ]
-                            },
-                            "birthDate": {
-                              "type": "string",
-                              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-                            },
-                            "heightCm": {
-                              "type": "number"
-                            },
-                            "heightUnitPref": {
-                              "type": "string",
-                              "enum": [
-                                "ft_in",
-                                "cm"
-                              ]
-                            },
-                            "weightUnitPref": {
-                              "type": "string",
-                              "enum": [
-                                "kg",
-                                "lbs"
-                              ]
-                            },
-                            "workoutsPerWeek": {
-                              "type": "string",
-                              "enum": [
-                                "0-2",
-                                "3-5",
-                                "6+"
-                              ]
-                            },
-                            "activityLevel": {
-                              "type": "string",
-                              "enum": [
-                                "light",
-                                "moderate",
-                                "active"
-                              ]
-                            },
-                            "goal": {
-                              "type": "string",
-                              "enum": [
-                                "lose",
-                                "maintain",
-                                "gain"
-                              ]
-                            },
-                            "targetWeightKg": {
-                              "type": [
-                                "number",
-                                "null"
-                              ]
-                            },
-                            "weightKg": {
-                              "type": [
-                                "number",
-                                "null"
-                              ]
-                            },
-                            "diet": {
-                              "type": "string",
-                              "enum": [
-                                "balanced",
-                                "whole_food",
-                                "mediterranean",
-                                "flexitarian",
-                                "pescatarian",
-                                "vegetarian",
-                                "vegan",
-                                "low_carb",
-                                "keto",
-                                "paleo"
-                              ]
-                            },
-                            "accomplishment": {
-                              "anyOf": [
-                                {
-                                  "type": "string",
-                                  "enum": [
-                                    "eat_healthier",
-                                    "boost_energy_mood",
-                                    "stay_motivated",
-                                    "feel_better_body"
-                                  ]
-                                },
-                                {
-                                  "type": "null"
-                                }
-                              ]
-                            },
-                            "referralSource": {
-                              "anyOf": [
-                                {
-                                  "type": "string",
-                                  "enum": [
-                                    "instagram",
-                                    "facebook",
-                                    "tiktok",
-                                    "youtube",
-                                    "google",
-                                    "x",
-                                    "friend_or_family",
-                                    "play_store"
-                                  ]
-                                },
-                                {
-                                  "type": "null"
-                                }
-                              ]
-                            },
-                            "triedOtherApps": {
-                              "type": [
-                                "boolean",
-                                "null"
-                              ]
-                            },
-                            "worksWithProfessional": {
-                              "type": [
-                                "boolean",
-                                "null"
-                              ]
-                            },
-                            "commitmentAt": {
-                              "anyOf": [
-                                {
-                                  "type": "string",
-                                  "format": "date-time",
-                                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
-                                },
-                                {
-                                  "type": "null"
-                                }
-                              ]
-                            },
-                            "onboardingCompletedAt": {
-                              "type": "string",
-                              "format": "date-time",
-                              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
-                            }
-                          },
-                          "required": [
-                            "sex",
-                            "birthDate",
-                            "heightCm",
-                            "heightUnitPref",
-                            "weightUnitPref",
-                            "workoutsPerWeek",
-                            "activityLevel",
-                            "goal",
-                            "targetWeightKg",
-                            "weightKg",
-                            "diet",
-                            "accomplishment",
-                            "referralSource",
-                            "triedOtherApps",
-                            "worksWithProfessional",
-                            "commitmentAt",
-                            "onboardingCompletedAt"
-                          ],
-                          "additionalProperties": false
-                        },
-                        {
-                          "type": "null"
-                        }
+                    "displayName": {
+                      "type": [
+                        "string",
+                        "null"
                       ]
                     },
-                    "goal": {
-                      "anyOf": [
-                        {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "format": "uuid",
-                              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-                            },
-                            "calories": {
-                              "type": "integer",
-                              "minimum": -9007199254740991,
-                              "maximum": 9007199254740991
-                            },
-                            "proteinG": {
-                              "type": "integer",
-                              "minimum": -9007199254740991,
-                              "maximum": 9007199254740991
-                            },
-                            "carbsG": {
-                              "type": "integer",
-                              "minimum": -9007199254740991,
-                              "maximum": 9007199254740991
-                            },
-                            "fatG": {
-                              "type": "integer",
-                              "minimum": -9007199254740991,
-                              "maximum": 9007199254740991
-                            },
-                            "source": {
-                              "type": "string",
-                              "enum": [
-                                "calculated",
-                                "user_edited"
-                              ]
-                            },
-                            "bmr": {
-                              "type": [
-                                "number",
-                                "null"
-                              ]
-                            },
-                            "tdee": {
-                              "type": [
-                                "number",
-                                "null"
-                              ]
-                            },
-                            "effectiveFrom": {
-                              "type": "string",
-                              "format": "date-time",
-                              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "calories",
-                            "proteinG",
-                            "carbsG",
-                            "fatG",
-                            "source",
-                            "bmr",
-                            "tdee",
-                            "effectiveFrom"
-                          ],
-                          "additionalProperties": false
-                        },
-                        {
-                          "type": "null"
-                        }
-                      ]
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "email",
-                    "locale",
-                    "timezone",
-                    "notificationsEnabled",
-                    "createdAt",
-                    "onboardingCompleted",
-                    "profile",
-                    "goal"
-                  ],
-                  "additionalProperties": false
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Validation error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Missing, invalid or expired access token",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "GOAL_NOT_SUPPORTED, UNDER_MINIMUM_AGE, INVALID_TARGET_WEIGHT or INVALID_BIRTH_DATE",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Rate limit exceeded",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        },
-        "description": "Same effect as the onboarding payload inside /auth/register, for users who signed up first. Idempotent: if the profile already exists, the stored state is returned unchanged.",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "sex": {
-                    "type": "string",
-                    "enum": [
-                      "male",
-                      "female",
-                      "other"
-                    ]
-                  },
-                  "birthDate": {
-                    "type": "string",
-                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-                  },
-                  "heightCm": {
-                    "type": "number",
-                    "minimum": 50,
-                    "maximum": 272
-                  },
-                  "weightKg": {
-                    "type": "number",
-                    "minimum": 20,
-                    "maximum": 500
-                  },
-                  "workoutsPerWeek": {
-                    "type": "string",
-                    "enum": [
-                      "0-2",
-                      "3-5",
-                      "6+"
-                    ]
-                  },
-                  "goal": {
-                    "type": "string",
-                    "enum": [
-                      "lose",
-                      "maintain",
-                      "gain"
-                    ]
-                  },
-                  "diet": {
-                    "type": "string",
-                    "enum": [
-                      "balanced",
-                      "whole_food",
-                      "mediterranean",
-                      "flexitarian",
-                      "pescatarian",
-                      "vegetarian",
-                      "vegan",
-                      "low_carb",
-                      "keto",
-                      "paleo"
-                    ]
-                  },
-                  "targetWeightKg": {
-                    "anyOf": [
-                      {
-                        "type": "number",
-                        "minimum": 20,
-                        "maximum": 500
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "referralSource": {
-                    "anyOf": [
-                      {
-                        "type": "string",
-                        "enum": [
-                          "instagram",
-                          "facebook",
-                          "tiktok",
-                          "youtube",
-                          "google",
-                          "x",
-                          "friend_or_family",
-                          "play_store"
-                        ]
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "triedOtherApps": {
-                    "type": [
-                      "boolean",
-                      "null"
-                    ]
-                  },
-                  "worksWithProfessional": {
-                    "type": [
-                      "boolean",
-                      "null"
-                    ]
-                  },
-                  "accomplishment": {
-                    "anyOf": [
-                      {
-                        "type": "string",
-                        "enum": [
-                          "eat_healthier",
-                          "boost_energy_mood",
-                          "stay_motivated",
-                          "feel_better_body"
-                        ]
-                      },
-                      {
-                        "type": "null"
-                      }
-                    ]
-                  },
-                  "heightUnitPref": {
-                    "default": "cm",
-                    "type": "string",
-                    "enum": [
-                      "ft_in",
-                      "cm"
-                    ]
-                  },
-                  "weightUnitPref": {
-                    "default": "kg",
-                    "type": "string",
-                    "enum": [
-                      "kg",
-                      "lbs"
-                    ]
-                  },
-                  "locale": {
-                    "type": "string",
-                    "pattern": "^[a-z]{2,3}(-[A-Za-z]{2,4})?$"
-                  },
-                  "timezone": {
-                    "type": "string"
-                  },
-                  "commitment": {
-                    "type": "object",
-                    "properties": {
-                      "committedAt": {
-                        "type": "string",
-                        "format": "date-time",
-                        "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
-                      }
-                    },
-                    "required": [
-                      "committedAt"
-                    ]
-                  },
-                  "acceptedGoal": {
-                    "type": "object",
-                    "properties": {
-                      "calories": {
-                        "type": "number"
-                      },
-                      "proteinG": {
-                        "type": "number"
-                      },
-                      "carbsG": {
-                        "type": "number"
-                      },
-                      "fatG": {
-                        "type": "number"
-                      }
-                    }
-                  }
-                },
-                "required": [
-                  "sex",
-                  "birthDate",
-                  "heightCm",
-                  "weightKg",
-                  "workoutsPerWeek",
-                  "goal",
-                  "diet"
-                ]
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/me": {
-      "get": {
-        "summary": "The signed-in user with profile and active goal",
-        "tags": [
-          "Profile"
-        ],
-        "operationId": "get_me",
-        "responses": {
-          "200": {
-            "description": "Current user",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "format": "uuid",
-                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
-                    },
-                    "email": {
+                    "avatarUrl": {
                       "type": [
                         "string",
                         "null"
@@ -4403,6 +3939,568 @@
                   "required": [
                     "id",
                     "email",
+                    "displayName",
+                    "avatarUrl",
+                    "locale",
+                    "timezone",
+                    "notificationsEnabled",
+                    "createdAt",
+                    "onboardingCompleted",
+                    "profile",
+                    "goal"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, invalid or expired access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "GOAL_NOT_SUPPORTED, UNDER_MINIMUM_AGE, INVALID_TARGET_WEIGHT or INVALID_BIRTH_DATE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Same effect as the onboarding payload inside /auth/register, for users who signed up first. Idempotent: if the profile already exists, the stored state is returned unchanged.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sex": {
+                    "type": "string",
+                    "enum": [
+                      "male",
+                      "female",
+                      "other"
+                    ]
+                  },
+                  "birthDate": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "heightCm": {
+                    "type": "number",
+                    "minimum": 50,
+                    "maximum": 272
+                  },
+                  "weightKg": {
+                    "type": "number",
+                    "minimum": 20,
+                    "maximum": 500
+                  },
+                  "workoutsPerWeek": {
+                    "type": "string",
+                    "enum": [
+                      "0-2",
+                      "3-5",
+                      "6+"
+                    ]
+                  },
+                  "goal": {
+                    "type": "string",
+                    "enum": [
+                      "lose",
+                      "maintain",
+                      "gain"
+                    ]
+                  },
+                  "diet": {
+                    "type": "string",
+                    "enum": [
+                      "balanced",
+                      "whole_food",
+                      "mediterranean",
+                      "flexitarian",
+                      "pescatarian",
+                      "vegetarian",
+                      "vegan",
+                      "low_carb",
+                      "keto",
+                      "paleo"
+                    ]
+                  },
+                  "targetWeightKg": {
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "minimum": 20,
+                        "maximum": 500
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "referralSource": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "instagram",
+                          "facebook",
+                          "tiktok",
+                          "youtube",
+                          "google",
+                          "x",
+                          "friend_or_family",
+                          "play_store"
+                        ]
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "triedOtherApps": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "worksWithProfessional": {
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  },
+                  "accomplishment": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "eat_healthier",
+                          "boost_energy_mood",
+                          "stay_motivated",
+                          "feel_better_body"
+                        ]
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "heightUnitPref": {
+                    "default": "cm",
+                    "type": "string",
+                    "enum": [
+                      "ft_in",
+                      "cm"
+                    ]
+                  },
+                  "weightUnitPref": {
+                    "default": "kg",
+                    "type": "string",
+                    "enum": [
+                      "kg",
+                      "lbs"
+                    ]
+                  },
+                  "locale": {
+                    "type": "string",
+                    "pattern": "^[a-z]{2,3}(-[A-Za-z]{2,4})?$"
+                  },
+                  "timezone": {
+                    "type": "string"
+                  },
+                  "commitment": {
+                    "type": "object",
+                    "properties": {
+                      "committedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                      }
+                    },
+                    "required": [
+                      "committedAt"
+                    ]
+                  },
+                  "acceptedGoal": {
+                    "type": "object",
+                    "properties": {
+                      "calories": {
+                        "type": "number"
+                      },
+                      "proteinG": {
+                        "type": "number"
+                      },
+                      "carbsG": {
+                        "type": "number"
+                      },
+                      "fatG": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "sex",
+                  "birthDate",
+                  "heightCm",
+                  "weightKg",
+                  "workoutsPerWeek",
+                  "goal",
+                  "diet"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/me": {
+      "get": {
+        "summary": "The signed-in user with profile and active goal",
+        "tags": [
+          "Profile"
+        ],
+        "operationId": "get_me",
+        "responses": {
+          "200": {
+            "description": "Current user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "email": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "displayName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "avatarUrl": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "locale": {
+                      "type": "string"
+                    },
+                    "timezone": {
+                      "type": "string"
+                    },
+                    "notificationsEnabled": {
+                      "type": "boolean"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+                    },
+                    "onboardingCompleted": {
+                      "type": "boolean"
+                    },
+                    "profile": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "sex": {
+                              "type": "string",
+                              "enum": [
+                                "male",
+                                "female",
+                                "other"
+                              ]
+                            },
+                            "birthDate": {
+                              "type": "string",
+                              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                            },
+                            "heightCm": {
+                              "type": "number"
+                            },
+                            "heightUnitPref": {
+                              "type": "string",
+                              "enum": [
+                                "ft_in",
+                                "cm"
+                              ]
+                            },
+                            "weightUnitPref": {
+                              "type": "string",
+                              "enum": [
+                                "kg",
+                                "lbs"
+                              ]
+                            },
+                            "workoutsPerWeek": {
+                              "type": "string",
+                              "enum": [
+                                "0-2",
+                                "3-5",
+                                "6+"
+                              ]
+                            },
+                            "activityLevel": {
+                              "type": "string",
+                              "enum": [
+                                "light",
+                                "moderate",
+                                "active"
+                              ]
+                            },
+                            "goal": {
+                              "type": "string",
+                              "enum": [
+                                "lose",
+                                "maintain",
+                                "gain"
+                              ]
+                            },
+                            "targetWeightKg": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            },
+                            "weightKg": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            },
+                            "diet": {
+                              "type": "string",
+                              "enum": [
+                                "balanced",
+                                "whole_food",
+                                "mediterranean",
+                                "flexitarian",
+                                "pescatarian",
+                                "vegetarian",
+                                "vegan",
+                                "low_carb",
+                                "keto",
+                                "paleo"
+                              ]
+                            },
+                            "accomplishment": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "eat_healthier",
+                                    "boost_energy_mood",
+                                    "stay_motivated",
+                                    "feel_better_body"
+                                  ]
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "referralSource": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "instagram",
+                                    "facebook",
+                                    "tiktok",
+                                    "youtube",
+                                    "google",
+                                    "x",
+                                    "friend_or_family",
+                                    "play_store"
+                                  ]
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "triedOtherApps": {
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            },
+                            "worksWithProfessional": {
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            },
+                            "commitmentAt": {
+                              "anyOf": [
+                                {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "onboardingCompletedAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+                            }
+                          },
+                          "required": [
+                            "sex",
+                            "birthDate",
+                            "heightCm",
+                            "heightUnitPref",
+                            "weightUnitPref",
+                            "workoutsPerWeek",
+                            "activityLevel",
+                            "goal",
+                            "targetWeightKg",
+                            "weightKg",
+                            "diet",
+                            "accomplishment",
+                            "referralSource",
+                            "triedOtherApps",
+                            "worksWithProfessional",
+                            "commitmentAt",
+                            "onboardingCompletedAt"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "goal": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid",
+                              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                            },
+                            "calories": {
+                              "type": "integer",
+                              "minimum": -9007199254740991,
+                              "maximum": 9007199254740991
+                            },
+                            "proteinG": {
+                              "type": "integer",
+                              "minimum": -9007199254740991,
+                              "maximum": 9007199254740991
+                            },
+                            "carbsG": {
+                              "type": "integer",
+                              "minimum": -9007199254740991,
+                              "maximum": 9007199254740991
+                            },
+                            "fatG": {
+                              "type": "integer",
+                              "minimum": -9007199254740991,
+                              "maximum": 9007199254740991
+                            },
+                            "source": {
+                              "type": "string",
+                              "enum": [
+                                "calculated",
+                                "user_edited"
+                              ]
+                            },
+                            "bmr": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            },
+                            "tdee": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            },
+                            "effectiveFrom": {
+                              "type": "string",
+                              "format": "date-time",
+                              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "calories",
+                            "proteinG",
+                            "carbsG",
+                            "fatG",
+                            "source",
+                            "bmr",
+                            "tdee",
+                            "effectiveFrom"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "email",
+                    "displayName",
+                    "avatarUrl",
                     "locale",
                     "timezone",
                     "notificationsEnabled",
@@ -5163,6 +5261,18 @@
                         "null"
                       ]
                     },
+                    "displayName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "avatarUrl": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
                     "locale": {
                       "type": "string"
                     },
@@ -5434,6 +5544,8 @@
                   "required": [
                     "id",
                     "email",
+                    "displayName",
+                    "avatarUrl",
                     "locale",
                     "timezone",
                     "notificationsEnabled",
@@ -6680,6 +6792,12 @@
                             "null"
                           ]
                         },
+                        "nameKm": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
                         "source": {
                           "type": "string",
                           "enum": [
@@ -6884,6 +7002,63 @@
                             }
                           ]
                         },
+                        "components": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "dishSlug": {
+                                "type": "string"
+                              },
+                              "nameEn": {
+                                "type": "string"
+                              },
+                              "nameKm": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "portion": {
+                                "type": "number"
+                              },
+                              "calories": {
+                                "type": "integer",
+                                "minimum": -9007199254740991,
+                                "maximum": 9007199254740991
+                              },
+                              "proteinG": {
+                                "type": "number"
+                              },
+                              "carbsG": {
+                                "type": "number"
+                              },
+                              "fatG": {
+                                "type": "number"
+                              },
+                              "valueSource": {
+                                "type": "string",
+                                "enum": [
+                                  "catalog",
+                                  "learned",
+                                  "personal"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "dishSlug",
+                              "nameEn",
+                              "nameKm",
+                              "portion",
+                              "calories",
+                              "proteinG",
+                              "carbsG",
+                              "fatG",
+                              "valueSource"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
                         "barcode": {
                           "type": [
                             "string",
@@ -6894,6 +7069,7 @@
                       "required": [
                         "id",
                         "name",
+                        "nameKm",
                         "source",
                         "status",
                         "progress",
@@ -6908,6 +7084,7 @@
                         "totals",
                         "healthScore",
                         "items",
+                        "components",
                         "barcode"
                       ],
                       "additionalProperties": false
@@ -7065,6 +7242,12 @@
                             "null"
                           ]
                         },
+                        "nameKm": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
                         "source": {
                           "type": "string",
                           "enum": [
@@ -7269,6 +7452,63 @@
                             }
                           ]
                         },
+                        "components": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "dishSlug": {
+                                "type": "string"
+                              },
+                              "nameEn": {
+                                "type": "string"
+                              },
+                              "nameKm": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "portion": {
+                                "type": "number"
+                              },
+                              "calories": {
+                                "type": "integer",
+                                "minimum": -9007199254740991,
+                                "maximum": 9007199254740991
+                              },
+                              "proteinG": {
+                                "type": "number"
+                              },
+                              "carbsG": {
+                                "type": "number"
+                              },
+                              "fatG": {
+                                "type": "number"
+                              },
+                              "valueSource": {
+                                "type": "string",
+                                "enum": [
+                                  "catalog",
+                                  "learned",
+                                  "personal"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "dishSlug",
+                              "nameEn",
+                              "nameKm",
+                              "portion",
+                              "calories",
+                              "proteinG",
+                              "carbsG",
+                              "fatG",
+                              "valueSource"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
                         "barcode": {
                           "type": [
                             "string",
@@ -7279,6 +7519,7 @@
                       "required": [
                         "id",
                         "name",
+                        "nameKm",
                         "source",
                         "status",
                         "progress",
@@ -7293,6 +7534,7 @@
                         "totals",
                         "healthScore",
                         "items",
+                        "components",
                         "barcode"
                       ],
                       "additionalProperties": false
@@ -7423,6 +7665,12 @@
                             "null"
                           ]
                         },
+                        "nameKm": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
                         "source": {
                           "type": "string",
                           "enum": [
@@ -7627,6 +7875,63 @@
                             }
                           ]
                         },
+                        "components": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "dishSlug": {
+                                "type": "string"
+                              },
+                              "nameEn": {
+                                "type": "string"
+                              },
+                              "nameKm": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "portion": {
+                                "type": "number"
+                              },
+                              "calories": {
+                                "type": "integer",
+                                "minimum": -9007199254740991,
+                                "maximum": 9007199254740991
+                              },
+                              "proteinG": {
+                                "type": "number"
+                              },
+                              "carbsG": {
+                                "type": "number"
+                              },
+                              "fatG": {
+                                "type": "number"
+                              },
+                              "valueSource": {
+                                "type": "string",
+                                "enum": [
+                                  "catalog",
+                                  "learned",
+                                  "personal"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "dishSlug",
+                              "nameEn",
+                              "nameKm",
+                              "portion",
+                              "calories",
+                              "proteinG",
+                              "carbsG",
+                              "fatG",
+                              "valueSource"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
                         "barcode": {
                           "type": [
                             "string",
@@ -7637,6 +7942,7 @@
                       "required": [
                         "id",
                         "name",
+                        "nameKm",
                         "source",
                         "status",
                         "progress",
@@ -7651,6 +7957,7 @@
                         "totals",
                         "healthScore",
                         "items",
+                        "components",
                         "barcode"
                       ],
                       "additionalProperties": false
@@ -7685,6 +7992,12 @@
                             "null"
                           ]
                         },
+                        "nameKm": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
                         "source": {
                           "type": "string",
                           "enum": [
@@ -7889,6 +8202,63 @@
                             }
                           ]
                         },
+                        "components": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "dishSlug": {
+                                "type": "string"
+                              },
+                              "nameEn": {
+                                "type": "string"
+                              },
+                              "nameKm": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "portion": {
+                                "type": "number"
+                              },
+                              "calories": {
+                                "type": "integer",
+                                "minimum": -9007199254740991,
+                                "maximum": 9007199254740991
+                              },
+                              "proteinG": {
+                                "type": "number"
+                              },
+                              "carbsG": {
+                                "type": "number"
+                              },
+                              "fatG": {
+                                "type": "number"
+                              },
+                              "valueSource": {
+                                "type": "string",
+                                "enum": [
+                                  "catalog",
+                                  "learned",
+                                  "personal"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "dishSlug",
+                              "nameEn",
+                              "nameKm",
+                              "portion",
+                              "calories",
+                              "proteinG",
+                              "carbsG",
+                              "fatG",
+                              "valueSource"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
                         "barcode": {
                           "type": [
                             "string",
@@ -7899,6 +8269,7 @@
                       "required": [
                         "id",
                         "name",
+                        "nameKm",
                         "source",
                         "status",
                         "progress",
@@ -7913,6 +8284,7 @@
                         "totals",
                         "healthScore",
                         "items",
+                        "components",
                         "barcode"
                       ],
                       "additionalProperties": false
@@ -8089,6 +8461,12 @@
                               "null"
                             ]
                           },
+                          "nameKm": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
                           "source": {
                             "type": "string",
                             "enum": [
@@ -8187,6 +8565,7 @@
                         "required": [
                           "id",
                           "name",
+                          "nameKm",
                           "source",
                           "status",
                           "progress",
@@ -8306,6 +8685,12 @@
                             "null"
                           ]
                         },
+                        "nameKm": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
                         "source": {
                           "type": "string",
                           "enum": [
@@ -8510,6 +8895,63 @@
                             }
                           ]
                         },
+                        "components": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "dishSlug": {
+                                "type": "string"
+                              },
+                              "nameEn": {
+                                "type": "string"
+                              },
+                              "nameKm": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "portion": {
+                                "type": "number"
+                              },
+                              "calories": {
+                                "type": "integer",
+                                "minimum": -9007199254740991,
+                                "maximum": 9007199254740991
+                              },
+                              "proteinG": {
+                                "type": "number"
+                              },
+                              "carbsG": {
+                                "type": "number"
+                              },
+                              "fatG": {
+                                "type": "number"
+                              },
+                              "valueSource": {
+                                "type": "string",
+                                "enum": [
+                                  "catalog",
+                                  "learned",
+                                  "personal"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "dishSlug",
+                              "nameEn",
+                              "nameKm",
+                              "portion",
+                              "calories",
+                              "proteinG",
+                              "carbsG",
+                              "fatG",
+                              "valueSource"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
                         "barcode": {
                           "type": [
                             "string",
@@ -8520,6 +8962,7 @@
                       "required": [
                         "id",
                         "name",
+                        "nameKm",
                         "source",
                         "status",
                         "progress",
@@ -8534,6 +8977,7 @@
                         "totals",
                         "healthScore",
                         "items",
+                        "components",
                         "barcode"
                       ],
                       "additionalProperties": false
@@ -8635,6 +9079,12 @@
                             "null"
                           ]
                         },
+                        "nameKm": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
                         "source": {
                           "type": "string",
                           "enum": [
@@ -8839,6 +9289,63 @@
                             }
                           ]
                         },
+                        "components": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "dishSlug": {
+                                "type": "string"
+                              },
+                              "nameEn": {
+                                "type": "string"
+                              },
+                              "nameKm": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "portion": {
+                                "type": "number"
+                              },
+                              "calories": {
+                                "type": "integer",
+                                "minimum": -9007199254740991,
+                                "maximum": 9007199254740991
+                              },
+                              "proteinG": {
+                                "type": "number"
+                              },
+                              "carbsG": {
+                                "type": "number"
+                              },
+                              "fatG": {
+                                "type": "number"
+                              },
+                              "valueSource": {
+                                "type": "string",
+                                "enum": [
+                                  "catalog",
+                                  "learned",
+                                  "personal"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "dishSlug",
+                              "nameEn",
+                              "nameKm",
+                              "portion",
+                              "calories",
+                              "proteinG",
+                              "carbsG",
+                              "fatG",
+                              "valueSource"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
                         "barcode": {
                           "type": [
                             "string",
@@ -8849,6 +9356,7 @@
                       "required": [
                         "id",
                         "name",
+                        "nameKm",
                         "source",
                         "status",
                         "progress",
@@ -8863,6 +9371,7 @@
                         "totals",
                         "healthScore",
                         "items",
+                        "components",
                         "barcode"
                       ],
                       "additionalProperties": false
@@ -9103,6 +9612,12 @@
                             "null"
                           ]
                         },
+                        "nameKm": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
                         "source": {
                           "type": "string",
                           "enum": [
@@ -9307,6 +9822,63 @@
                             }
                           ]
                         },
+                        "components": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "dishSlug": {
+                                "type": "string"
+                              },
+                              "nameEn": {
+                                "type": "string"
+                              },
+                              "nameKm": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "portion": {
+                                "type": "number"
+                              },
+                              "calories": {
+                                "type": "integer",
+                                "minimum": -9007199254740991,
+                                "maximum": 9007199254740991
+                              },
+                              "proteinG": {
+                                "type": "number"
+                              },
+                              "carbsG": {
+                                "type": "number"
+                              },
+                              "fatG": {
+                                "type": "number"
+                              },
+                              "valueSource": {
+                                "type": "string",
+                                "enum": [
+                                  "catalog",
+                                  "learned",
+                                  "personal"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "dishSlug",
+                              "nameEn",
+                              "nameKm",
+                              "portion",
+                              "calories",
+                              "proteinG",
+                              "carbsG",
+                              "fatG",
+                              "valueSource"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
                         "barcode": {
                           "type": [
                             "string",
@@ -9317,6 +9889,7 @@
                       "required": [
                         "id",
                         "name",
+                        "nameKm",
                         "source",
                         "status",
                         "progress",
@@ -9331,6 +9904,7 @@
                         "totals",
                         "healthScore",
                         "items",
+                        "components",
                         "barcode"
                       ],
                       "additionalProperties": false
@@ -9565,6 +10139,12 @@
                               "null"
                             ]
                           },
+                          "nameKm": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
                           "source": {
                             "type": "string",
                             "enum": [
@@ -9663,6 +10243,7 @@
                         "required": [
                           "id",
                           "name",
+                          "nameKm",
                           "source",
                           "status",
                           "progress",
@@ -9763,6 +10344,24 @@
                 "90d"
               ]
             }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
           }
         ],
         "responses": {
@@ -9778,7 +10377,8 @@
                       "enum": [
                         "7d",
                         "30d",
-                        "90d"
+                        "90d",
+                        "custom"
                       ]
                     },
                     "from": {
@@ -10004,7 +10604,7 @@
             }
           }
         },
-        "description": "The window ends today in the user's timezone (or the `X-Timezone` header). Each day is compared with the goal that was active on that day. The streak is capped by the window.",
+        "description": "The window ends today in the user's timezone (or the `X-Timezone` header), or is the inclusive `from`/`to` window (both YYYY-MM-DD, at most 366 days; they override `range`). Each day is compared with the goal that was active on that day. The streak is capped by the window and counts back from its last day.",
         "security": [
           {
             "bearerAuth": []

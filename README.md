@@ -60,9 +60,15 @@ Then, in another terminal:
 
 ```bash
 npm run migrate
+npm run catalog:seed       # the Khmer food catalog (50 dishes); run again after editing prisma/data/khmer-dishes.json
 npm run seed               # optional: demo@example.com / Password123! with a week of meals
 npm run dev
 ```
+
+After pulling changes that add a migration, run `npm run migrate` (and `npm run catalog:seed`) and **restart** the API:
+a running process keeps the old database client, so requests fail with "column does not exist" (the web app shows
+"Couldn't load your day") until it restarts. `GET /ready` reports `"migrations": "fail"` and the API logs an error
+at startup when the database is missing a migration this code needs.
 
 ---
 
@@ -97,7 +103,7 @@ curl -s $API/api/v1/meals/$MEAL -H "Authorization: Bearer $TOKEN" | jq '.meal | 
 curl -s "$API/api/v1/dashboard/daily?date=today" -H "Authorization: Bearer $TOKEN" | jq '{goal, consumed, remaining}'
 ```
 
-With `AI_PROVIDER=fake` every photo comes back as "Turkey Sandwich With Potato Chips" (460 kcal, 25 / 45 / 20 g,
+With `AI_PROVIDER=fake` every photo comes back as "Turkey Sandwich, Potato Chips" (460 kcal, 25 / 45 / 20 g,
 health score 7), which is the dish in the mock-ups.
 
 ---
@@ -139,8 +145,19 @@ phone ──POST /meals/analyze──> API ──> checks magic bytes, resizes t
                                   └──> creates Meal(status=queued) ──> enqueues job ──> returns 202 {meal}
                                                                                    │
 worker <───────────────────────────── BullMQ (Redis) ───────────────────────────────┘
-  loads image -> calls the AI provider -> validates the JSON -> saves values -> push "Your meal is ready"
+  same photo as an earlier meal of this user? -> reuse its dishes and portions (no model call)
+  else loads image -> asks the AI provider which dishes and portion steps it sees -> validates the JSON
+  -> nutrition = reference values x portion -> saves the meal and its components -> push "Your meal is ready"
 ```
+
+**The model identifies, the server counts.** The prompt (`meal-analysis.v2`) lists the Khmer food catalog
+(`prisma/data/khmer-dishes.json`, 50 dishes with sources, loaded by `npm run catalog:seed`) plus the most used
+learned dishes. For each dish in the photo the model answers with a listed slug (or `new`) and a portion step
+(0.25 to 3 times the standard serving). The server takes the dish's reference values, or this user's own corrected
+values for it (`UserDishOverride`), and multiplies them by the portion. A dish the catalog lacks becomes a
+**learned dish** the first time, from the model's estimate for one serving, so the next scan of it gives the same
+numbers. Every meal keeps its `MealComponent` rows, the raw answer and any user edit (`userEditedAt`,
+`originalNutrition`): shared, labelled data for improving the catalog and for training later.
 
 | `status` | `progress` | Meaning |
 |---|---|---|
@@ -154,6 +171,9 @@ Progress is stage-based on purpose; it is never a fake smooth percentage.
 - **Retries:** network errors, `429` and `5xx` from the provider are retried 3 times with exponential backoff. A
   response that does not match the JSON schema is re-asked once. Implausible values are clamped (for example 5000 kcal
   per serving at most).
+- **Corrections:** when the user edits the four values of a meal that is one recognised dish, the edit (divided by
+  the portion) becomes their own values for that dish. Only they get them; the catalog changes only through the
+  reviewed JSON file.
 - **Totals** are `per-serving value x quantity`. Calories are whole numbers, macros have one decimal.
 - **Meals that are still analyzing** appear in lists and on the dashboard but are **not counted** in the totals.
 - **Fix Results** (`POST /meals/:id/fix {instruction}`) saves the correction and re-analyses with the original image
@@ -196,7 +216,7 @@ Everything comes from environment variables, validated at startup (the app refus
 | `DATABASE_URL`, `REDIS_URL` | PostgreSQL and Redis |
 | `JWT_ACCESS_SECRET` | Signs access tokens. 32+ characters in production |
 | `APP_NAME` | The product name (OpenAPI title, e-mail and push copy) |
-| `AI_PROVIDER`, `AI_MODEL`, `ANTHROPIC_API_KEY`, `OPENAI_API_KEY` | Which model analyses meals |
+| `AI_PROVIDER`, `AI_MODEL`, `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GEMINI_API_KEY` | Which model analyses meals |
 | `STORAGE_DRIVER`, `CLOUDINARY_*`, `S3_*` | Where meal images go (`cloudinary`, `s3`, `fs` for development) |
 | `QUEUE_DRIVER` | `bullmq` (production) or `memory` (single-process development) |
 | `PUSH_DRIVER`, `FIREBASE_SERVICE_ACCOUNT_JSON` | Push notifications |
@@ -238,17 +258,19 @@ then restart the API and the worker. The S3 and filesystem drivers stay availabl
 ### Swapping the AI provider
 
 Set `AI_PROVIDER` to `anthropic` (default), `openai` (also works with any OpenAI-compatible server through
-`OPENAI_BASE_URL`) or `fake`. `AI_MODEL` picks the model; the default for Anthropic is `claude-opus-5-5`. Setting a
-smaller model there is the first thing to try if per-photo cost matters.
+`OPENAI_BASE_URL`), `gemini` (Google, needs `GEMINI_API_KEY`) or `fake`. `AI_MODEL` picks the model; the defaults are
+`claude-opus-5-5` for Anthropic and `gemini-3.8-flash` for Gemini. Gemini runs at temperature 0 with a strict JSON
+schema; `AI_EFFORT` sets its thinking level. Setting a smaller model is the first thing to try if per-photo cost matters.
 
 To add another provider, implement the one-method `MealAnalyzer` interface in `src/lib/analyzer/types.ts`, add it to
 `createAnalyzer` in `src/lib/analyzer/index.ts`, and add the name to `AI_PROVIDER` in `src/config/env.ts`. The worker
 validates every answer against `aiMealSchema`, so a provider only has to return the JSON from the spec. The prompt lives
-in a versioned file, `src/lib/analyzer/prompts/meal-analysis.v1.ts`; change the wording by adding a `v2` file, and each
+in a versioned file, `src/lib/analyzer/prompts/meal-analysis.v2.ts`; change the wording by adding a `v3` file, and each
 meal's `aiRaw` records which version produced it.
 
 The fake provider can be steered by the upload's `hint` text, which makes failure paths easy to try by hand:
-`notfood`, `lowconf`, `transient`, `permanent`, `badjson`, `huge`.
+`notfood`, `lowconf`, `transient`, `permanent`, `badjson`, `huge`, and `catalog:<slug>@<portion>` (for example
+`catalog:kuy-teav@1.5`) to answer with a catalog dish.
 
 ---
 
@@ -332,6 +354,7 @@ long-running process.
 | `npm test`, `test:unit`, `test:integration`, `typecheck` | Checks |
 | `npm run migrate` | Apply migrations (`prisma migrate deploy`) |
 | `npm run migrate:dev` | Create a new migration after editing `prisma/schema.prisma` |
+| `npm run catalog:seed` | Load the Khmer food catalog into the database (idempotent; `node dist/seed-catalog.js` in the image) |
 | `npm run seed` | Demo account `demo@example.com` / `Password123!` |
 | `npm run storage:migrate -- --from fs\|s3` | Copy stored photos to the configured `STORAGE_DRIVER` (add `--dry-run` first) |
 | `npm run openapi` | Regenerate `openapi/openapi.json` |

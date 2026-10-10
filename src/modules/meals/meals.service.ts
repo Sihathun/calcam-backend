@@ -1,4 +1,4 @@
-import { randomUUID } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { Prisma, type Meal } from '@prisma/client';
 import type { AppDeps } from '../../deps';
 import { AppError, badRequest, conflict, notFound, unprocessable } from '../../lib/errors';
@@ -35,9 +35,33 @@ function decodeCursor(cursor: string): { t: Date; id: string } {
   }
 }
 
+/**
+ * When a meal is a single recognised dish, its edited per serving values become this user's values for that
+ * dish (divided by the portion, so they are per standard serving). Meals of several dishes can't say which
+ * dish was wrong, so they only keep the edit as a label.
+ */
+async function rememberCorrection(tx: Prisma.TransactionClient, meal: Meal): Promise<void> {
+  const components = await tx.mealComponent.findMany({ where: { mealId: meal.id } });
+  if (components.length !== 1 || meal.calories === null) return;
+  const [c] = components as [(typeof components)[number]];
+  const per = (v: number | null) => Math.round(((v ?? 0) / c.portion) * 10) / 10;
+  const values = {
+    calories: Math.round(meal.calories / c.portion),
+    proteinG: per(meal.proteinG),
+    carbsG: per(meal.carbsG),
+    fatG: per(meal.fatG),
+    sourceMealId: meal.id,
+  };
+  await tx.userDishOverride.upsert({
+    where: { userId_dishId: { userId: meal.userId, dishId: c.dishId } },
+    create: { userId: meal.userId, dishId: c.dishId, ...values },
+    update: values,
+  });
+}
+
 export function createMealsService(deps: AppDeps) {
   const { prisma, storage, queue, config, clock, productLookup } = deps;
-  const mapper = createMealMapper(storage);
+  const mapper = createMealMapper(storage, prisma);
 
   /** Every lookup is scoped by userId. Another user's meal is indistinguishable from a missing one (404). */
   async function findOwned(userId: string, id: string): Promise<Meal> {
@@ -120,6 +144,7 @@ export function createMealsService(deps: AppDeps) {
             imageKey,
             thumbKey,
             hint: input.hint || null,
+            imageSha256: createHash('sha256').update(input.file.buffer).digest('hex'),
             idempotencyKey: input.idempotencyKey ?? null,
             loggedAt,
           },
@@ -262,7 +287,11 @@ export function createMealsService(deps: AppDeps) {
       }
 
       const data: Prisma.MealUpdateInput = {};
-      if (patch.name !== undefined) data.name = patch.name;
+      // A renamed meal no longer matches the recognised dishes' Khmer name.
+      if (patch.name !== undefined && patch.name !== meal.name) {
+        data.name = patch.name;
+        data.nameKm = null;
+      }
       if (patch.quantity !== undefined) data.quantity = patch.quantity;
       if (patch.loggedAt !== undefined) data.loggedAt = parseLoggedAt(patch.loggedAt);
       const nutritionKeys = ['calories', 'proteinG', 'carbsG', 'fatG'] as const;
@@ -287,7 +316,20 @@ export function createMealsService(deps: AppDeps) {
         }
       }
 
-      const updated = await prisma.meal.update({ where: { id: meal.id }, data });
+      const valuesChanged = nutritionKeys.some((k) => patch[k] !== undefined && patch[k] !== meal[k]);
+      if (valuesChanged) {
+        // A correction: the strongest label for training, and this user's own values for the dish next time.
+        data.userEditedAt = clock();
+        if (meal.originalNutrition === null && meal.calories !== null) {
+          data.originalNutrition = { calories: meal.calories, proteinG: meal.proteinG, carbsG: meal.carbsG, fatG: meal.fatG };
+        }
+      }
+
+      const updated = await prisma.$transaction(async (tx) => {
+        const row = await tx.meal.update({ where: { id: meal.id }, data });
+        if (valuesChanged) await rememberCorrection(tx, row);
+        return row;
+      });
       return mapper.detail(updated);
     },
 

@@ -57,7 +57,7 @@ const EnvSchema = z.object({
   QUEUE_ATTEMPTS: int(3),
   QUEUE_BACKOFF_MS: int(2000),
 
-  AI_PROVIDER: z.enum(['anthropic', 'openai', 'fake']).default('anthropic'),
+  AI_PROVIDER: z.enum(['anthropic', 'openai', 'gemini', 'fake']).default('anthropic'),
   AI_MODEL: z.string().optional(),
   AI_EFFORT: z.enum(['low', 'medium', 'high', 'xhigh', 'max']).optional(),
   AI_MIN_CONFIDENCE: num(0.3),
@@ -66,6 +66,7 @@ const EnvSchema = z.object({
   ANTHROPIC_API_KEY: z.string().optional(),
   OPENAI_API_KEY: z.string().optional(),
   OPENAI_BASE_URL: z.string().default('https://api.openai.com/v1'),
+  GEMINI_API_KEY: z.string().optional(),
 
   PUSH_DRIVER: z.enum(['fcm', 'log']).default('log'),
   FIREBASE_SERVICE_ACCOUNT_JSON: z.string().optional(),
@@ -180,6 +181,7 @@ export interface Config {
     anthropicApiKey?: string;
     openaiApiKey?: string;
     openaiBaseUrl: string;
+    geminiApiKey?: string;
   };
   push: { driver: Env['PUSH_DRIVER']; firebaseServiceAccountJson?: string };
   oauth: { googleClientIds: string[]; appleClientIds: string[] };
@@ -202,6 +204,7 @@ export interface Config {
 const DEFAULT_MODELS = {
   anthropic: 'claude-opus-5-5',
   openai: 'gpt-4o',
+  gemini: 'gemini-3.8-flash',
   fake: 'fake-analyzer',
 } as const;
 
@@ -270,6 +273,7 @@ export function loadConfig(source: NodeJS.ProcessEnv = process.env): Config {
       anthropicApiKey: e.ANTHROPIC_API_KEY,
       openaiApiKey: e.OPENAI_API_KEY,
       openaiBaseUrl: e.OPENAI_BASE_URL,
+      geminiApiKey: e.GEMINI_API_KEY,
     },
     push: { driver: e.PUSH_DRIVER, firebaseServiceAccountJson: e.FIREBASE_SERVICE_ACCOUNT_JSON },
     oauth: { googleClientIds: e.GOOGLE_OAUTH_CLIENT_IDS, appleClientIds: e.APPLE_CLIENT_IDS },
@@ -302,6 +306,10 @@ export function loadConfig(source: NodeJS.ProcessEnv = process.env): Config {
     throw new Error(
       'Invalid environment configuration:\n  STORAGE_DRIVER=cloudinary needs CLOUDINARY_URL, or CLOUDINARY_CLOUD_NAME + CLOUDINARY_API_KEY + CLOUDINARY_API_SECRET',
     );
+  }
+
+  if (config.ai.provider === 'gemini' && !config.ai.geminiApiKey) {
+    throw new Error('Invalid environment configuration:\n  AI_PROVIDER=gemini needs GEMINI_API_KEY');
   }
 
   assertProductionSafe(config);

@@ -82,7 +82,8 @@ services:
   # Applies the committed migrations once, then exits. In production run this as a one-off deploy step.
   migrate:
     build: .
-    command: ["npx", "prisma", "migrate", "deploy"]
+    # Migrations, then the Khmer food catalog (idempotent upsert).
+    command: ["sh", "-c", "npx prisma migrate deploy && node dist/seed-catalog.js"]
     environment: *app-env
     depends_on:
       postgres: { condition: service_healthy }

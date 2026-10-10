@@ -1,4 +1,15 @@
+/** One dish the model may answer with, as listed in the prompt. */
+export interface DishPromptEntry {
+  slug: string;
+  nameEn: string;
+  nameKm: string | null;
+  /** The standard serving the portion step is relative to. */
+  serving: string;
+}
+
 export interface AnalyzerInput {
+  /** The catalog plus the most used learned dishes. */
+  dishes: DishPromptEntry[];
   /** Always a JPEG produced by lib/image.ts. */
   image?: { data: Buffer; mimeType: 'image/jpeg' };
   /** Text-only analysis ("2 eggs and toast"). */
