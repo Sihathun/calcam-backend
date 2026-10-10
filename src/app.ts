@@ -82,6 +82,9 @@ export function createApp(deps: AppDeps): Express {
         return;
       }
       try {
+        // The signature is the access check, so the image may be shown by the web app on another origin
+        // (helmet's default same-origin policy would block it, unlike a real storage provider's links).
+        res.set('Cross-Origin-Resource-Policy', 'cross-origin');
         res.type('image/jpeg').send(await fsStorage.get(key));
       } catch {
         res.status(404).json({ error: { code: 'NOT_FOUND', message: 'Not found' } });

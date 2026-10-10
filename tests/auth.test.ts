@@ -170,6 +170,37 @@ describe('Apple and Google sign-in', () => {
     expect(res.body.user.email).toBeNull();
   });
 
+  it('pulls the Google name and photo, links them to an email account, and refreshes them', async () => {
+    const user = await registerUser(ctx, { onboarding: false });
+    const sub = `profile-${Date.now()}`;
+    const picture = 'https://lh3.googleusercontent.com/a/one';
+    const first = await ctx.http
+      .post(`${api}/auth/oauth/google`)
+      .send({ idToken: oauthToken('google', sub, user.email, true, { name: 'Bunsou Taing', picture }) });
+    expect(first.body.user.id).toBe(user.id);
+    expect(first.body.user.displayName).toBe('Bunsou Taing');
+    expect(first.body.user.avatarUrl).toBe(picture);
+
+    // A later token without profile claims keeps what we have; a new photo replaces the old one.
+    const bare = await ctx.http.post(`${api}/auth/oauth/google`).send({ idToken: oauthToken('google', sub, user.email) });
+    expect(bare.body.user.displayName).toBe('Bunsou Taing');
+    const next = 'https://lh3.googleusercontent.com/a/two';
+    const changed = await ctx.http
+      .post(`${api}/auth/oauth/google`)
+      .send({ idToken: oauthToken('google', sub, user.email, true, { picture: next }) });
+    expect(changed.body.user.avatarUrl).toBe(next);
+
+    const me = await ctx.http.get(`${api}/me`).set('Authorization', `Bearer ${changed.body.tokens.accessToken}`);
+    expect(me.body.displayName).toBe('Bunsou Taing');
+  });
+
+  it('has no name or photo for email accounts', async () => {
+    const user = await registerUser(ctx, { onboarding: false });
+    const login = await ctx.http.post(`${api}/auth/login`).send({ email: user.email, password: user.password });
+    expect(login.body.user.displayName).toBeNull();
+    expect(login.body.user.avatarUrl).toBeNull();
+  });
+
   it('rejects a token that does not verify', async () => {
     const res = await ctx.http.post(`${api}/auth/oauth/apple`).send({ idToken: oauthToken('google', 'x', 'a@b.co') });
     expect(res.status).toBe(401);

@@ -22,11 +22,29 @@ export const mealItemSchema = z.object({
   fatG: z.number(),
 });
 
+/** One dish the analysis recognised in the meal, with the nutrition it contributes per serving of the meal. */
+export const mealComponentSchema = z.object({
+  dishSlug: z.string(),
+  nameEn: z.string(),
+  nameKm: z.string().nullable(),
+  /** Multiple of the dish's standard serving, e.g. 1.5. */
+  portion: z.number(),
+  calories: z.number().int(),
+  proteinG: z.number(),
+  carbsG: z.number(),
+  fatG: z.number(),
+  /** Where the reference values came from: the catalog, a learned dish, or this user's own correction. */
+  valueSource: z.enum(['catalog', 'learned', 'personal']),
+});
+export type MealComponentDto = z.infer<typeof mealComponentSchema>;
+
 /** Compact form used by lists and the Home screen's "Recently eaten" cards. Nutrition fields are totals. */
 export const mealSummarySchema = z.object({
   id: z.uuid(),
   /** Null while the first analysis is running; the client shows "Analyzing food...". */
   name: z.string().nullable(),
+  /** Khmer name, when the dishes have one. */
+  nameKm: z.string().nullable(),
   source: mealSourceSchema,
   status: mealStatusSchema,
   /** Stage-based, not smooth: queued 5, image ready 20, model answered 50, validated 90, completed 100. */
@@ -47,6 +65,7 @@ export type MealSummary = z.infer<typeof mealSummarySchema>;
 export const mealDetailSchema = z.object({
   id: z.uuid(),
   name: z.string().nullable(),
+  nameKm: z.string().nullable(),
   source: mealSourceSchema,
   status: mealStatusSchema,
   progress: z.number().int(),
@@ -63,6 +82,8 @@ export const mealDetailSchema = z.object({
   totals: nullableNutrition,
   healthScore: z.number().int().nullable(),
   items: z.array(mealItemSchema).nullable(),
+  /** The recognised dishes. Empty for manual and barcode meals, and while the first analysis runs. */
+  components: z.array(mealComponentSchema),
   barcode: z.string().nullable(),
 });
 export type MealDetail = z.infer<typeof mealDetailSchema>;

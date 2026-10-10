@@ -4,20 +4,31 @@ import { conflict } from '../../lib/errors';
 import type { AuthUser } from '../../lib/http/route';
 import { mealTotals, round1, sumNutrition } from '../../lib/nutrition';
 import { addDays, dateKey, dayRange } from '../../lib/time';
+
+/** Whole days from `from` to `to` (both YYYY-MM-DD). */
+export function daysBetween(from: string, to: string): number {
+  return Math.round(DateTime.fromISO(to, { zone: 'utc' }).diff(DateTime.fromISO(from, { zone: 'utc' }), 'days').days);
+}
 import { goalAt, type GoalsService } from '../goals/goals.service';
 
 export const RANGES = { '7d': 7, '30d': 30, '90d': 90 } as const;
 export type RangeKey = keyof typeof RANGES;
+/** The longest window a custom `from`/`to` request may cover (a calendar year view). */
+export const MAX_CUSTOM_DAYS = 366;
+
+/** Either a named range ending today, or an explicit inclusive window of YYYY-MM-DD dates. */
+export type SummaryWindow = { range: RangeKey } | { from: string; to: string };
 
 export function createAnalyticsService(deps: AppDeps, goals: GoalsService) {
   const { prisma, clock } = deps;
 
   return {
     /** Per-day calories vs goal, macro averages, logging streak, weight trend and average health score. */
-    async summary(user: AuthUser, zone: string, range: RangeKey) {
-      const count = RANGES[range];
-      const to = dateKey(clock(), zone);
-      const from = addDays(to, -(count - 1));
+    async summary(user: AuthUser, zone: string, window: SummaryWindow) {
+      const range = 'range' in window ? window.range : 'custom';
+      const to = 'range' in window ? dateKey(clock(), zone) : window.to;
+      const from = 'range' in window ? addDays(to, -(RANGES[window.range] - 1)) : window.from;
+      const count = daysBetween(from, to) + 1;
       const start = dayRange(from, zone).start;
       const end = dayRange(to, zone).end;
 

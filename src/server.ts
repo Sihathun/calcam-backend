@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { createApp } from './app';
 import { loadConfig } from './config/env';
 import { buildApiDeps } from './deps';
+import { pendingMigrations } from './lib/migrations';
 import { buildProcessors } from './modules';
 
 /** API process entry point. The BullMQ worker is a separate process (src/worker.ts). */
@@ -19,6 +20,18 @@ async function main() {
       deps.logger.warn('QUEUE_DRIVER=memory: the analysis worker runs inside this process (development only)');
     }
   });
+
+  // Say it loudly at startup: with a migration missing, most requests fail with "column does not exist".
+  pendingMigrations(deps.prisma)
+    .then((pending) => {
+      if (pending.length) {
+        deps.logger.error(
+          { pending },
+          'The database is missing migrations this code needs. Run `npm run migrate` (and `npm run catalog:seed`), then restart.',
+        );
+      }
+    })
+    .catch((err) => deps.logger.warn({ err: (err as Error).message }, 'could not check migrations'));
 
   let stopping = false;
   const shutdown = async (signal: string) => {

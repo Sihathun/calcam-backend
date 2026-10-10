@@ -1,7 +1,7 @@
 import type { Config } from '../../config/env';
 import { TransientError } from '../errors';
 import { ProviderError, type AnalyzerInput, type AnalyzerOutput, type MealAnalyzer } from './types';
-import { buildUserText, SYSTEM_PROMPT } from './prompts/meal-analysis.v1';
+import { buildUserText, SYSTEM_PROMPT } from './prompts/meal-analysis.v2';
 
 /** Works with OpenAI and any server that implements the same chat-completions API (set OPENAI_BASE_URL). */
 export class OpenAiAnalyzer implements MealAnalyzer {
@@ -27,7 +27,7 @@ export class OpenAiAnalyzer implements MealAnalyzer {
           messages: [
             {
               role: 'system',
-              content: `${SYSTEM_PROMPT}\n\nReturn a JSON object with exactly these keys: name, items[{name, portion, calories, proteinG, carbsG, fatG}], calories, proteinG, carbsG, fatG, healthScore, isFood, confidence.`,
+              content: `${SYSTEM_PROMPT}\n\nReturn a JSON object with exactly these keys: isFood, confidence, dishes[{match, nameEn, nameKm, portion, standardServing{description, calories, proteinG, carbsG, fatG, healthScore}}].`,
             },
             { role: 'user', content: userContent },
           ],

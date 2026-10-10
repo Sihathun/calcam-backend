@@ -40,7 +40,7 @@ describe('POST /meals/analyze', () => {
     await ctx.queue.drain();
     const meal = await getMeal(u, res.body.meal.id);
     expect(meal).toMatchObject({
-      name: 'Turkey Sandwich With Potato Chips',
+      name: 'Turkey Sandwich, Potato Chips',
       status: 'completed',
       progress: 100,
       healthScore: 7,
@@ -73,7 +73,7 @@ describe('POST /meals/analyze', () => {
       ctx.analyzer.analyze = original;
     }
     const meal = await ctx.deps.prisma.meal.findFirstOrThrow({ where: { userId: u.id } });
-    expect(meal.aiRaw).toMatchObject({ promptVersion: 'meal-analysis.v1', provider: 'fake' });
+    expect(meal.aiRaw).toMatchObject({ promptVersion: 'meal-analysis.v2', provider: 'fake' });
   });
 
   it('sends a push notification with the meal id when analysis completes', async () => {
@@ -406,7 +406,7 @@ describe('POST /meals/:id/fix (Fix Results)', () => {
       ctx.analyzer.analyze = original;
     }
     const after = await getMeal(u, meal['id']);
-    expect(after).toMatchObject({ status: 'completed', errorCode: 'PROVIDER_ERROR', perServing: { calories: 460 }, name: 'Turkey Sandwich With Potato Chips' });
+    expect(after).toMatchObject({ status: 'completed', errorCode: 'PROVIDER_ERROR', perServing: { calories: 460 }, name: 'Turkey Sandwich, Potato Chips' });
     // A later successful fix clears the error.
     await ctx.http.post(`${api}/meals/${meal['id']}/fix`).set(u.auth).send({ instruction: 'it was chicken' });
     await ctx.queue.drain();

@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { loadConfig } from '../config/env';
 import { goalAt } from '../modules/goals/goals.service';
-import { aiMealSchema, normalizeMeal } from './analyzer/schema';
+import { aiMealSchema, snapPortion } from './analyzer/schema';
+import { loadCatalog, normalizeDishName } from './catalog';
 import { sniffImageKind } from './image';
 import { mealTotals, subtractNutrition, sumNutrition } from './nutrition';
 import { parseOffProduct } from './product-lookup';
@@ -23,31 +24,52 @@ describe('sniffImageKind (magic bytes)', () => {
   });
 });
 
-describe('AI result validation and clamping', () => {
-  const valid = {
-    name: 'Turkey Sandwich With Potato Chips',
-    items: [{ name: 'turkey sandwich', portion: '1 sandwich', calories: 340, proteinG: 22, carbsG: 35, fatG: 12 }],
-    calories: 460, proteinG: 25, carbsG: 45, fatG: 20, healthScore: 7, isFood: true, confidence: 0.82,
+describe('AI result validation (meal-analysis.v2)', () => {
+  const dish = {
+    match: 'kuy-teav',
+    nameEn: 'Pork Noodle Soup (Kuy Teav)',
+    nameKm: 'គុយទាវ',
+    portion: '1.5',
+    standardServing: { description: '1 bowl', calories: 420, proteinG: 22, carbsG: 58, fatG: 11, healthScore: 6 },
   };
-  it('accepts the contract from the spec', () => {
+  const valid = { isFood: true, confidence: 0.82, dishes: [dish] };
+  it('accepts the contract', () => {
     expect(aiMealSchema.safeParse(valid).success).toBe(true);
+    expect(aiMealSchema.safeParse({ isFood: false, confidence: 0, dishes: [] }).success).toBe(true);
   });
   it.each([
-    ['negative calories', { ...valid, calories: -1 }],
-    ['health score above 10', { ...valid, healthScore: 11 }],
+    ['negative calories', { ...valid, dishes: [{ ...dish, standardServing: { ...dish.standardServing, calories: -1 } }] }],
+    ['health score above 10', { ...valid, dishes: [{ ...dish, standardServing: { ...dish.standardServing, healthScore: 11 } }] }],
     ['confidence above 1', { ...valid, confidence: 1.5 }],
     ['missing isFood', { ...valid, isFood: undefined }],
-    ['string number', { ...valid, calories: '460' }],
+    ['an unknown portion word', { ...valid, dishes: [{ ...dish, portion: 'big' }] }],
+    ['more than 6 dishes', { ...valid, dishes: Array.from({ length: 7 }, () => dish) }],
     ['not an object', 'I think this is a sandwich'],
   ])('rejects %s', (_label, value) => {
     expect(aiMealSchema.safeParse(value).success).toBe(false);
   });
-  it('clamps implausible values and rounds to storage precision', () => {
-    const out = normalizeMeal(aiMealSchema.parse({ ...valid, calories: 90000.4, proteinG: 25.46, carbsG: 99999, healthScore: 6.6 }), 5000);
-    expect(out).toMatchObject({ calories: 5000, proteinG: 25.5, carbsG: 1000, healthScore: 7 });
+  it('snaps any portion to the nearest allowed step', () => {
+    expect([snapPortion('1.5'), snapPortion(1.4), snapPortion(0.1), snapPortion(9), snapPortion('x')]).toEqual([1.5, 1.5, 0.25, 3, 1]);
   });
-  it('falls back to a generic name when the model leaves it blank', () => {
-    expect(normalizeMeal(aiMealSchema.parse({ ...valid, name: '  ' }), 5000).name).toBe('Meal');
+});
+
+describe('normalizeDishName', () => {
+  it('reduces a dish name to lowercase ASCII words', () => {
+    expect(normalizeDishName('Pork & Rice (Bai Sach Chrouk)')).toBe('pork rice bai sach chrouk');
+    expect(normalizeDishName('Turkey Sandwich With Potato Chips')).toBe('turkey sandwich potato chips');
+    expect(normalizeDishName("  Bok L'hong ")).toBe('bok l hong');
+  });
+});
+
+describe('the Khmer food catalog file', () => {
+  const dishes = loadCatalog();
+  it('has 50 unique dishes whose macros add up to their calories', () => {
+    expect(dishes).toHaveLength(50);
+    for (const d of dishes) {
+      const fromMacros = 4 * d.proteinG + 4 * d.carbsG + 9 * d.fatG;
+      expect(Math.abs(fromMacros - d.calories) / d.calories, d.slug).toBeLessThanOrEqual(0.12);
+      expect(d.sources.length, d.slug).toBeGreaterThan(0);
+    }
   });
 });
 

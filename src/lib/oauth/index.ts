@@ -9,6 +9,10 @@ export interface OAuthIdentity {
   sub: string;
   email?: string;
   emailVerified: boolean;
+  /** Display name from the provider's profile, when the token carries one. */
+  name?: string;
+  /** https URL of the provider's profile photo, when the token carries one. */
+  pictureUrl?: string;
 }
 
 export interface OAuthVerifier {
@@ -55,10 +59,14 @@ export class JoseOAuthVerifier implements OAuthVerifier {
     if (!payload.sub) throw unauthorized('INVALID_ID_TOKEN', 'The identity token has no subject');
 
     const verified = payload['email_verified'];
+    const name = typeof payload['name'] === 'string' ? payload['name'].trim().slice(0, 100) : '';
+    const picture = typeof payload['picture'] === 'string' ? payload['picture'] : '';
     return {
       sub: payload.sub,
       email: typeof payload['email'] === 'string' ? payload['email'].toLowerCase() : undefined,
       emailVerified: verified === true || verified === 'true',
+      name: name || undefined,
+      pictureUrl: picture.startsWith('https://') && picture.length <= 500 ? picture : undefined,
     };
   }
 }

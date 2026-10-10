@@ -149,6 +149,10 @@ export const profileDtoSchema = z.object({
 export const meSchema = z.object({
   id: z.uuid(),
   email: z.string().nullable(),
+  /** Name from the linked Google profile, null for email accounts. */
+  displayName: z.string().nullable(),
+  /** Google profile photo URL, null for email accounts. */
+  avatarUrl: z.string().nullable(),
   locale: z.string(),
   timezone: z.string(),
   notificationsEnabled: z.boolean(),
@@ -190,6 +194,8 @@ export function toMeDto(
   return {
     id: user.id,
     email: user.email,
+    displayName: user.displayName,
+    avatarUrl: user.avatarUrl,
     locale: user.locale,
     timezone: user.timezone,
     notificationsEnabled: user.notificationsEnabled,

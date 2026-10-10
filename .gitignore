@@ -4,3 +4,7 @@ dist/
 .env
 coverage/
 *.log
+
+# Claude 
+.claude
+skills-lock.json
