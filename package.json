@@ -24,6 +24,7 @@
     "migrate:dev": "prisma migrate dev",
     "seed": "tsx prisma/seed.ts",
     "catalog:seed": "tsx src/seed-catalog.ts",
+    "foods:photos": "tsx scripts/import-food-photos.ts",
     "storage:migrate": "tsx scripts/migrate-storage.ts",
     "openapi": "tsx scripts/export-openapi.ts",
     "db:embedded": "node scripts/embedded-pg.mjs",

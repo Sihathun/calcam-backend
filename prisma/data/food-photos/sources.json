@@ -1,0 +1,467 @@
+{
+  "bai-sach-chrouk": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/C%C6%A1m_t%E1%BA%A5m_SG_%28c%C6%A1m_s%C6%B0%E1%BB%9Dn%29_ng27th9n2020_%281%29.jpg?width=800",
+    "credit": {
+      "title": "File:Cơm tấm SG (cơm sườn) ng27th9n2020 (1).jpg",
+      "author": "Phương Huy",
+      "license": "CC0",
+      "page": "https://commons.wikimedia.org/wiki/File:C%C6%A1m_t%E1%BA%A5m_SG_(c%C6%A1m_s%C6%B0%E1%BB%9Dn)_ng27th9n2020_(1).jpg",
+      "match": "similar"
+    }
+  },
+  "fish-amok": {
+    "url": "https://grantourismotravels.com/wp-content/uploads/2017/05/Authentic-Fish-Amok-Recipe-Steamed-Fish-Curry-Cambodia-Copyright-2022-Terence-Carter-Grantourismo-T-500x375.jpg",
+    "csvRow": "dish-amok-trey"
+  },
+  "kuy-teav": {
+    "url": "https://i0.wp.com/flavourfullygood.com/wp-content/uploads/2022/07/Phnom-Penh-Noodles-or-Pork-Noodles-Soup-Flavourfully-Good-copy-1.jpg?resize=1024%2C683&ssl=1",
+    "csvRow": "dish-kuy-teav-phnom-penh"
+  },
+  "bai-cha": {
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2oM9Wu2Z3GxMybaIYvlXpuwD9HjTdDoEf5KnSyPxV9xgoxfuFYPfGRN-J&s=10",
+    "csvRow": "dish-bai-cha"
+  },
+  "mi-cha": {
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf7ClUFRRjqY7ftb53u1u1fxZfvHYqs6Kb6xPby4OftQ&s=10",
+    "csvRow": "dish-mi-cha"
+  },
+  "lort-cha": {
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9J7eMfh6ZEYEAo1x47EM3SHoqEPgIOcII8J2FPp644w&s=10",
+    "csvRow": "dish-lort-cha"
+  },
+  "num-banh-chok": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Num_Banh_Chok.jpg?width=800",
+    "credit": {
+      "title": "File:Num Banh Chok.jpg",
+      "author": "Thomas Wanhoff from Siem Reap, Cambodia",
+      "license": "CC BY-SA 2.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Num_Banh_Chok.jpg",
+      "match": "exact"
+    }
+  },
+  "beef-lok-lak": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/fb/2016_Phnom_Penh%2C_Kambod%C5%BCa%C5%84ski_Lok_Lak_%2802%29.jpg?utm_source=km.wikipedia.org&utm_campaign=index&utm_content=original",
+    "csvRow": "dish-lok-lak"
+  },
+  "samlor-korko": {
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVd89Vxv2EtpTJa8yFFIdeRwYiWY-Xr-OFLOduqHcr-9DzZTDakUDgIHI7&s=10",
+    "csvRow": "dish-samlor-kako"
+  },
+  "samlor-machu-trey": {
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvSI6KAfFQpowG7c7N0aJj3yn0DieGhSh9et1Q4nS9xpu8JF9ReJuiARlL&s=10",
+    "csvRow": "dish-samlor-machu-trey"
+  },
+  "nhoam-svay": {
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXsFVWd36e_8-GDBy1lX-_oqXFqj6LPHc9iFtbJVf5WVkpJqlKWCpidfhk&s=10",
+    "csvRow": "dish-nhoam-svay"
+  },
+  "bok-lhong": {
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYuzLqpVbVWmckDG2Rl4uXVYeULvsv_j3Sdn8JQPE2t9iHDQrTLsc6P-Ri&s=10",
+    "csvRow": "dish-bok-lhong"
+  },
+  "kari-sach-moan": {
+    "url": "https://i.ytimg.com/vi/YgErUCPmkpA/sddefault.jpg",
+    "csvRow": "dish-somlor-kari-sach-moan"
+  },
+  "cha-trakuon": {
+    "url": "https://i.ytimg.com/vi/udVxfv1t5YU/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLA90tfkxSEKpoao58x0KFdRESLADw",
+    "csvRow": "dish-cha-trakuon"
+  },
+  "trey-ang": {
+    "url": "https://i.ytimg.com/vi/qOy7dKyNEDg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCrWEjMCCJFDMkY7EMuJ-zk25TkMg",
+    "csvRow": "dish-trey-ang"
+  },
+  "trey-chien": {
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwQ_4HCDCEomTVgaC6izAuypTYj-eCwHNzteYhmAFe1Q&s=10",
+    "csvRow": "dish-trey-chien"
+  },
+  "prahok-ktis": {
+    "url": "https://i.ytimg.com/vi/exvscYPkrKg/maxresdefault.jpg",
+    "csvRow": "dish-prahok-ktis"
+  },
+  "num-ansom-chek": {
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwF8k8qrpZSNwKk-qZK7Lxrnk1clg2kZLHd49iUzUDaVvywCxHn6UUtdPL&s=10",
+    "csvRow": "dish-num-ansom-chek"
+  },
+  "sangkhya-lpeou": {
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJWNcrcFI80Hi_xiYPAVxn8glgvK4VX9SasqPaKV1RK1GmRHm7Xn4RdA8l&s=10",
+    "csvRow": "dish-sankhya-lapov"
+  },
+  "kralan": {
+    "url": "https://www.cnc.com.kh/news/0b69e1529f637ad6d0bab6d5977a2b9d.jpg",
+    "csvRow": "dish-kralan"
+  },
+  "cha-kdam": {
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrkdKSVPj4Wb5OfdRN8l2wyZCtF_10p-7WDPm905J7sb-IHopmxQCAJ3Ok&s=10",
+    "csvRow": "dish-kdam-chaa"
+  },
+  "sach-ko-ang": {
+    "url": "https://hips.hearstapps.com/hmg-prod/images/210331-delish-steak-21819-eb-1622207666.jpg?crop=0.521xw:0.781xh;0.210xw,0.127xh&resize=640:*",
+    "csvRow": "protein-grilled-beef"
+  },
+  "bai-sror": {
+    "url": "https://healthynibblesandbits.com/wp-content/uploads/2018/10/Jasmine-Rice-FF.jpg",
+    "csvRow": "rice-steamed-white"
+  },
+  "sach-chrouk-ang": {
+    "url": "https://www.kawalingpinoy.com/wp-content/uploads/2019/12/inihaw-liempo-3-500x500.jpg",
+    "csvRow": "protein-grilled-pork"
+  },
+  "moan-ang": {
+    "url": "https://www.marthastewart.com/thmb/typjRqI22iyC3lhH1PI0_BqLE3s=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/grilled-chicken-breasts-lemon-thyme-sauce-bc26bcf7-0822-horiz-685b9e8238784250abdf41c1d4418499.jpg",
+    "csvRow": "protein-grilled-chicken"
+  },
+  "boiled-water-spinach": {
+    "url": "https://www.denkinesiskekoebmand.dk/3290-large_default/morning-glory-water-spinach-250g.jpg",
+    "csvRow": "vegetable-water-spinach"
+  },
+  "green-papaya": {
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRoMytMveCFt69RLRjnBD8DTEZsdku1uyPeQHAGfnE-T7FiAo1TNAG_6M&s=10",
+    "csvRow": "fruit-green-papaya"
+  },
+  "roasted-peanuts": {
+    "url": "https://hungryinthailand.com/wp-content/uploads/2022/12/dry-roasted-peanuts.webp",
+    "csvRow": "condiment-roasted-peanuts"
+  },
+  "kuy-teav-sach-ko": {
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLZ8XnZb_HtZ1jsgzCdYhGHdluBEjegN1qywpDQZDjzKdslSHm_4_pnrop&s=10",
+    "csvRow": "dish-kuy-teav-sach-ko"
+  },
+  "bobor-sach-chrouk": {
+    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfdRZn8a1VGS7yUm8bA-_kUrnsfQ8ulzefDIPG9LZneq6tGl_1efSVkGBz&s=10",
+    "csvRow": "dish-bobor-sach-chrouk"
+  },
+  "samlor-machu-kroeung": {
+    "url": "https://soracambodia83273053.wordpress.com/wp-content/uploads/2020/10/92.jpg",
+    "csvRow": "dish-samlor-machu-kroeung"
+  },
+  "phlea-sach-ko": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Pleah.jpg?width=800",
+    "credit": {
+      "title": "File:Pleah.jpg",
+      "author": "Goomba King (en:User:Trilinguist)",
+      "license": "CC BY-SA 3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Pleah.jpg",
+      "match": "exact"
+    }
+  },
+  "kari-sach-ko": {
+    "url": "https://i.ytimg.com/vi/hWMB1L3IByA/maxresdefault.jpg",
+    "csvRow": "dish-kari-sach-ko"
+  },
+  "cha-kroeung-sach-ko": {
+    "url": "https://i.ytimg.com/vi/POPQH8Y1m6I/maxresdefault.jpg",
+    "csvRow": "dish-cha-kroeung-sach-ko"
+  },
+  "sach-ko-cha-khnhei": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Ginger_beef_stir_fry.jpg?width=800",
+    "credit": {
+      "title": "File:Ginger beef stir fry.jpg",
+      "author": "jules",
+      "license": "CC BY 2.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Ginger_beef_stir_fry.jpg",
+      "match": "similar"
+    }
+  },
+  "cha-houy-teuk": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Khmer_Cambodian_dessert_cha_huoy_teuk.jpg?width=800",
+    "credit": {
+      "title": "File:Khmer Cambodian dessert cha huoy teuk.jpg",
+      "author": "MoonsMoon",
+      "license": "CC BY 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Khmer_Cambodian_dessert_cha_huoy_teuk.jpg",
+      "match": "exact"
+    }
+  },
+  "num-kom": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Khmer_Cambodian_dessert_num_kom_palm_sugar_coconut_rice.jpg?width=800",
+    "credit": {
+      "title": "File:Khmer Cambodian dessert num kom palm sugar coconut rice.jpg",
+      "author": "MoonsMoon",
+      "license": "CC BY 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Khmer_Cambodian_dessert_num_kom_palm_sugar_coconut_rice.jpg",
+      "match": "exact"
+    }
+  },
+  "bai-damnaub": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Glutinous_rice%2C_Saveurs_d%27Asie%2C_9_Rue_de_Vouill%C3%A9%2C_75015_Paris%2C_5_November_2016.jpg?width=800",
+    "credit": {
+      "title": "File:Glutinous rice, Saveurs d'Asie, 9 Rue de Vouillé, 75015 Paris, 5 November 2016.jpg",
+      "author": "Guilhem Vellut from Paris, France",
+      "license": "CC BY 2.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Glutinous_rice,_Saveurs_d%27Asie,_9_Rue_de_Vouill%C3%A9,_75015_Paris,_5_November_2016.jpg",
+      "match": "similar"
+    }
+  },
+  "samlor-machu-yuon": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Canh_chua_c%C3%A1_l%C3%B3c_%E1%BB%9F_Th%E1%BB%A7y_Tr%C3%BAc_Qu%C3%A1n%2C_%C4%91%C6%B0%E1%BB%9Dng_Nguy%E1%BB%85n_Nh%E1%BB%AF_L%C3%A3m_%281%29.jpg?width=800",
+    "credit": {
+      "title": "File:Canh chua cá lóc ở Thủy Trúc Quán, đường Nguyễn Nhữ Lãm (1).jpg",
+      "author": "Phương Huy (thảo luận)",
+      "license": "Public domain",
+      "page": "https://commons.wikimedia.org/wiki/File:Canh_chua_c%C3%A1_l%C3%B3c_%E1%BB%9F_Th%E1%BB%A7y_Tr%C3%BAc_Qu%C3%A1n,_%C4%91%C6%B0%E1%BB%9Dng_Nguy%E1%BB%85n_Nh%E1%BB%AF_L%C3%A3m_(1).jpg",
+      "match": "similar"
+    }
+  },
+  "samlor-proher": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Khmer_food_cuisine_Cambodian_soup.jpg?width=800",
+    "credit": {
+      "title": "File:Khmer food cuisine Cambodian soup.jpg",
+      "author": "MoonsMoon",
+      "license": "CC BY 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Khmer_food_cuisine_Cambodian_soup.jpg",
+      "match": "exact"
+    },
+    "position": "centre"
+  },
+  "kuy-teav-sngout": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Driedphnompenhnoodles.jpg?width=800",
+    "credit": {
+      "title": "File:Driedphnompenhnoodles.jpg",
+      "author": "Pwordisony",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Driedphnompenhnoodles.jpg",
+      "match": "exact"
+    }
+  },
+  "sach-chrouk-ko": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Vietnamese_thit_kho%2C_braised_pork_belly_and_boiled_eggs.jpg?width=800",
+    "credit": {
+      "title": "File:Vietnamese thit kho, braised pork belly and boiled eggs.jpg",
+      "author": "HungryHuy",
+      "license": "CC BY 2.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Vietnamese_thit_kho,_braised_pork_belly_and_boiled_eggs.jpg",
+      "match": "similar"
+    }
+  },
+  "cha-kroeung-sach-chrouk": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cha_kroeung.jpg?width=800",
+    "credit": {
+      "title": "File:Cha kroeung.jpg",
+      "author": "Thomas Wanhoff",
+      "license": "CC BY-SA 2.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Cha_kroeung.jpg",
+      "match": "exact"
+    }
+  },
+  "cha-khnhei-sach-moan": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kai_phat_khing.jpg?width=800",
+    "credit": {
+      "title": "File:Kai phat khing.jpg",
+      "author": "Takeaway",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Kai_phat_khing.jpg",
+      "match": "similar"
+    }
+  },
+  "khmer-omelet": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cambodian_salted_fish_and_ground_pork_omelette.jpg?width=800",
+    "credit": {
+      "title": "File:Cambodian salted fish and ground pork omelette.jpg",
+      "author": "Anilakeo",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Cambodian_salted_fish_and_ground_pork_omelette.jpg",
+      "match": "exact"
+    }
+  },
+  "nhoam-trayong-chaeur": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Thai_banana_blossom_salad_with_chicken.jpg?width=800",
+    "credit": {
+      "title": "File:Thai banana blossom salad with chicken.jpg",
+      "author": "Ser Amantio di Nicolao",
+      "license": "CC BY-SA 3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Thai_banana_blossom_salad_with_chicken.jpg",
+      "match": "similar"
+    }
+  },
+  "nom-krok": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/DFC_0023_Golden-brown_Thai_coconut_pancakes_khanom_krok_served_in_small_green_banana-leaf_cups_fresh_from_the_griddle.jpg?width=800",
+    "credit": {
+      "title": "File:DFC 0023 Golden-brown Thai coconut pancakes khanom krok served in small green banana-leaf cups fresh from the griddle.jpg",
+      "author": "PattayaPatrol",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:DFC_0023_Golden-brown_Thai_coconut_pancakes_khanom_krok_served_in_small_green_banana-leaf_cups_fresh_from_the_griddle.jpg",
+      "match": "similar"
+    }
+  },
+  "num-ansom": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Num_ansom.jpg?width=800",
+    "credit": {
+      "title": "File:Num ansom.jpg",
+      "author": "Engsamnang",
+      "license": "CC BY-SA 3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Num_ansom.jpg",
+      "match": "exact"
+    }
+  },
+  "pong-tea-koon": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Hotvitlon.jpg?width=800",
+    "credit": {
+      "title": "File:Hotvitlon.jpg",
+      "author": "Aterux at Vietnamese Wikipedia",
+      "license": "CC BY-SA 3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Hotvitlon.jpg",
+      "match": "similar"
+    }
+  },
+  "chek-chien": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cambodian_desserts_num_kom_num_kroch_chek_chien.jpg?width=800",
+    "credit": {
+      "title": "File:Cambodian desserts num kom num kroch chek chien.jpg",
+      "author": "MoonsMoon",
+      "license": "CC BY 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Cambodian_desserts_num_kom_num_kroch_chek_chien.jpg",
+      "match": "exact"
+    }
+  },
+  "poat-ang": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Grilled_Corn_%28Unsplash%29.jpg?width=800",
+    "credit": {
+      "title": "File:Grilled Corn (Unsplash).jpg",
+      "author": "Dragne Marius marius_dragne",
+      "license": "CC0",
+      "page": "https://commons.wikimedia.org/wiki/File:Grilled_Corn_(Unsplash).jpg",
+      "match": "similar"
+    }
+  },
+  "chek-ktis": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chek_ktis.jpg?width=800",
+    "credit": {
+      "title": "File:Chek ktis.jpg",
+      "author": "Marie",
+      "license": "CC BY-SA 2.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Chek_ktis.jpg",
+      "match": "exact"
+    }
+  },
+  "bai-damnaub-svay": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Mango_sticky_rice.jpg?width=800",
+    "credit": {
+      "title": "File:Mango sticky rice.jpg",
+      "author": "Muzirian",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Mango_sticky_rice.jpg",
+      "match": "similar"
+    }
+  },
+  "kafe-tuk-doh-ko": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/C%C3%80_PH%C3%8A_S%E1%BB%AEA_PHA_PHIN.jpg?width=800",
+    "credit": {
+      "title": "File:CÀ PHÊ SỮA PHA PHIN.jpg",
+      "author": "Souradeep.Dasgupta",
+      "license": "CC BY 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:C%C3%80_PH%C3%8A_S%E1%BB%AEA_PHA_PHIN.jpg",
+      "match": "similar"
+    }
+  },
+  "tuk-oumpov": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Sugar_cane_juice_in_Phnom_Penh_4.jpg?width=800",
+    "credit": {
+      "title": "File:Sugar cane juice in Phnom Penh 4.jpg",
+      "author": "Mx. Granger",
+      "license": "CC0",
+      "page": "https://commons.wikimedia.org/wiki/File:Sugar_cane_juice_in_Phnom_Penh_4.jpg",
+      "match": "exact"
+    }
+  },
+  "tuk-a-lok": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Mango_Shake_2.jpg?width=800",
+    "credit": {
+      "title": "File:Mango Shake 2.jpg",
+      "author": "MarvinBikolano",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Mango_Shake_2.jpg",
+      "match": "similar"
+    }
+  },
+  "tuk-dong": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Coconut_Drink%2C_Pangandaran.JPG?width=800",
+    "credit": {
+      "title": "File:Coconut Drink, Pangandaran.JPG",
+      "author": "Crisco 1492",
+      "license": "CC BY-SA 3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Coconut_Drink,_Pangandaran.JPG",
+      "match": "similar"
+    }
+  },
+  "tuk-santek": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Soy_milk.jpg?width=800",
+    "credit": {
+      "title": "File:Soy milk.jpg",
+      "author": "LinasD",
+      "license": "CC BY-SA 3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Soy_milk.jpg",
+      "match": "similar"
+    }
+  },
+  "tuk-krouch-chhma": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Nimbu_pani.JPG?width=800",
+    "credit": {
+      "title": "File:Nimbu pani.JPG",
+      "author": "Archana Joshi",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Nimbu_pani.JPG",
+      "match": "similar"
+    }
+  },
+  "num-pang-sach": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cambodian_sandwich.jpg?width=800",
+    "credit": {
+      "title": "File:Cambodian sandwich.jpg",
+      "author": "stu_spivack",
+      "license": "CC BY-SA 2.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Cambodian_sandwich.jpg",
+      "match": "exact"
+    }
+  },
+  "bobor-sach-moan": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken_congee_at_Psar_Chaa_Market_in_Siem_Reap%2C_Cambodia.jpg?width=800",
+    "credit": {
+      "title": "File:Chicken congee at Psar Chaa Market in Siem Reap, Cambodia.jpg",
+      "author": "Matt Stabile",
+      "license": "CC BY 2.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Chicken_congee_at_Psar_Chaa_Market_in_Siem_Reap,_Cambodia.jpg",
+      "match": "exact"
+    }
+  },
+  "bobor-trey": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fish_vegertable_congee.jpg?width=800",
+    "credit": {
+      "title": "File:Fish vegertable congee.jpg",
+      "author": "Peachyeung316",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Fish_vegertable_congee.jpg",
+      "match": "similar"
+    }
+  },
+  "plain-rice-noodles": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/A_Rice_Noodles_on_the_Castle_Peak_Kitchen_at_Tuen_Mun.jpg?width=800",
+    "credit": {
+      "title": "File:A Rice Noodles on the Castle Peak Kitchen at Tuen Mun.jpg",
+      "author": "Peachyeung316",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:A_Rice_Noodles_on_the_Castle_Peak_Kitchen_at_Tuen_Mun.jpg",
+      "match": "similar"
+    }
+  },
+  "green-mango": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Green_mango_2.jpg?width=800",
+    "credit": {
+      "title": "File:Green mango 2.jpg",
+      "author": "GTSPACE",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Green_mango_2.jpg",
+      "match": "similar"
+    }
+  },
+  "bobor-skor-tnaot": {
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Sakhu_thua_dam.jpg?width=800",
+    "credit": {
+      "title": "File:Sakhu thua dam.jpg",
+      "author": "Takeaway",
+      "license": "CC BY-SA 4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Sakhu_thua_dam.jpg",
+      "match": "similar"
+    }
+  }
+}

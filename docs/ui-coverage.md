@@ -12,7 +12,7 @@ Paths are relative to `/api/v1`. "public" means no access token is needed.
 |---|---|---|---|
 | 1 | Welcome & splash | Shows the EN language switch. "Sign in" goes to login. | `GET /onboarding/options` (public, lists `locales`), `POST /auth/login`, `POST /auth/oauth/{apple,google}` |
 | 2 | Survey 1: Choose your sex | Male / Female / Other | codes from `GET /onboarding/options` |
-| 3 | Survey 2: Workouts per week | 0 - 2, 3 - 5, 6+ (each has a description line) | options include `description` |
+| 3 | Survey 2: How often do you exercise? | Sedentary, Light, Moderate, Heavy, Athlete (each has a description line) | options include `description` |
 | 4 | Survey 3: Referral source | 8 sources | options |
 | 5 | Survey 5: Height (ft, in / cm) | Converts to cm | `heightCm` + `heightUnitPref` |
 | 6 | Survey 6: Weight (lbs / kg, 0.1) | Converts to kg | `weightKg` (rounded to 0.1) + `weightUnitPref` |
@@ -40,6 +40,7 @@ funnel needs no server session.
 | 3 - Scan viewfinder: **Scan Food** | `POST /meals/analyze` (multipart, `source=camera`) |
 | 3 - Scan viewfinder: barcode | `POST /meals/barcode` (404 `PRODUCT_NOT_FOUND` -> fall back to manual) |
 | 3 - Scan viewfinder: gallery image | `POST /meals/analyze` (`source=gallery`) |
+| 3 - Scan viewfinder: **Foods** (choose a food instead of scanning) | `GET /foods`, then `POST /meals/from-food` |
 | 3 - Scan viewfinder: 4th icon (crossed pencil) | `POST /meals` (manual values, or `description` for an AI text estimate). **Assumption, see below.** |
 | 3 - Flash, help (?) | client only |
 | 4 - "Analyzing food..." card, 8% ring, "We'll notify you when done!" | the meal is in `GET /dashboard/daily` with `status`, `progress`, a thumbnail; push on completion; device token via `POST /me/devices` |
@@ -67,7 +68,7 @@ funnel needs no server session.
 
 | Finding | What was done |
 |---|---|
-| Each workouts option has a second line ("Workouts now and then", "A few workouts per week", "Dedicated athlete") | `GET /onboarding/options` returns a `description` for workouts |
+| Each exercise option has a second line ("1-2 days per week", "3-5 days per week" and so on) | `GET /onboarding/options` returns a `description` for the exercise levels |
 | Exact labels differ from the spec's short forms: "Tik Tok", "Lose Weight", "Gain Weight", "Whole-food focus" | Options return the labels as shown in the design, and a stable `code` |
 | The welcome screen has a language switch | `locales` in options (from `SUPPORTED_LOCALES`), `PATCH /me/preferences` |
 | The pencil edits on screen 16 happen **before** the user has an account | Plan-preview and options return `limits` so the client can validate while editing. The server clamps `acceptedGoal` again at sign-up |

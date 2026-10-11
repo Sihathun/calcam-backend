@@ -2,10 +2,9 @@ import { z } from 'zod';
 
 /**
  * Wire enums shared by request schemas, the plan engine and the options endpoint.
- * Values match the Prisma enums (workoutsPerWeek is converted in lib/mappers.ts).
+ * Values match the Prisma enums.
  */
 export const SEX = ['male', 'female', 'other'] as const;
-export const WORKOUTS_PER_WEEK = ['0-2', '3-5', '6+'] as const;
 export const GOALS = ['lose', 'maintain', 'gain'] as const;
 export const DIETS = [
   'balanced',
@@ -37,15 +36,17 @@ export const REFERRAL_SOURCES = [
 ] as const;
 export const HEIGHT_UNITS = ['ft_in', 'cm'] as const;
 export const WEIGHT_UNITS = ['kg', 'lbs'] as const;
-export const ACTIVITY_LEVELS = ['light', 'moderate', 'active'] as const;
+/** How often the user exercises. Also the wire values of `workoutsPerWeek`, whose multipliers follow tdeecalculator.net. */
+export const ACTIVITY_LEVELS = ['sedentary', 'light', 'moderate', 'heavy', 'athlete'] as const;
+export const WORKOUTS_PER_WEEK = ACTIVITY_LEVELS;
 export const GOAL_SOURCES = ['calculated', 'user_edited'] as const;
-export const MEAL_SOURCES = ['photo', 'barcode', 'manual', 'text'] as const;
+export const MEAL_SOURCES = ['photo', 'barcode', 'manual', 'text', 'catalog'] as const;
 export const MEAL_STATUSES = ['queued', 'analyzing', 'completed', 'failed'] as const;
 export const DEVICE_PLATFORMS = ['ios', 'android'] as const;
 export const MEAL_ERROR_CODES = ['NOT_FOOD', 'LOW_CONFIDENCE', 'PROVIDER_ERROR'] as const;
 
 export type Sex = (typeof SEX)[number];
-export type WorkoutsPerWeek = (typeof WORKOUTS_PER_WEEK)[number];
+export type WorkoutsPerWeek = ActivityLevel;
 export type GoalType = (typeof GOALS)[number];
 export type Diet = (typeof DIETS)[number];
 export type Accomplishment = (typeof ACCOMPLISHMENTS)[number];

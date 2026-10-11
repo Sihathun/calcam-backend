@@ -5,9 +5,12 @@ import type { MealComponentDto, MealDetail, MealSummary } from './meals.schemas'
 
 type MealErrorCode = NonNullable<MealSummary['errorCode']>;
 
-export function createMealMapper(storage: ObjectStorage, prisma: PrismaClient) {
-  const thumb = async (m: Meal) => (m.thumbKey ? storage.signedUrl(m.thumbKey) : (m.externalImageUrl ?? null));
-  const image = async (m: Meal) => (m.imageKey ? storage.signedUrl(m.imageKey) : (m.externalImageUrl ?? null));
+export function createMealMapper(storage: ObjectStorage, prisma: PrismaClient, publicBaseUrl: string) {
+  /** A stored path like "/food-photos/bai-cha.webp" is one of our own files; anything else is a full URL. */
+  const external = (m: Meal) =>
+    m.externalImageUrl?.startsWith('/') ? `${publicBaseUrl}${m.externalImageUrl}` : (m.externalImageUrl ?? null);
+  const thumb = async (m: Meal) => (m.thumbKey ? storage.signedUrl(m.thumbKey) : external(m));
+  const image = async (m: Meal) => (m.imageKey ? storage.signedUrl(m.imageKey) : external(m));
 
   return {
     async summary(m: Meal): Promise<MealSummary> {

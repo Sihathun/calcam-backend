@@ -4,9 +4,11 @@ import { authRoute, reply, type RouteDef } from '../../lib/http/route';
 import { resolveZone } from '../../lib/time';
 import {
   analyzeFieldsSchema,
+  analyzeQuerySchema,
   barcodeBodySchema,
   createMealBodySchema,
   fixBodySchema,
+  fromFoodBodySchema,
   listQuerySchema,
   mealEnvelopeSchema,
   mealListSchema,
@@ -24,21 +26,27 @@ export function mealsRoutes(svc: MealsService): RouteDef[] {
       tags: [TAG],
       summary: 'Upload a food photo for AI analysis',
       description:
-        'Used for both camera and gallery photos (`source`). The file type is checked by magic bytes (JPEG, PNG, WebP, HEIC; max 10 MB). The image is resized to 1280 px, stripped of EXIF and stored privately. The meal is created immediately with `status=queued`; poll GET /meals/{id} while it is `queued` or `analyzing`. A push notification is sent on completion. Send an `Idempotency-Key` header to make retries safe.',
+        'Used for both camera and gallery photos (`source`). The file type is checked by magic bytes (JPEG, PNG, WebP, HEIC; max 10 MB). The image is resized to 1280 px, stripped of EXIF and stored privately. The meal is created immediately with `status=queued` and analyzed at once. With `wait` (seconds, field or query, at most 25) the request waits for the result and answers 200 with the finished meal (`completed` or `failed`); otherwise, or when the time runs out, it answers 202 and you poll GET /meals/{id} while it is `queued` or `analyzing`. A push notification is sent on completion. Send an `Idempotency-Key` header to make retries safe.',
       limiter: 'analyze',
       multipart: { fileField: 'image', fileDescription: 'JPEG, PNG, WebP or HEIC photo, up to 10 MB' },
       body: analyzeFieldsSchema,
+      query: analyzeQuerySchema,
       responses: {
+        200: { description: 'Finished within `wait` (completed or failed).', schema: mealEnvelopeSchema },
         202: { description: 'Accepted. The meal is queued.', schema: mealEnvelopeSchema },
         413: { description: 'FILE_TOO_LARGE' },
         415: { description: 'UNSUPPORTED_MEDIA_TYPE' },
         422: { description: 'INVALID_IMAGE' },
         503: { description: 'QUEUE_UNAVAILABLE' },
       },
-      handler: async ({ req, user, body, file }) => {
+      handler: async ({ req, user, body, query, file }) => {
         const key = req.header('idempotency-key')?.trim();
-        const meal = await svc.analyzeImage(user, { file, ...body, idempotencyKey: key || undefined });
-        return reply(202, { meal });
+        const { wait: fieldWait, ...fields } = body;
+        const meal = await svc.analyzeImage(user, { file, ...fields, idempotencyKey: key || undefined });
+        const wait = fieldWait ?? query.wait ?? 0;
+        if (wait <= 0) return reply(202, { meal });
+        const result = await svc.waitForResult(user, meal.id, wait);
+        return reply(result.settled ? 200 : 202, { meal: result.meal });
       },
     }),
 
@@ -78,6 +86,21 @@ export function mealsRoutes(svc: MealsService): RouteDef[] {
         const m = body as Required<Pick<typeof body, 'name' | 'calories' | 'proteinG' | 'carbsG' | 'fatG'>> & typeof body;
         return reply(201, { meal: await svc.createManual(user, m) });
       },
+    }),
+
+    authRoute({
+      method: 'post',
+      path: '/meals/from-food',
+      tags: [TAG],
+      summary: 'Log a food chosen from the food list',
+      description:
+        'Creates a completed meal from one catalog food (see GET /foods) in a single call: no photo and no AI. The values are the food\'s for one standard serving, or the user\'s own corrected values for it; `quantity` (0.25 to 20) scales them like on any meal. Editing the meal later saves the user\'s own values for that food. Answers 404 FOOD_NOT_FOUND for an unknown slug.',
+      body: fromFoodBodySchema,
+      responses: {
+        201: { description: 'Meal created', schema: mealEnvelopeSchema },
+        404: { description: 'FOOD_NOT_FOUND' },
+      },
+      handler: async ({ user, body }) => ({ meal: await svc.fromFood(user, body) }),
     }),
 
     authRoute({

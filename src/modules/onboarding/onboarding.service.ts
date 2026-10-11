@@ -16,7 +16,6 @@ import {
   type WorkoutsPerWeek,
 } from '../../lib/enums';
 import { loadMe } from '../../lib/me';
-import { workoutsToDb } from '../../lib/mappers';
 import { calculatePlan, clampGoal, type PlanInput, type PlanResult } from '../../lib/plan-engine';
 import type { GoalSourceType } from '../../lib/enums';
 import type { OnboardingPayload, PlanInputPayload } from './onboarding.schemas';
@@ -24,9 +23,11 @@ import type { OnboardingPayload, PlanInputPayload } from './onboarding.schemas';
 // English display labels copied from the design mock-ups. The client localises them by code.
 const SEX_LABELS: Record<Sex, string> = { male: 'Male', female: 'Female', other: 'Other' };
 const WORKOUT_LABELS: Record<WorkoutsPerWeek, { label: string; description: string }> = {
-  '0-2': { label: '0 - 2', description: 'Workouts now and then' },
-  '3-5': { label: '3 - 5', description: 'A few workouts per week' },
-  '6+': { label: '6+', description: 'Dedicated athlete' },
+  sedentary: { label: 'Sedentary', description: 'Office job, little or no exercise' },
+  light: { label: 'Light exercise', description: '1-2 days per week' },
+  moderate: { label: 'Moderate exercise', description: '3-5 days per week' },
+  heavy: { label: 'Heavy exercise', description: '6-7 days per week' },
+  athlete: { label: 'Athlete', description: 'Twice per day' },
 };
 const REFERRAL_LABELS: Record<ReferralSource, string> = {
   instagram: 'Instagram',
@@ -157,7 +158,7 @@ export function createOnboardingService(deps: AppDeps) {
           heightCm: p.heightCm,
           heightUnitPref: p.heightUnitPref,
           weightUnitPref: p.weightUnitPref,
-          workoutsPerWeek: workoutsToDb(p.workoutsPerWeek),
+          workoutsPerWeek: p.workoutsPerWeek,
           activityLevel: plan.activityLevel,
           goal: p.goal,
           targetWeightKg: p.goal === 'maintain' ? null : (p.targetWeightKg ?? null),

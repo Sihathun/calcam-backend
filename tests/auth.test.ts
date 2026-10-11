@@ -253,7 +253,7 @@ describe('rate limiting', () => {
 
   it('limits plan-preview per IP', async () => {
     const limited = createTestContext({ env: { RATE_LIMIT_PLAN_PREVIEW_PER_MIN: '2' } });
-    const body = { sex: 'male', birthDate: '1990-01-01', heightCm: 180, weightKg: 80, workoutsPerWeek: '3-5', goal: 'maintain', diet: 'balanced' };
+    const body = { sex: 'male', birthDate: '1990-01-01', heightCm: 180, weightKg: 80, workoutsPerWeek: 'moderate', goal: 'maintain', diet: 'balanced' };
     const statuses = [];
     for (let i = 0; i < 3; i++) statuses.push((await limited.http.post(`${api}/onboarding/plan-preview`).send(body)).status);
     expect(statuses).toEqual([200, 200, 429]);

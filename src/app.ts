@@ -7,6 +7,7 @@ import swaggerUi from 'swagger-ui-express';
 import type { AppDeps } from './deps';
 import { mountRoutes, type AuthUser } from './lib/http/route';
 import { createMetrics } from './lib/metrics';
+import { FOOD_PHOTO_DIR, FOOD_PHOTO_ROUTE } from './lib/food-photos';
 import { FsStorage } from './lib/storage/fs';
 import { createAuthenticate } from './middleware/authenticate';
 import { createErrorHandler, notFoundHandler } from './middleware/error-handler';
@@ -46,8 +47,10 @@ export function createApp(deps: AppDeps): Express {
       contentSecurityPolicy: config.isProd ? undefined : { directives: { 'upgrade-insecure-requests': null } },
     }),
   );
-  // Mobile clients send no Origin header, so CORS only matters for web tooling. Empty allowlist = no cross-origin access.
-  app.use(cors({ origin: config.corsOrigins.length ? config.corsOrigins : false }));
+  // Mobile clients send no Origin header, so CORS only matters for web clients. Empty allowlist = no cross-origin access.
+  // maxAge lets the browser reuse a preflight answer for 10 minutes; without it Chrome asks again (OPTIONS) every
+  // 5 seconds, e.g. before every poll of a meal that is still being analyzed.
+  app.use(cors({ origin: config.corsOrigins.length ? config.corsOrigins : false, maxAge: 600 }));
 
   const metrics = config.metricsEnabled ? createMetrics() : undefined;
   if (metrics) app.use(metrics.middleware);
@@ -69,6 +72,18 @@ export function createApp(deps: AppDeps): Express {
   const rootRouter = Router();
   mountRoutes(rootRouter, routes.filter((r) => r.root), mountOptions);
   app.use(rootRouter);
+
+  const photos = express.static(FOOD_PHOTO_DIR, { index: false, maxAge: '1d', extensions: [] });
+  // Photos of the catalog foods: public files, shown by web clients on another origin (hence cross-origin).
+  app.use(
+    FOOD_PHOTO_ROUTE,
+    (req, res, next) => {
+      // Only the photos: the folder also holds the source list, which is not for the public.
+      if (!/^\/[a-z0-9-]+\.webp$/.test(req.path)) return next();
+      res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+      photos(req, res, next);
+    },
+  );
 
   app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApi as swaggerUi.JsonObject, { customSiteTitle: `${config.appName} API` }));
 

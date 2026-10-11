@@ -26,17 +26,12 @@ enum WeightUnit {
   lbs
 }
 
-// Wire values are "0-2", "3-5" and "6+". Prisma identifiers cannot contain those characters.
-enum WorkoutsPerWeek {
-  W0_2    @map("0-2")
-  W3_5    @map("3-5")
-  W6_PLUS @map("6+")
-}
-
 enum ActivityLevel {
+  sedentary
   light
   moderate
-  active
+  heavy
+  athlete
 }
 
 enum Goal {
@@ -86,6 +81,8 @@ enum MealSource {
   barcode
   manual
   text
+  // Picked from the food list: one catalog dish, no photo and no AI.
+  catalog
 }
 
 enum MealStatus {
@@ -144,7 +141,7 @@ model Profile {
   heightCm              Float
   heightUnitPref        HeightUnit      @default(cm)
   weightUnitPref        WeightUnit      @default(kg)
-  workoutsPerWeek       WorkoutsPerWeek
+  workoutsPerWeek       ActivityLevel
   activityLevel         ActivityLevel
   goal                  Goal
   targetWeightKg        Float?

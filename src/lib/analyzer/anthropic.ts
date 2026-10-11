@@ -3,7 +3,7 @@ import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
 import type { Config } from '../../config/env';
 import { TransientError } from '../errors';
 import { ProviderError, type AnalyzerInput, type AnalyzerOutput, type MealAnalyzer } from './types';
-import { buildUserText, SYSTEM_PROMPT } from './prompts/meal-analysis.v2';
+import { buildUserText, SYSTEM_PROMPT } from './prompts/meal-analysis.v3';
 import { aiMealWireSchema } from './schema';
 
 export class AnthropicAnalyzer implements MealAnalyzer {

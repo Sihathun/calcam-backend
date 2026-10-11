@@ -1,5 +1,5 @@
 import { KCAL_PER_GRAM, type GoalLimits, type PlanConfig } from '../../config/plan';
-import type { ActivityLevel, Diet, GoalType, Sex, WorkoutsPerWeek } from '../enums';
+import type { ActivityLevel, Diet, GoalType, Sex } from '../enums';
 import { unprocessable } from '../errors';
 
 /**
@@ -13,7 +13,8 @@ export interface PlanInput {
   birthDate: string;
   heightCm: number;
   weightKg: number;
-  workoutsPerWeek: WorkoutsPerWeek;
+  /** How often the user exercises. Picks the TDEE activity multiplier. */
+  workoutsPerWeek: ActivityLevel;
   goal: GoalType;
   diet: Diet;
   targetWeightKg?: number | null;
@@ -64,10 +65,6 @@ export function calculateBmi(weightKg: number, heightCm: number): number {
 
 export function calculateBmr(sex: Sex, weightKg: number, heightCm: number, age: number, cfg: PlanConfig): number {
   return 10 * weightKg + 6.25 * heightCm - 5 * age + cfg.bmrOffset[sex];
-}
-
-export function activityFor(workouts: WorkoutsPerWeek, cfg: PlanConfig): ActivityLevel {
-  return cfg.workoutsToActivity[workouts];
 }
 
 export function effectiveTargetWeight(input: PlanInput): number | null {
@@ -131,7 +128,7 @@ export function calculatePlan(input: PlanInput, cfg: PlanConfig, now: Date = new
   }
 
   const bmr = calculateBmr(input.sex, input.weightKg, input.heightCm, age, cfg);
-  const activityLevel = activityFor(input.workoutsPerWeek, cfg);
+  const activityLevel = input.workoutsPerWeek;
   const tdee = bmr * cfg.activityMultiplier[activityLevel];
 
   let calories = Math.round(tdee * (1 + cfg.goalAdjustment[input.goal]));

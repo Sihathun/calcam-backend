@@ -242,17 +242,21 @@
                                 "workoutsPerWeek": {
                                   "type": "string",
                                   "enum": [
-                                    "0-2",
-                                    "3-5",
-                                    "6+"
+                                    "sedentary",
+                                    "light",
+                                    "moderate",
+                                    "heavy",
+                                    "athlete"
                                   ]
                                 },
                                 "activityLevel": {
                                   "type": "string",
                                   "enum": [
+                                    "sedentary",
                                     "light",
                                     "moderate",
-                                    "active"
+                                    "heavy",
+                                    "athlete"
                                   ]
                                 },
                                 "goal": {
@@ -597,9 +601,11 @@
                       "workoutsPerWeek": {
                         "type": "string",
                         "enum": [
-                          "0-2",
-                          "3-5",
-                          "6+"
+                          "sedentary",
+                          "light",
+                          "moderate",
+                          "heavy",
+                          "athlete"
                         ]
                       },
                       "goal": {
@@ -855,17 +861,21 @@
                                 "workoutsPerWeek": {
                                   "type": "string",
                                   "enum": [
-                                    "0-2",
-                                    "3-5",
-                                    "6+"
+                                    "sedentary",
+                                    "light",
+                                    "moderate",
+                                    "heavy",
+                                    "athlete"
                                   ]
                                 },
                                 "activityLevel": {
                                   "type": "string",
                                   "enum": [
+                                    "sedentary",
                                     "light",
                                     "moderate",
-                                    "active"
+                                    "heavy",
+                                    "athlete"
                                   ]
                                 },
                                 "goal": {
@@ -1277,17 +1287,21 @@
                                 "workoutsPerWeek": {
                                   "type": "string",
                                   "enum": [
-                                    "0-2",
-                                    "3-5",
-                                    "6+"
+                                    "sedentary",
+                                    "light",
+                                    "moderate",
+                                    "heavy",
+                                    "athlete"
                                   ]
                                 },
                                 "activityLevel": {
                                   "type": "string",
                                   "enum": [
+                                    "sedentary",
                                     "light",
                                     "moderate",
-                                    "active"
+                                    "heavy",
+                                    "athlete"
                                   ]
                                 },
                                 "goal": {
@@ -1629,9 +1643,11 @@
                       "workoutsPerWeek": {
                         "type": "string",
                         "enum": [
-                          "0-2",
-                          "3-5",
-                          "6+"
+                          "sedentary",
+                          "light",
+                          "moderate",
+                          "heavy",
+                          "athlete"
                         ]
                       },
                       "goal": {
@@ -1886,17 +1902,21 @@
                                 "workoutsPerWeek": {
                                   "type": "string",
                                   "enum": [
-                                    "0-2",
-                                    "3-5",
-                                    "6+"
+                                    "sedentary",
+                                    "light",
+                                    "moderate",
+                                    "heavy",
+                                    "athlete"
                                   ]
                                 },
                                 "activityLevel": {
                                   "type": "string",
                                   "enum": [
+                                    "sedentary",
                                     "light",
                                     "moderate",
-                                    "active"
+                                    "heavy",
+                                    "athlete"
                                   ]
                                 },
                                 "goal": {
@@ -2238,9 +2258,11 @@
                       "workoutsPerWeek": {
                         "type": "string",
                         "enum": [
-                          "0-2",
-                          "3-5",
-                          "6+"
+                          "sedentary",
+                          "light",
+                          "moderate",
+                          "heavy",
+                          "athlete"
                         ]
                       },
                       "goal": {
@@ -2495,17 +2517,21 @@
                                 "workoutsPerWeek": {
                                   "type": "string",
                                   "enum": [
-                                    "0-2",
-                                    "3-5",
-                                    "6+"
+                                    "sedentary",
+                                    "light",
+                                    "moderate",
+                                    "heavy",
+                                    "athlete"
                                   ]
                                 },
                                 "activityLevel": {
                                   "type": "string",
                                   "enum": [
+                                    "sedentary",
                                     "light",
                                     "moderate",
-                                    "active"
+                                    "heavy",
+                                    "athlete"
                                   ]
                                 },
                                 "goal": {
@@ -3332,9 +3358,11 @@
                         "activityLevel": {
                           "type": "string",
                           "enum": [
+                            "sedentary",
                             "light",
                             "moderate",
-                            "active"
+                            "heavy",
+                            "athlete"
                           ]
                         },
                         "healthScoreEnabled": {
@@ -3365,9 +3393,11 @@
                         "activityLevel": {
                           "type": "string",
                           "enum": [
+                            "sedentary",
                             "light",
                             "moderate",
-                            "active"
+                            "heavy",
+                            "athlete"
                           ]
                         },
                         "goal": {
@@ -3574,9 +3604,11 @@
                   "workoutsPerWeek": {
                     "type": "string",
                     "enum": [
-                      "0-2",
-                      "3-5",
-                      "6+"
+                      "sedentary",
+                      "light",
+                      "moderate",
+                      "heavy",
+                      "athlete"
                     ]
                   },
                   "goal": {
@@ -3722,17 +3754,21 @@
                             "workoutsPerWeek": {
                               "type": "string",
                               "enum": [
-                                "0-2",
-                                "3-5",
-                                "6+"
+                                "sedentary",
+                                "light",
+                                "moderate",
+                                "heavy",
+                                "athlete"
                               ]
                             },
                             "activityLevel": {
                               "type": "string",
                               "enum": [
+                                "sedentary",
                                 "light",
                                 "moderate",
-                                "active"
+                                "heavy",
+                                "athlete"
                               ]
                             },
                             "goal": {
@@ -4033,9 +4069,11 @@
                   "workoutsPerWeek": {
                     "type": "string",
                     "enum": [
-                      "0-2",
-                      "3-5",
-                      "6+"
+                      "sedentary",
+                      "light",
+                      "moderate",
+                      "heavy",
+                      "athlete"
                     ]
                   },
                   "goal": {
@@ -4282,17 +4320,21 @@
                             "workoutsPerWeek": {
                               "type": "string",
                               "enum": [
-                                "0-2",
-                                "3-5",
-                                "6+"
+                                "sedentary",
+                                "light",
+                                "moderate",
+                                "heavy",
+                                "athlete"
                               ]
                             },
                             "activityLevel": {
                               "type": "string",
                               "enum": [
+                                "sedentary",
                                 "light",
                                 "moderate",
-                                "active"
+                                "heavy",
+                                "athlete"
                               ]
                             },
                             "goal": {
@@ -4647,17 +4689,21 @@
                         "workoutsPerWeek": {
                           "type": "string",
                           "enum": [
-                            "0-2",
-                            "3-5",
-                            "6+"
+                            "sedentary",
+                            "light",
+                            "moderate",
+                            "heavy",
+                            "athlete"
                           ]
                         },
                         "activityLevel": {
                           "type": "string",
                           "enum": [
+                            "sedentary",
                             "light",
                             "moderate",
-                            "active"
+                            "heavy",
+                            "athlete"
                           ]
                         },
                         "goal": {
@@ -4839,9 +4885,11 @@
                                     "activityLevel": {
                                       "type": "string",
                                       "enum": [
+                                        "sedentary",
                                         "light",
                                         "moderate",
-                                        "active"
+                                        "heavy",
+                                        "athlete"
                                       ]
                                     },
                                     "healthScoreEnabled": {
@@ -4872,9 +4920,11 @@
                                     "activityLevel": {
                                       "type": "string",
                                       "enum": [
+                                        "sedentary",
                                         "light",
                                         "moderate",
-                                        "active"
+                                        "heavy",
+                                        "athlete"
                                       ]
                                     },
                                     "goal": {
@@ -5134,9 +5184,11 @@
                   "workoutsPerWeek": {
                     "type": "string",
                     "enum": [
-                      "0-2",
-                      "3-5",
-                      "6+"
+                      "sedentary",
+                      "light",
+                      "moderate",
+                      "heavy",
+                      "athlete"
                     ]
                   },
                   "goal": {
@@ -5327,17 +5379,21 @@
                             "workoutsPerWeek": {
                               "type": "string",
                               "enum": [
-                                "0-2",
-                                "3-5",
-                                "6+"
+                                "sedentary",
+                                "light",
+                                "moderate",
+                                "heavy",
+                                "athlete"
                               ]
                             },
                             "activityLevel": {
                               "type": "string",
                               "enum": [
+                                "sedentary",
                                 "light",
                                 "moderate",
-                                "active"
+                                "heavy",
+                                "athlete"
                               ]
                             },
                             "goal": {
@@ -6140,9 +6196,11 @@
                                     "activityLevel": {
                                       "type": "string",
                                       "enum": [
+                                        "sedentary",
                                         "light",
                                         "moderate",
-                                        "active"
+                                        "heavy",
+                                        "athlete"
                                       ]
                                     },
                                     "healthScoreEnabled": {
@@ -6173,9 +6231,11 @@
                                     "activityLevel": {
                                       "type": "string",
                                       "enum": [
+                                        "sedentary",
                                         "light",
                                         "moderate",
-                                        "active"
+                                        "heavy",
+                                        "athlete"
                                       ]
                                     },
                                     "goal": {
@@ -6763,6 +6823,152 @@
         ]
       }
     },
+    "/api/v1/foods": {
+      "get": {
+        "summary": "The food list: every catalog food with its nutrition",
+        "tags": [
+          "Foods"
+        ],
+        "operationId": "get_foods",
+        "responses": {
+          "200": {
+            "description": "The catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "slug": {
+                            "type": "string"
+                          },
+                          "nameEn": {
+                            "type": "string"
+                          },
+                          "nameKm": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "aliases": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "category": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "servingDescription": {
+                            "type": "string"
+                          },
+                          "servingGrams": {
+                            "type": [
+                              "number",
+                              "null"
+                            ]
+                          },
+                          "calories": {
+                            "type": "integer",
+                            "minimum": -9007199254740991,
+                            "maximum": 9007199254740991
+                          },
+                          "proteinG": {
+                            "type": "number"
+                          },
+                          "carbsG": {
+                            "type": "number"
+                          },
+                          "fatG": {
+                            "type": "number"
+                          },
+                          "healthScore": {
+                            "type": "integer",
+                            "minimum": -9007199254740991,
+                            "maximum": 9007199254740991
+                          },
+                          "photoUrl": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "personal": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "slug",
+                          "nameEn",
+                          "nameKm",
+                          "aliases",
+                          "category",
+                          "servingDescription",
+                          "servingGrams",
+                          "calories",
+                          "proteinG",
+                          "carbsG",
+                          "fatG",
+                          "healthScore",
+                          "photoUrl",
+                          "personal"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "recent": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "items",
+                    "recent"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, invalid or expired access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Powers the \"choose a food\" screen. Returns every reviewed catalog food (not the dishes the AI learned) with calories, protein, carbs and fat for one standard serving, and a photo URL when there is one. Where the user has corrected a food before, their own values are returned and `personal` is true. `recent` lists the slugs the user logged most recently. Log a food with POST /meals/from-food.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/api/v1/meals/analyze": {
       "post": {
         "summary": "Upload a food photo for AI analysis",
@@ -6770,7 +6976,347 @@
           "Meals"
         ],
         "operationId": "post_meals_analyze",
+        "parameters": [
+          {
+            "name": "wait",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 25
+            }
+          }
+        ],
         "responses": {
+          "200": {
+            "description": "Finished within `wait` (completed or failed).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meal": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                        },
+                        "name": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "nameKm": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "source": {
+                          "type": "string",
+                          "enum": [
+                            "photo",
+                            "barcode",
+                            "manual",
+                            "text",
+                            "catalog"
+                          ]
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "queued",
+                            "analyzing",
+                            "completed",
+                            "failed"
+                          ]
+                        },
+                        "progress": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "errorCode": {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "NOT_FOOD",
+                                "LOW_CONFIDENCE",
+                                "PROVIDER_ERROR"
+                              ]
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "reanalyzing": {
+                          "type": "boolean"
+                        },
+                        "imageUrl": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "thumbnailUrl": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "loggedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+                        },
+                        "quantity": {
+                          "type": "number"
+                        },
+                        "perServing": {
+                          "type": "object",
+                          "properties": {
+                            "calories": {
+                              "anyOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": -9007199254740991,
+                                  "maximum": 9007199254740991
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "proteinG": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            },
+                            "carbsG": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            },
+                            "fatG": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "calories",
+                            "proteinG",
+                            "carbsG",
+                            "fatG"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "totals": {
+                          "type": "object",
+                          "properties": {
+                            "calories": {
+                              "anyOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": -9007199254740991,
+                                  "maximum": 9007199254740991
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "proteinG": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            },
+                            "carbsG": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            },
+                            "fatG": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "calories",
+                            "proteinG",
+                            "carbsG",
+                            "fatG"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "healthScore": {
+                          "anyOf": [
+                            {
+                              "type": "integer",
+                              "minimum": -9007199254740991,
+                              "maximum": 9007199254740991
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "items": {
+                          "anyOf": [
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "portion": {
+                                    "type": "string"
+                                  },
+                                  "calories": {
+                                    "type": "number"
+                                  },
+                                  "proteinG": {
+                                    "type": "number"
+                                  },
+                                  "carbsG": {
+                                    "type": "number"
+                                  },
+                                  "fatG": {
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "name",
+                                  "portion",
+                                  "calories",
+                                  "proteinG",
+                                  "carbsG",
+                                  "fatG"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "components": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "dishSlug": {
+                                "type": "string"
+                              },
+                              "nameEn": {
+                                "type": "string"
+                              },
+                              "nameKm": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "portion": {
+                                "type": "number"
+                              },
+                              "calories": {
+                                "type": "integer",
+                                "minimum": -9007199254740991,
+                                "maximum": 9007199254740991
+                              },
+                              "proteinG": {
+                                "type": "number"
+                              },
+                              "carbsG": {
+                                "type": "number"
+                              },
+                              "fatG": {
+                                "type": "number"
+                              },
+                              "valueSource": {
+                                "type": "string",
+                                "enum": [
+                                  "catalog",
+                                  "learned",
+                                  "personal"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "dishSlug",
+                              "nameEn",
+                              "nameKm",
+                              "portion",
+                              "calories",
+                              "proteinG",
+                              "carbsG",
+                              "fatG",
+                              "valueSource"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "barcode": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "nameKm",
+                        "source",
+                        "status",
+                        "progress",
+                        "errorCode",
+                        "reanalyzing",
+                        "imageUrl",
+                        "thumbnailUrl",
+                        "loggedAt",
+                        "createdAt",
+                        "quantity",
+                        "perServing",
+                        "totals",
+                        "healthScore",
+                        "items",
+                        "components",
+                        "barcode"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "meal"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
           "202": {
             "description": "Accepted. The meal is queued.",
             "content": {
@@ -6804,7 +7350,8 @@
                             "photo",
                             "barcode",
                             "manual",
-                            "text"
+                            "text",
+                            "catalog"
                           ]
                         },
                         "status": {
@@ -7169,7 +7716,7 @@
             }
           }
         },
-        "description": "Used for both camera and gallery photos (`source`). The file type is checked by magic bytes (JPEG, PNG, WebP, HEIC; max 10 MB). The image is resized to 1280 px, stripped of EXIF and stored privately. The meal is created immediately with `status=queued`; poll GET /meals/{id} while it is `queued` or `analyzing`. A push notification is sent on completion. Send an `Idempotency-Key` header to make retries safe.",
+        "description": "Used for both camera and gallery photos (`source`). The file type is checked by magic bytes (JPEG, PNG, WebP, HEIC; max 10 MB). The image is resized to 1280 px, stripped of EXIF and stored privately. The meal is created immediately with `status=queued` and analyzed at once. With `wait` (seconds, field or query, at most 25) the request waits for the result and answers 200 with the finished meal (`completed` or `failed`); otherwise, or when the time runs out, it answers 202 and you poll GET /meals/{id} while it is `queued` or `analyzing`. A push notification is sent on completion. Send an `Idempotency-Key` header to make retries safe.",
         "security": [
           {
             "bearerAuth": []
@@ -7197,6 +7744,12 @@
                   "hint": {
                     "type": "string",
                     "maxLength": 300
+                  },
+                  "wait": {
+                    "description": "Wait up to this many seconds for the result (0 to 25). Answers 200 when it is ready.",
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 25
                   },
                   "image": {
                     "type": "string",
@@ -7254,7 +7807,8 @@
                             "photo",
                             "barcode",
                             "manual",
-                            "text"
+                            "text",
+                            "catalog"
                           ]
                         },
                         "status": {
@@ -7677,7 +8231,8 @@
                             "photo",
                             "barcode",
                             "manual",
-                            "text"
+                            "text",
+                            "catalog"
                           ]
                         },
                         "status": {
@@ -8004,7 +8559,8 @@
                             "photo",
                             "barcode",
                             "manual",
-                            "text"
+                            "text",
+                            "catalog"
                           ]
                         },
                         "status": {
@@ -8473,7 +9029,8 @@
                               "photo",
                               "barcode",
                               "manual",
-                              "text"
+                              "text",
+                              "catalog"
                             ]
                           },
                           "status": {
@@ -8644,6 +9201,421 @@
         ]
       }
     },
+    "/api/v1/meals/from-food": {
+      "post": {
+        "summary": "Log a food chosen from the food list",
+        "tags": [
+          "Meals"
+        ],
+        "operationId": "post_meals_from_food",
+        "responses": {
+          "201": {
+            "description": "Meal created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meal": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                        },
+                        "name": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "nameKm": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "source": {
+                          "type": "string",
+                          "enum": [
+                            "photo",
+                            "barcode",
+                            "manual",
+                            "text",
+                            "catalog"
+                          ]
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "queued",
+                            "analyzing",
+                            "completed",
+                            "failed"
+                          ]
+                        },
+                        "progress": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        },
+                        "errorCode": {
+                          "anyOf": [
+                            {
+                              "type": "string",
+                              "enum": [
+                                "NOT_FOOD",
+                                "LOW_CONFIDENCE",
+                                "PROVIDER_ERROR"
+                              ]
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "reanalyzing": {
+                          "type": "boolean"
+                        },
+                        "imageUrl": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "thumbnailUrl": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "loggedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+                        },
+                        "quantity": {
+                          "type": "number"
+                        },
+                        "perServing": {
+                          "type": "object",
+                          "properties": {
+                            "calories": {
+                              "anyOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": -9007199254740991,
+                                  "maximum": 9007199254740991
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "proteinG": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            },
+                            "carbsG": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            },
+                            "fatG": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "calories",
+                            "proteinG",
+                            "carbsG",
+                            "fatG"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "totals": {
+                          "type": "object",
+                          "properties": {
+                            "calories": {
+                              "anyOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": -9007199254740991,
+                                  "maximum": 9007199254740991
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "proteinG": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            },
+                            "carbsG": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            },
+                            "fatG": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "calories",
+                            "proteinG",
+                            "carbsG",
+                            "fatG"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "healthScore": {
+                          "anyOf": [
+                            {
+                              "type": "integer",
+                              "minimum": -9007199254740991,
+                              "maximum": 9007199254740991
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "items": {
+                          "anyOf": [
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "portion": {
+                                    "type": "string"
+                                  },
+                                  "calories": {
+                                    "type": "number"
+                                  },
+                                  "proteinG": {
+                                    "type": "number"
+                                  },
+                                  "carbsG": {
+                                    "type": "number"
+                                  },
+                                  "fatG": {
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "name",
+                                  "portion",
+                                  "calories",
+                                  "proteinG",
+                                  "carbsG",
+                                  "fatG"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "components": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "dishSlug": {
+                                "type": "string"
+                              },
+                              "nameEn": {
+                                "type": "string"
+                              },
+                              "nameKm": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "portion": {
+                                "type": "number"
+                              },
+                              "calories": {
+                                "type": "integer",
+                                "minimum": -9007199254740991,
+                                "maximum": 9007199254740991
+                              },
+                              "proteinG": {
+                                "type": "number"
+                              },
+                              "carbsG": {
+                                "type": "number"
+                              },
+                              "fatG": {
+                                "type": "number"
+                              },
+                              "valueSource": {
+                                "type": "string",
+                                "enum": [
+                                  "catalog",
+                                  "learned",
+                                  "personal"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "dishSlug",
+                              "nameEn",
+                              "nameKm",
+                              "portion",
+                              "calories",
+                              "proteinG",
+                              "carbsG",
+                              "fatG",
+                              "valueSource"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "barcode": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "nameKm",
+                        "source",
+                        "status",
+                        "progress",
+                        "errorCode",
+                        "reanalyzing",
+                        "imageUrl",
+                        "thumbnailUrl",
+                        "loggedAt",
+                        "createdAt",
+                        "quantity",
+                        "perServing",
+                        "totals",
+                        "healthScore",
+                        "items",
+                        "components",
+                        "barcode"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "meal"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, invalid or expired access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "FOOD_NOT_FOUND",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Creates a completed meal from one catalog food (see GET /foods) in a single call: no photo and no AI. The values are the food's for one standard serving, or the user's own corrected values for it; `quantity` (0.25 to 20) scales them like on any meal. Editing the meal later saves the user's own values for that food. Answers 404 FOOD_NOT_FOUND for an unknown slug.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "dishSlug": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "quantity": {
+                    "type": "number",
+                    "minimum": 0.25,
+                    "maximum": 20
+                  },
+                  "loggedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                  }
+                },
+                "required": [
+                  "dishSlug"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/meals/{id}": {
       "get": {
         "summary": "Meal detail for the Nutrition screen",
@@ -8697,7 +9669,8 @@
                             "photo",
                             "barcode",
                             "manual",
-                            "text"
+                            "text",
+                            "catalog"
                           ]
                         },
                         "status": {
@@ -9091,7 +10064,8 @@
                             "photo",
                             "barcode",
                             "manual",
-                            "text"
+                            "text",
+                            "catalog"
                           ]
                         },
                         "status": {
@@ -9624,7 +10598,8 @@
                             "photo",
                             "barcode",
                             "manual",
-                            "text"
+                            "text",
+                            "catalog"
                           ]
                         },
                         "status": {
@@ -10151,7 +11126,8 @@
                               "photo",
                               "barcode",
                               "manual",
-                              "text"
+                              "text",
+                              "catalog"
                             ]
                           },
                           "status": {

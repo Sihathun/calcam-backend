@@ -5,6 +5,8 @@ export interface DishPromptEntry {
   nameKm: string | null;
   /** The standard serving the portion step is relative to. */
   serving: string;
+  /** A plain ingredient (rice noodles, peanuts), not a prepared dish: the prompt marks it "single food". */
+  ingredient?: boolean;
 }
 
 export interface AnalyzerInput {

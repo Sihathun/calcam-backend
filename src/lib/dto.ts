@@ -14,7 +14,6 @@ import {
   workoutsSchema,
 } from './enums';
 import { isRealCalendarDate } from './time';
-import { workoutsFromDb } from './mappers';
 import type { PlanResult } from './plan-engine';
 
 /** Shared request/response building blocks. */
@@ -170,7 +169,7 @@ export function toProfileDto(p: Profile, latestWeightKg: number | null): z.infer
     heightCm: p.heightCm,
     heightUnitPref: p.heightUnitPref,
     weightUnitPref: p.weightUnitPref,
-    workoutsPerWeek: workoutsFromDb(p.workoutsPerWeek),
+    workoutsPerWeek: p.workoutsPerWeek,
     activityLevel: p.activityLevel,
     goal: p.goal,
     targetWeightKg: p.goal === 'maintain' ? latestWeightKg : p.targetWeightKg,

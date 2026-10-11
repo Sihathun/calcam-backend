@@ -9,7 +9,7 @@ import { generate } from './export-openapi';
  */
 
 const ONBOARDING = {
-  sex: 'female', workoutsPerWeek: '0-2', referralSource: 'tiktok', heightCm: 167.6, weightKg: 54.0,
+  sex: 'female', workoutsPerWeek: 'light', referralSource: 'tiktok', heightCm: 167.6, weightKg: 54.0,
   birthDate: '2001-01-01', goal: 'maintain', targetWeightKg: null, triedOtherApps: true, worksWithProfessional: false,
   diet: 'balanced', accomplishment: 'eat_healthier', heightUnitPref: 'ft_in', weightUnitPref: 'kg', locale: 'en',
   timezone: 'Asia/Phnom_Penh', commitment: { committedAt: new Date().toISOString() },
@@ -26,10 +26,10 @@ const BODIES: Record<string, unknown> = {
   'POST /auth/password/forgot': { email: 'me@example.com' },
   'POST /auth/password/reset': { token: '<token from the email>', password: 'a brand new password' },
   'POST /onboarding/plan-preview': {
-    sex: 'female', birthDate: '2001-01-01', heightCm: 167.6, weightKg: 54, workoutsPerWeek: '0-2', goal: 'maintain', diet: 'balanced',
+    sex: 'female', birthDate: '2001-01-01', heightCm: 167.6, weightKg: 54, workoutsPerWeek: 'light', goal: 'maintain', diet: 'balanced',
   },
   'POST /onboarding/complete': ONBOARDING,
-  'PATCH /me/profile': { workoutsPerWeek: '3-5' },
+  'PATCH /me/profile': { workoutsPerWeek: 'moderate' },
   'PATCH /me/preferences': { timezone: 'Asia/Phnom_Penh', weightUnitPref: 'kg', notificationsEnabled: true },
   'PUT /me/goals': { calories: 2000, proteinG: 130 },
   'POST /me/weight-logs': { weightKg: 54.2 },

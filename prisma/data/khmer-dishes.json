@@ -2313,5 +2313,391 @@
         "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip"
       }
     ]
+  },
+  {
+    "slug": "plain-rice-noodles",
+    "nameEn": "Plain Rice Noodles (Kuy Teav Noodles)",
+    "nameKm": "គុយទាវ",
+    "aliases": [
+      "kuy teav",
+      "plain noodles",
+      "cooked rice noodles",
+      "rice noodles"
+    ],
+    "category": "ingredient",
+    "servingDescription": "1 cup cooked (about 175 g)",
+    "servingGrams": 175,
+    "calories": 191,
+    "proteinG": 3.1,
+    "carbsG": 43.8,
+    "fatG": 0.4,
+    "healthScore": 5,
+    "confidence": "medium",
+    "method": "Imported from khmer-foods-seed.csv: 109 kcal, 1.8 g protein, 25 g carbs, 0.2 g fat per 100 g, times the 175 g serving. SN1 - standard cooked rice noodle value. Note: \"kuy teav\" names both the noodle and the soup dish in Khmer - do not merge with the dish row below. Health score assigned by Calcam.",
+    "sources": [
+      {
+        "name": "khmer-foods-seed.csv (rice-noodles-cooked), confidence 0.8"
+      }
+    ]
+  },
+  {
+    "slug": "boiled-water-spinach",
+    "nameEn": "Boiled Water Spinach (Trakuon)",
+    "nameKm": "ត្រកួន",
+    "aliases": [
+      "trakuon",
+      "morning glory",
+      "water spinach",
+      "boiled morning glory"
+    ],
+    "category": "ingredient",
+    "servingDescription": "1 cup cooked (about 100 g)",
+    "servingGrams": 100,
+    "calories": 25,
+    "proteinG": 2.6,
+    "carbsG": 3.1,
+    "fatG": 0.3,
+    "healthScore": 9,
+    "confidence": "medium",
+    "method": "Imported from khmer-foods-seed.csv: 25 kcal, 2.6 g protein, 3.1 g carbs, 0.3 g fat per 100 g, times the 100 g serving. SN1 - standard cooked water spinach value Health score assigned by Calcam.",
+    "sources": [
+      {
+        "name": "khmer-foods-seed.csv (vegetable-water-spinach), confidence 0.75"
+      }
+    ]
+  },
+  {
+    "slug": "green-mango",
+    "nameEn": "Shredded Green Mango (Svay Khchei)",
+    "nameKm": "ស្វាយខ្ចី",
+    "aliases": [
+      "svay khchei",
+      "unripe mango",
+      "green mango",
+      "raw mango"
+    ],
+    "category": "ingredient",
+    "servingDescription": "1 cup shredded (about 110 g)",
+    "servingGrams": 110,
+    "calories": 66,
+    "proteinG": 0.9,
+    "carbsG": 16.5,
+    "fatG": 0.4,
+    "healthScore": 8,
+    "confidence": "medium",
+    "method": "Imported from khmer-foods-seed.csv: 60 kcal, 0.8 g protein, 15 g carbs, 0.4 g fat per 100 g, times the 110 g serving. SN1 - standard unripe mango value Health score assigned by Calcam.",
+    "sources": [
+      {
+        "name": "khmer-foods-seed.csv (fruit-green-mango), confidence 0.7"
+      }
+    ]
+  },
+  {
+    "slug": "green-papaya",
+    "nameEn": "Shredded Green Papaya (Lhong Khchei)",
+    "nameKm": "ល្ហុងខ្ចី",
+    "aliases": [
+      "lhong khchei",
+      "unripe papaya",
+      "green papaya",
+      "raw papaya"
+    ],
+    "category": "ingredient",
+    "servingDescription": "1 cup shredded (about 100 g)",
+    "servingGrams": 100,
+    "calories": 43,
+    "proteinG": 0.5,
+    "carbsG": 10.0,
+    "fatG": 0.1,
+    "healthScore": 9,
+    "confidence": "medium",
+    "method": "Imported from khmer-foods-seed.csv: 43 kcal, 0.5 g protein, 10 g carbs, 0.1 g fat per 100 g, times the 100 g serving. SN1 - standard green papaya value Health score assigned by Calcam.",
+    "sources": [
+      {
+        "name": "khmer-foods-seed.csv (fruit-green-papaya), confidence 0.75"
+      }
+    ]
+  },
+  {
+    "slug": "roasted-peanuts",
+    "nameEn": "Roasted Peanuts (Sandaek Dei Ang)",
+    "nameKm": "សណ្តែកដីអាំង",
+    "aliases": [
+      "sandaek dey ang",
+      "peanuts",
+      "groundnuts",
+      "roasted groundnuts"
+    ],
+    "category": "ingredient",
+    "servingDescription": "1 handful (about 30 g)",
+    "servingGrams": 30,
+    "calories": 171,
+    "proteinG": 7.5,
+    "carbsG": 6.0,
+    "fatG": 14.4,
+    "healthScore": 6,
+    "confidence": "medium",
+    "method": "Imported from khmer-foods-seed.csv: 570 kcal, 25 g protein, 20 g carbs, 48 g fat per 100 g, times the 30 g serving. SN1 - standard roasted peanut value Health score assigned by Calcam.",
+    "sources": [
+      {
+        "name": "khmer-foods-seed.csv (condiment-roasted-peanuts), confidence 0.85"
+      }
+    ]
+  },
+  {
+    "slug": "kuy-teav-sach-ko",
+    "nameEn": "Beef Noodle Soup (Kuy Teav Sach Ko)",
+    "nameKm": "គុយទាវសាច់គោ",
+    "aliases": [
+      "kuy teav sach ko",
+      "beef noodle soup",
+      "beef kuy teav"
+    ],
+    "category": "noodle_dish",
+    "servingDescription": "1 bowl (about 450 g)",
+    "servingGrams": 450,
+    "calories": 450,
+    "proteinG": 36.0,
+    "carbsG": 54.0,
+    "fatG": 12.6,
+    "healthScore": 6,
+    "confidence": "low",
+    "method": "Imported from khmer-foods-seed.csv: 100 kcal, 8 g protein, 12 g carbs, 2.8 g fat per 100 g, times the 450 g serving. SN2 - estimated from base ingredient composition (broth + noodles + beef) Health score assigned by Calcam. Flagged for native-speaker review.",
+    "sources": [
+      {
+        "name": "khmer-foods-seed.csv (dish-kuy-teav-sach-ko), confidence 0.45"
+      }
+    ]
+  },
+  {
+    "slug": "bobor-sach-chrouk",
+    "nameEn": "Pork Rice Porridge (Bobor Sach Chrouk)",
+    "nameKm": "បបរសាច់ជ្រូក",
+    "aliases": [
+      "bobor sach chrouk",
+      "pork porridge",
+      "pork congee",
+      "bobor pork"
+    ],
+    "category": "breakfast",
+    "servingDescription": "1 bowl (about 400 g)",
+    "servingGrams": 400,
+    "calories": 280,
+    "proteinG": 16.0,
+    "carbsG": 40.0,
+    "fatG": 7.2,
+    "healthScore": 7,
+    "confidence": "medium",
+    "method": "Imported from khmer-foods-seed.csv: 70 kcal, 4 g protein, 10 g carbs, 1.8 g fat per 100 g, times the 400 g serving. SN2 - rice porridge is water-heavy and calorie-dilute; estimated from rice + pork + broth composition Health score assigned by Calcam. Flagged for native-speaker review.",
+    "sources": [
+      {
+        "name": "khmer-foods-seed.csv (dish-bobor-sach-chrouk), confidence 0.5"
+      }
+    ]
+  },
+  {
+    "slug": "samlor-machu-kroeung",
+    "nameEn": "Sour Soup with Kroeung (Samlor Machu Kroeung)",
+    "nameKm": "សម្លម្ជូរគ្រឿង",
+    "aliases": [
+      "samlor machu kroeung",
+      "machu kroeung",
+      "sour kroeung soup"
+    ],
+    "category": "soup_curry",
+    "servingDescription": "1 bowl (about 350 g)",
+    "servingGrams": 350,
+    "calories": 158,
+    "proteinG": 15.8,
+    "carbsG": 14.0,
+    "fatG": 5.2,
+    "healthScore": 7,
+    "confidence": "low",
+    "method": "Imported from khmer-foods-seed.csv: 45 kcal, 4.5 g protein, 4 g carbs, 1.5 g fat per 100 g, times the 350 g serving. SN3 - light broth-based soup; estimated from ingredient composition Health score assigned by Calcam.",
+    "sources": [
+      {
+        "name": "khmer-foods-seed.csv (dish-samlor-machu-kroeung), confidence 0.4"
+      }
+    ]
+  },
+  {
+    "slug": "phlea-sach-ko",
+    "nameEn": "Beef Salad (Phlea Sach Ko)",
+    "nameKm": "ភ្លាសាច់គោ",
+    "aliases": [
+      "phlea sach ko",
+      "khmer beef salad",
+      "cambodian beef salad",
+      "phlea ko"
+    ],
+    "category": "salad",
+    "servingDescription": "1 plate (about 220 g)",
+    "servingGrams": 220,
+    "calories": 308,
+    "proteinG": 28.6,
+    "carbsG": 13.2,
+    "fatG": 16.5,
+    "healthScore": 7,
+    "confidence": "low",
+    "method": "Imported from khmer-foods-seed.csv: 140 kcal, 13 g protein, 6 g carbs, 7.5 g fat per 100 g, times the 220 g serving. SN3 - estimated from seared beef + herb + lime dressing composition Health score assigned by Calcam. Flagged for native-speaker review.",
+    "sources": [
+      {
+        "name": "khmer-foods-seed.csv (dish-phlea-sach-ko), confidence 0.4"
+      }
+    ]
+  },
+  {
+    "slug": "kari-sach-ko",
+    "nameEn": "Khmer Beef Curry (Kari Sach Ko)",
+    "nameKm": "ការីសាច់គោ",
+    "aliases": [
+      "kari sach ko",
+      "beef curry",
+      "cambodian beef curry"
+    ],
+    "category": "soup_curry",
+    "servingDescription": "1 bowl (about 350 g)",
+    "servingGrams": 350,
+    "calories": 578,
+    "proteinG": 38.5,
+    "carbsG": 24.5,
+    "fatG": 38.5,
+    "healthScore": 4,
+    "confidence": "low",
+    "method": "Imported from khmer-foods-seed.csv: 165 kcal, 11 g protein, 7 g carbs, 11 g fat per 100 g, times the 350 g serving. SN2 - estimated from beef + coconut milk + curry paste composition Health score assigned by Calcam. Flagged for native-speaker review.",
+    "sources": [
+      {
+        "name": "khmer-foods-seed.csv (dish-kari-sach-ko), confidence 0.45"
+      }
+    ]
+  },
+  {
+    "slug": "cha-kroeung-sach-ko",
+    "nameEn": "Stir-fried Beef with Kroeung (Cha Kroeung Sach Ko)",
+    "nameKm": "ឆាគ្រឿងសាច់គោ",
+    "aliases": [
+      "cha kroeung sach ko",
+      "beef kroeung stir fry",
+      "kroeung beef"
+    ],
+    "category": "stir_fry",
+    "servingDescription": "1 plate (about 250 g)",
+    "servingGrams": 250,
+    "calories": 475,
+    "proteinG": 37.5,
+    "carbsG": 15.0,
+    "fatG": 30.0,
+    "healthScore": 5,
+    "confidence": "low",
+    "method": "Imported from khmer-foods-seed.csv: 190 kcal, 15 g protein, 6 g carbs, 12 g fat per 100 g, times the 250 g serving. SN2 - estimated from beef + kroeung paste + oil composition Health score assigned by Calcam. Flagged for native-speaker review.",
+    "sources": [
+      {
+        "name": "khmer-foods-seed.csv (dish-cha-kroeung-sach-ko), confidence 0.45"
+      }
+    ]
+  },
+  {
+    "slug": "sach-ko-cha-khnhei",
+    "nameEn": "Stir-fried Beef with Ginger (Sach Ko Cha Khnhei)",
+    "nameKm": "សាច់គោឆាខ្ញី",
+    "aliases": [
+      "sach ko cha kchei",
+      "beef ginger stir fry",
+      "ginger beef",
+      "sach ko cha kchei"
+    ],
+    "category": "stir_fry",
+    "servingDescription": "1 plate (about 250 g)",
+    "servingGrams": 250,
+    "calories": 438,
+    "proteinG": 37.5,
+    "carbsG": 12.5,
+    "fatG": 27.5,
+    "healthScore": 6,
+    "confidence": "low",
+    "method": "Imported from khmer-foods-seed.csv: 175 kcal, 15 g protein, 5 g carbs, 11 g fat per 100 g, times the 250 g serving. SN2 - estimated from beef + ginger + oil composition Health score assigned by Calcam. Flagged for native-speaker review.",
+    "sources": [
+      {
+        "name": "khmer-foods-seed.csv (dish-sach-ko-cha-kchei), confidence 0.45"
+      }
+    ]
+  },
+  {
+    "slug": "cha-houy-teuk",
+    "nameEn": "Coconut Jelly Dessert (Cha Houy Teuk)",
+    "nameKm": "ចាហួយទឹក",
+    "aliases": [
+      "cha houy teuk",
+      "coconut jelly",
+      "grass jelly dessert",
+      "cha hoy teuk"
+    ],
+    "category": "dessert",
+    "servingDescription": "1 glass (about 200 g)",
+    "servingGrams": 200,
+    "calories": 280,
+    "proteinG": 3.0,
+    "carbsG": 44.0,
+    "fatG": 10.0,
+    "healthScore": 2,
+    "confidence": "low",
+    "method": "Imported from khmer-foods-seed.csv: 140 kcal, 1.5 g protein, 22 g carbs, 5 g fat per 100 g, times the 200 g serving. SN3 - estimated from jelly + coconut milk + sugar composition Health score assigned by Calcam. Flagged for native-speaker review.",
+    "sources": [
+      {
+        "name": "khmer-foods-seed.csv (dish-cha-houy-teuk), confidence 0.4"
+      }
+    ]
+  },
+  {
+    "slug": "num-kom",
+    "nameEn": "Palm Sugar Rice Dumplings (Num Kom)",
+    "nameKm": "នំគម",
+    "aliases": [
+      "num kom",
+      "palm sugar dumplings",
+      "nom kom",
+      "rice dumplings"
+    ],
+    "category": "dessert",
+    "servingDescription": "1 piece (about 60 g)",
+    "servingGrams": 60,
+    "calories": 126,
+    "proteinG": 1.8,
+    "carbsG": 24.0,
+    "fatG": 3.0,
+    "healthScore": 2,
+    "confidence": "low",
+    "method": "Imported from khmer-foods-seed.csv: 210 kcal, 3 g protein, 40 g carbs, 5 g fat per 100 g, times the 60 g serving. SN3 - lower confidence on exact name/recipe variant; flag for careful native-speaker verification of both name and composition Health score assigned by Calcam. Flagged for native-speaker review.",
+    "sources": [
+      {
+        "name": "khmer-foods-seed.csv (dish-num-kom), confidence 0.3"
+      }
+    ]
+  },
+  {
+    "slug": "bobor-skor-tnaot",
+    "nameEn": "Tapioca Palm Sugar Porridge (Bobor Skor Tnaot)",
+    "nameKm": "បបរស្ករត្នោត",
+    "aliases": [
+      "bobor skor tnaot",
+      "tapioca porridge",
+      "sweet tapioca porridge",
+      "palm sugar porridge"
+    ],
+    "category": "dessert",
+    "servingDescription": "1 bowl (about 250 g)",
+    "servingGrams": 250,
+    "calories": 325,
+    "proteinG": 5.0,
+    "carbsG": 60.0,
+    "fatG": 8.8,
+    "healthScore": 2,
+    "confidence": "low",
+    "method": "Imported from khmer-foods-seed.csv: 130 kcal, 2 g protein, 24 g carbs, 3.5 g fat per 100 g, times the 250 g serving. SN3 - estimated from tapioca + coconut milk + palm sugar composition Health score assigned by Calcam. Flagged for native-speaker review.",
+    "sources": [
+      {
+        "name": "khmer-foods-seed.csv (dish-bobor-skor-tnaot), confidence 0.35"
+      }
+    ]
   }
 ]

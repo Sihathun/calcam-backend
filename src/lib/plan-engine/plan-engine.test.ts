@@ -10,7 +10,7 @@ const NOW = new Date('2026-10-06T12:00:00Z');
 /**
  * Expected values were derived with plain arithmetic, independently of the engine:
  *   BMR  = 10*kg + 6.25*cm - 5*age + (male 5 | female -161 | other -78)
- *   TDEE = BMR * (1.375 | 1.55 | 1.725)
+ *   TDEE = BMR * (1.2 | 1.375 | 1.55 | 1.725 | 1.9), the tdeecalculator.net multipliers
  *   kcal = round(TDEE * (0.85 | 1 | 1.10)), raised to the floor for "lose" (1500 male, 1200 otherwise)
  *   protein = round(kcal*p/4), fat = round(kcal*f/9), carbs = round((kcal - 4*protein - 9*fat)/4)
  */
@@ -21,63 +21,73 @@ const fixtures: {
 }[] = [
   {
     name: 'young woman, light activity, maintain, balanced (the design mock-up profile)',
-    input: { sex: 'female', birthDate: '2001-01-01', heightCm: 167.6, weightKg: 54, workoutsPerWeek: '0-2', goal: 'maintain', diet: 'balanced' },
+    input: { sex: 'female', birthDate: '2001-01-01', heightCm: 167.6, weightKg: 54, workoutsPerWeek: 'light', goal: 'maintain', diet: 'balanced' },
     expect: { age: 25, bmi: 19.2, bmr: 1301.5, tdee: 1789.6, calories: 1790, proteinG: 98, carbsG: 237, fatG: 50, activity: 'light' },
   },
   {
     name: 'man, moderate, gain, keto',
-    input: { sex: 'male', birthDate: '1990-05-05', heightCm: 180, weightKg: 80, workoutsPerWeek: '3-5', goal: 'gain', diet: 'keto' },
+    input: { sex: 'male', birthDate: '1990-05-05', heightCm: 180, weightKg: 80, workoutsPerWeek: 'moderate', goal: 'gain', diet: 'keto' },
     expect: { age: 36, bmi: 24.7, bmr: 1750, tdee: 2712.5, calories: 2984, proteinG: 149, carbsG: 37, fatG: 249, activity: 'moderate' },
   },
   {
     name: '"other" uses the midpoint offset, lose, vegan, birthday later this year (age 40)',
-    input: { sex: 'other', birthDate: '1985-12-31', heightCm: 170, weightKg: 70, workoutsPerWeek: '6+', goal: 'lose', diet: 'vegan' },
-    expect: { age: 40, bmi: 24.2, bmr: 1484.5, tdee: 2560.8, calories: 2177, proteinG: 93, carbsG: 316, fatG: 60, activity: 'active' },
+    input: { sex: 'other', birthDate: '1985-12-31', heightCm: 170, weightKg: 70, workoutsPerWeek: 'heavy', goal: 'lose', diet: 'vegan' },
+    expect: { age: 40, bmi: 24.2, bmr: 1484.5, tdee: 2560.8, calories: 2177, proteinG: 93, carbsG: 316, fatG: 60, activity: 'heavy' },
   },
   {
     name: 'man, light, lose, mediterranean',
-    input: { sex: 'male', birthDate: '1970-01-15', heightCm: 175, weightKg: 95, workoutsPerWeek: '0-2', goal: 'lose', diet: 'mediterranean' },
+    input: { sex: 'male', birthDate: '1970-01-15', heightCm: 175, weightKg: 95, workoutsPerWeek: 'light', goal: 'lose', diet: 'mediterranean' },
     expect: { age: 56, bmi: 31, bmr: 1768.8, tdee: 2432, calories: 2067, proteinG: 93, carbsG: 244, fatG: 80, activity: 'light' },
   },
   {
     name: 'woman: the 1200 kcal floor applies to a "lose" plan',
-    input: { sex: 'female', birthDate: '1966-02-02', heightCm: 150, weightKg: 42, workoutsPerWeek: '0-2', goal: 'lose', diet: 'balanced' },
+    input: { sex: 'female', birthDate: '1966-02-02', heightCm: 150, weightKg: 42, workoutsPerWeek: 'light', goal: 'lose', diet: 'balanced' },
     expect: { age: 60, bmi: 18.7, bmr: 896.5, tdee: 1232.7, calories: 1200, proteinG: 66, carbsG: 160, fatG: 33, activity: 'light' },
   },
   {
     name: 'man: the 1500 kcal floor applies to a "lose" plan',
-    input: { sex: 'male', birthDate: '1956-06-06', heightCm: 160, weightKg: 48, workoutsPerWeek: '0-2', goal: 'lose', diet: 'balanced' },
+    input: { sex: 'male', birthDate: '1956-06-06', heightCm: 160, weightKg: 48, workoutsPerWeek: 'light', goal: 'lose', diet: 'balanced' },
     expect: { age: 70, bmi: 18.7, bmr: 1135, tdee: 1560.6, calories: 1500, proteinG: 83, carbsG: 198, fatG: 42, activity: 'light' },
   },
   {
     name: 'woman, moderate, maintain, low-carb',
-    input: { sex: 'female', birthDate: '1999-09-09', heightCm: 165, weightKg: 60, workoutsPerWeek: '3-5', goal: 'maintain', diet: 'low_carb' },
+    input: { sex: 'female', birthDate: '1999-09-09', heightCm: 165, weightKg: 60, workoutsPerWeek: 'moderate', goal: 'maintain', diet: 'low_carb' },
     expect: { age: 27, bmi: 22, bmr: 1335.3, tdee: 2069.6, calories: 2070, proteinG: 155, carbsG: 156, fatG: 92, activity: 'moderate' },
   },
   {
     name: 'man, active, gain, paleo',
-    input: { sex: 'male', birthDate: '1988-08-08', heightCm: 185, weightKg: 75, workoutsPerWeek: '6+', goal: 'gain', diet: 'paleo' },
-    expect: { age: 38, bmi: 21.9, bmr: 1721.3, tdee: 2969.2, calories: 3266, proteinG: 245, carbsG: 286, fatG: 127, activity: 'active' },
+    input: { sex: 'male', birthDate: '1988-08-08', heightCm: 185, weightKg: 75, workoutsPerWeek: 'heavy', goal: 'gain', diet: 'paleo' },
+    expect: { age: 38, bmi: 21.9, bmr: 1721.3, tdee: 2969.2, calories: 3266, proteinG: 245, carbsG: 286, fatG: 127, activity: 'heavy' },
   },
   {
     name: 'woman, moderate, maintain, pescatarian',
-    input: { sex: 'female', birthDate: '1992-04-04', heightCm: 170, weightKg: 65, workoutsPerWeek: '3-5', goal: 'maintain', diet: 'pescatarian' },
+    input: { sex: 'female', birthDate: '1992-04-04', heightCm: 170, weightKg: 65, workoutsPerWeek: 'moderate', goal: 'maintain', diet: 'pescatarian' },
     expect: { age: 34, bmi: 22.5, bmr: 1381.5, tdee: 2141.3, calories: 2141, proteinG: 118, carbsG: 267, fatG: 67, activity: 'moderate' },
   },
   {
     name: '"other", birthday is tomorrow (still 25), gain, vegetarian',
-    input: { sex: 'other', birthDate: '2000-10-07', heightCm: 172, weightKg: 68, workoutsPerWeek: '3-5', goal: 'gain', diet: 'vegetarian' },
+    input: { sex: 'other', birthDate: '2000-10-07', heightCm: 172, weightKg: 68, workoutsPerWeek: 'moderate', goal: 'gain', diet: 'vegetarian' },
     expect: { age: 25, bmi: 23, bmr: 1552, tdee: 2405.6, calories: 2646, proteinG: 119, carbsG: 376, fatG: 74, activity: 'moderate' },
   },
   {
     name: 'man, active, maintain, flexitarian',
-    input: { sex: 'male', birthDate: '1980-12-12', heightCm: 178, weightKg: 82, workoutsPerWeek: '6+', goal: 'maintain', diet: 'flexitarian' },
-    expect: { age: 45, bmi: 25.9, bmr: 1712.5, tdee: 2954.1, calories: 2954, proteinG: 148, carbsG: 406, fatG: 82, activity: 'active' },
+    input: { sex: 'male', birthDate: '1980-12-12', heightCm: 178, weightKg: 82, workoutsPerWeek: 'heavy', goal: 'maintain', diet: 'flexitarian' },
+    expect: { age: 45, bmi: 25.9, bmr: 1712.5, tdee: 2954.1, calories: 2954, proteinG: 148, carbsG: 406, fatG: 82, activity: 'heavy' },
   },
   {
     name: 'woman, active, lose, whole-food',
-    input: { sex: 'female', birthDate: '1975-07-07', heightCm: 162, weightKg: 72, workoutsPerWeek: '6+', goal: 'lose', diet: 'whole_food' },
-    expect: { age: 51, bmi: 27.4, bmr: 1316.5, tdee: 2271, calories: 1930, proteinG: 121, carbsG: 240, fatG: 54, activity: 'active' },
+    input: { sex: 'female', birthDate: '1975-07-07', heightCm: 162, weightKg: 72, workoutsPerWeek: 'heavy', goal: 'lose', diet: 'whole_food' },
+    expect: { age: 51, bmi: 27.4, bmr: 1316.5, tdee: 2271, calories: 1930, proteinG: 121, carbsG: 240, fatG: 54, activity: 'heavy' },
+  },
+  {
+    name: 'woman, sedentary (1.2), maintain, balanced',
+    input: { sex: 'female', birthDate: '1992-04-04', heightCm: 170, weightKg: 65, workoutsPerWeek: 'sedentary', goal: 'maintain', diet: 'balanced' },
+    expect: { age: 34, bmi: 22.5, bmr: 1381.5, tdee: 1657.8, calories: 1658, proteinG: 91, carbsG: 220, fatG: 46, activity: 'sedentary' },
+  },
+  {
+    name: 'man, athlete (1.9), maintain, balanced',
+    input: { sex: 'male', birthDate: '1990-05-05', heightCm: 180, weightKg: 80, workoutsPerWeek: 'athlete', goal: 'maintain', diet: 'balanced' },
+    expect: { age: 36, bmi: 24.7, bmr: 1750, tdee: 3325, calories: 3325, proteinG: 183, carbsG: 441, fatG: 92, activity: 'athlete' },
   },
 ];
 
@@ -123,17 +133,19 @@ describe('invariants across every sex, goal, diet and activity bucket', () => {
   }
 
   it('lose < maintain < gain for the same person', () => {
-    const input: PlanInput = { sex: 'female', birthDate: '1992-03-03', heightCm: 172, weightKg: 70, workoutsPerWeek: '3-5', goal: 'maintain', diet: 'balanced' };
+    const input: PlanInput = { sex: 'female', birthDate: '1992-03-03', heightCm: 172, weightKg: 70, workoutsPerWeek: 'moderate', goal: 'maintain', diet: 'balanced' };
     const c = (goal: PlanInput['goal']) => calculatePlan({ ...input, goal }, cfg, NOW).calories;
     expect(c('lose')).toBeLessThan(c('maintain'));
     expect(c('maintain')).toBeLessThan(c('gain'));
   });
 
   it('more workouts never lower the target', () => {
-    const input: PlanInput = { sex: 'male', birthDate: '1992-03-03', heightCm: 180, weightKg: 80, workoutsPerWeek: '0-2', goal: 'maintain', diet: 'balanced' };
+    const input: PlanInput = { sex: 'male', birthDate: '1992-03-03', heightCm: 180, weightKg: 80, workoutsPerWeek: 'light', goal: 'maintain', diet: 'balanced' };
     const c = (w: PlanInput['workoutsPerWeek']) => calculatePlan({ ...input, workoutsPerWeek: w }, cfg, NOW).calories;
-    expect(c('0-2')).toBeLessThan(c('3-5'));
-    expect(c('3-5')).toBeLessThan(c('6+'));
+    expect(c('sedentary')).toBeLessThan(c('light'));
+    expect(c('light')).toBeLessThan(c('moderate'));
+    expect(c('moderate')).toBeLessThan(c('heavy'));
+    expect(c('heavy')).toBeLessThan(c('athlete'));
   });
 
   it('every diet split adds up to 100% of calories', () => {
@@ -145,7 +157,7 @@ describe('invariants across every sex, goal, diet and activity bucket', () => {
 
   it('keto and low-carb push carbs down and fat up; vegan has less protein than balanced', () => {
     const share = (diet: PlanInput['diet']) => {
-      const p = calculatePlan({ sex: 'male', birthDate: '1992-03-03', heightCm: 180, weightKg: 80, workoutsPerWeek: '3-5', goal: 'maintain', diet }, cfg, NOW);
+      const p = calculatePlan({ sex: 'male', birthDate: '1992-03-03', heightCm: 180, weightKg: 80, workoutsPerWeek: 'moderate', goal: 'maintain', diet }, cfg, NOW);
       return { carbs: (p.carbsG * 4) / p.calories, fat: (p.fatG * 9) / p.calories, protein: (p.proteinG * 4) / p.calories };
     };
     expect(share('keto').carbs).toBeLessThan(0.1);
@@ -159,7 +171,7 @@ describe('the balanced split matches the design mock-up (about 21 / 53 / 25)', (
   it('for a 1288 kcal target', () => {
     // Mock-up: 1288 kcal, 69 g protein, 172 g carbs, 36 g fat. Ours lands within 3 g of every figure.
     const p = calculatePlan(
-      { sex: 'female', birthDate: '2001-01-01', heightCm: 160, weightKg: 45, workoutsPerWeek: '0-2', goal: 'maintain', diet: 'balanced' },
+      { sex: 'female', birthDate: '2001-01-01', heightCm: 160, weightKg: 45, workoutsPerWeek: 'light', goal: 'maintain', diet: 'balanced' },
       { ...cfg, activityMultiplier: { ...cfg.activityMultiplier, light: 1288 / (10 * 45 + 6.25 * 160 - 5 * 25 - 161) } },
       NOW,
     );
@@ -171,7 +183,7 @@ describe('the balanced split matches the design mock-up (about 21 / 53 / 25)', (
 });
 
 describe('guardrails', () => {
-  const ok: PlanInput = { sex: 'female', birthDate: '2001-01-01', heightCm: 167.6, weightKg: 54, workoutsPerWeek: '0-2', goal: 'maintain', diet: 'balanced' };
+  const ok: PlanInput = { sex: 'female', birthDate: '2001-01-01', heightCm: 167.6, weightKg: 54, workoutsPerWeek: 'light', goal: 'maintain', diet: 'balanced' };
   const code = (fn: () => unknown) => {
     try {
       fn();
@@ -217,7 +229,7 @@ describe('guardrails', () => {
   });
 
   it('never goes under the floor, and floors are configurable', () => {
-    const tiny: PlanInput = { sex: 'female', birthDate: '1966-02-02', heightCm: 150, weightKg: 42, workoutsPerWeek: '0-2', goal: 'lose', diet: 'balanced' };
+    const tiny: PlanInput = { sex: 'female', birthDate: '1966-02-02', heightCm: 150, weightKg: 42, workoutsPerWeek: 'light', goal: 'lose', diet: 'balanced' };
     expect(calculatePlan(tiny, cfg, NOW).calories).toBe(1200);
     const strict = { ...cfg, loseCalorieFloor: { ...cfg.loseCalorieFloor, female: 1350 } };
     expect(calculatePlan(tiny, strict, NOW).calories).toBe(1350);
@@ -225,7 +237,7 @@ describe('guardrails', () => {
 });
 
 describe('projection', () => {
-  const input: PlanInput = { sex: 'male', birthDate: '1990-01-01', heightCm: 180, weightKg: 90, workoutsPerWeek: '3-5', goal: 'lose', diet: 'balanced', targetWeightKg: 80 };
+  const input: PlanInput = { sex: 'male', birthDate: '1990-01-01', heightCm: 180, weightKg: 90, workoutsPerWeek: 'moderate', goal: 'lose', diet: 'balanced', targetWeightKg: 80 };
 
   it('returns the 3 / 7 / 30 day points, rising monotonically to the goal at day 30', () => {
     const { projection } = calculatePlan(input, cfg, NOW);

@@ -3,7 +3,6 @@ import type { AppDeps } from '../../deps';
 import { toGoalDto, toPlanPreview, type GoalDto, type RecalculationDto } from '../../lib/dto';
 import { AppError, conflict, notFound } from '../../lib/errors';
 import { activeGoal, latestWeightKg } from '../../lib/me';
-import { workoutsFromDb } from '../../lib/mappers';
 import { calculatePlan, clampGoal, type PlanInput } from '../../lib/plan-engine';
 import { goalSnapshot } from '../onboarding/onboarding.service';
 
@@ -13,7 +12,7 @@ export function profileToPlanInput(p: Profile, weightKg: number): PlanInput {
     birthDate: p.birthDate.toISOString().slice(0, 10),
     heightCm: p.heightCm,
     weightKg,
-    workoutsPerWeek: workoutsFromDb(p.workoutsPerWeek),
+    workoutsPerWeek: p.workoutsPerWeek,
     goal: p.goal,
     diet: p.diet,
     targetWeightKg: p.targetWeightKg,
