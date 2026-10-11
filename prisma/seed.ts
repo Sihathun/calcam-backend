@@ -2,7 +2,6 @@ import 'dotenv/config';
 import argon2 from 'argon2';
 import { loadConfig } from '../src/config/env';
 import { createPrisma } from '../src/deps';
-import { workoutsToDb } from '../src/lib/mappers';
 import { calculatePlan } from '../src/lib/plan-engine';
 import { DateTime } from 'luxon';
 
@@ -26,7 +25,7 @@ async function main() {
     birthDate: '1998-04-12',
     heightCm: 167.6,
     weightKg: 56.4,
-    workoutsPerWeek: '3-5' as const,
+    workoutsPerWeek: 'moderate' as const,
     goal: 'maintain' as const,
     diet: 'balanced' as const,
   };
@@ -43,7 +42,7 @@ async function main() {
       heightCm: input.heightCm,
       heightUnitPref: 'ft_in',
       weightUnitPref: 'kg',
-      workoutsPerWeek: workoutsToDb(input.workoutsPerWeek),
+      workoutsPerWeek: input.workoutsPerWeek,
       activityLevel: plan.activityLevel,
       goal: input.goal,
       diet: input.diet,

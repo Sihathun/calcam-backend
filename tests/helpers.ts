@@ -173,7 +173,7 @@ export function createTestContext(opts: { env?: Record<string, string>; now?: Da
 /** The sample onboarding payload from the API spec. */
 export const onboardingPayload = (over: Record<string, unknown> = {}) => ({
   sex: 'female',
-  workoutsPerWeek: '0-2',
+  workoutsPerWeek: 'light',
   referralSource: 'tiktok',
   heightCm: 167.6,
   weightKg: 54.0,

@@ -196,6 +196,82 @@ describe('GeminiAnalyzer', () => {
     expect(req.config.thinkingConfig).toBeUndefined();
   });
 
+  it('falls back to a second model at once when the first is overloaded, out of quota or times out', async () => {
+    for (const status of [503, 429, 504]) {
+      const { analyzer, requests } = geminiWith((req) => {
+        if (req.model === 'gemini-3.8-flash') throw new ApiError({ message: 'busy', status });
+        return answer(JSON.stringify(meal));
+      });
+      const out = await analyzer.analyze(input);
+      expect(requests.map((r) => r.model)).toEqual(['gemini-3.8-flash', 'gemini-3.1-flash-lite']);
+      expect(out).toMatchObject({ raw: meal, provider: 'gemini', model: 'gemini-3.1-flash-lite' });
+    }
+  });
+
+  it('does not fall back on a request the model rejects (a 4xx other than 408, 409 and 429)', async () => {
+    const { analyzer, requests } = geminiWith(() => {
+      throw new ApiError({ message: 'bad request', status: 400 });
+    });
+    await expect(analyzer.analyze(input)).rejects.toBeInstanceOf(ProviderError);
+    expect(requests).toHaveLength(1);
+  });
+
+  it('leaves the retry to the queue when every model is busy, and can be turned off', async () => {
+    const busy = () => {
+      throw new ApiError({ message: 'busy', status: 503 });
+    };
+    const both = geminiWith(busy);
+    await expect(both.analyzer.analyze(input)).rejects.toBeInstanceOf(TransientError);
+    expect(both.requests).toHaveLength(2);
+
+    const single = geminiWith(busy, { AI_FALLBACK_MODEL: 'none' });
+    await expect(single.analyzer.analyze(input)).rejects.toBeInstanceOf(TransientError);
+    expect(single.requests).toHaveLength(1);
+
+    expect(gemini({ AI_FALLBACK_MODEL: 'gemini-3.5-flash' }).ai.fallbackModel).toBe('gemini-3.5-flash');
+    expect(config().ai.fallbackModel).toBeUndefined(); // other providers have no fallback
+  });
+
+  it('asks for medium image resolution by default, and none with AI_MEDIA_RESOLUTION=default', async () => {
+    const medium = geminiWith(() => answer(JSON.stringify(meal)));
+    await medium.analyzer.analyze(input);
+    expect(medium.requests[0]!.config.mediaResolution).toBe('MEDIA_RESOLUTION_MEDIUM');
+
+    const low = geminiWith(() => answer(JSON.stringify(meal)), { AI_MEDIA_RESOLUTION: 'low' });
+    await low.analyzer.analyze(input);
+    expect(low.requests[0]!.config.mediaResolution).toBe('MEDIA_RESOLUTION_LOW');
+
+    const model = geminiWith(() => answer(JSON.stringify(meal)), { AI_MEDIA_RESOLUTION: 'default' });
+    await model.analyzer.analyze(input);
+    expect(model.requests[0]!.config.mediaResolution).toBeUndefined();
+  });
+
+  it('asks again without the thinking setting when a model rejects it, and remembers that model', async () => {
+    const { analyzer, requests } = geminiWith(
+      (req) => {
+        if (req.config.thinkingConfig) throw new ApiError({ message: 'Thinking level LOW is not supported for this model.', status: 400 });
+        return answer(JSON.stringify(meal));
+      },
+      { AI_EFFORT: 'low', AI_MODEL: 'gemini-3.1-flash-lite' },
+    );
+    expect((await analyzer.analyze(input)).model).toBe('gemini-3.1-flash-lite');
+    expect(requests.map((r) => Boolean(r.config.thinkingConfig))).toEqual([true, false]);
+
+    await analyzer.analyze(input); // the next scan goes straight to the request without thinking
+    expect(requests.map((r) => Boolean(r.config.thinkingConfig))).toEqual([true, false, false]);
+  });
+
+  it('does not loop on a 400 that is not about thinking', async () => {
+    const { analyzer, requests } = geminiWith(
+      () => {
+        throw new ApiError({ message: 'Request contains an invalid argument.', status: 400 });
+      },
+      { AI_EFFORT: 'low' },
+    );
+    await expect(analyzer.analyze(input)).rejects.toBeInstanceOf(ProviderError);
+    expect(requests).toHaveLength(1);
+  });
+
   it('maps AI_EFFORT onto a thinking level', async () => {
     const { analyzer, requests } = geminiWith(() => answer(JSON.stringify(meal)), { AI_EFFORT: 'low' });
     await analyzer.analyze(input);

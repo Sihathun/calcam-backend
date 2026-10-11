@@ -34,13 +34,13 @@ export class MemoryQueue implements JobQueue {
     void p.finally(() => this.pending.delete(p));
   }
 
-  async enqueueMealAnalysis(mealId: string): Promise<void> {
+  async enqueueMealAnalysis(mealId: string, image?: Buffer): Promise<void> {
     this.enqueued.push({ type: 'meal', id: mealId });
     if (this.paused) return;
     this.run(async () => {
       for (let attempt = 1; attempt <= this.maxAttempts; attempt++) {
         try {
-          await this.processors?.analyzeMeal(mealId, { attempt, maxAttempts: this.maxAttempts });
+          await this.processors?.analyzeMeal(mealId, { attempt, maxAttempts: this.maxAttempts }, image);
           return;
         } catch (err) {
           if (!(err instanceof TransientError) || attempt === this.maxAttempts) return;

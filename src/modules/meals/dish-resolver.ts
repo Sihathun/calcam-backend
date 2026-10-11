@@ -5,6 +5,8 @@ import { normalizeDishName } from '../../lib/catalog';
 
 /** How many learned dishes (most used first) the prompt lists next to the catalog. */
 const LEARNED_IN_PROMPT = 150;
+/** Catalog category of single foods eaten on their own; the food picker and the prompt treat them differently. */
+const INGREDIENT_CATEGORY = 'ingredient';
 const LIST_TTL_MS = 5 * 60_000;
 const MAX_MACRO_G = 1000;
 
@@ -46,6 +48,7 @@ export function createDishResolver(prisma: PrismaClient, opts: { maxCalories: nu
       nameEn: d.nameEn,
       nameKm: d.nameKm,
       serving: d.servingDescription,
+      ingredient: d.category === INGREDIENT_CATEGORY,
     }));
     cached = { at: opts.now().getTime(), entries };
     return entries;

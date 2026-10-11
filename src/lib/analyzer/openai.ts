@@ -1,7 +1,7 @@
 import type { Config } from '../../config/env';
 import { TransientError } from '../errors';
 import { ProviderError, type AnalyzerInput, type AnalyzerOutput, type MealAnalyzer } from './types';
-import { buildUserText, SYSTEM_PROMPT } from './prompts/meal-analysis.v2';
+import { buildUserText, SYSTEM_PROMPT } from './prompts/meal-analysis.v3';
 
 /** Works with OpenAI and any server that implements the same chat-completions API (set OPENAI_BASE_URL). */
 export class OpenAiAnalyzer implements MealAnalyzer {

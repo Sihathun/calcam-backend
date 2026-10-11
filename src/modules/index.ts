@@ -9,6 +9,8 @@ import { createAuthService } from './auth/auth.service';
 import { createDashboardService } from './dashboard/dashboard.service';
 import { dashboardRoutes } from './dashboard/dashboard.routes';
 import { devicesRoutes } from './devices/devices.routes';
+import { foodsRoutes } from './foods/foods.routes';
+import { createFoodsService } from './foods/foods.service';
 import { goalsRoutes } from './goals/goals.routes';
 import { createGoalsService } from './goals/goals.service';
 import { createAnalysisProcessor } from './meals/analysis.processor';
@@ -30,6 +32,7 @@ export function buildRoutes(deps: AppDeps, getOpenApi: () => unknown, metrics?: 
   const goals = createGoalsService(deps);
   const profile = createProfileService(deps, goals);
   const weight = createWeightService(deps, goals);
+  const foods = createFoodsService(deps);
   const meals = createMealsService(deps);
   const dashboard = createDashboardService(deps, goals, meals.mapper);
   const analytics = createAnalyticsService(deps, goals);
@@ -42,6 +45,7 @@ export function buildRoutes(deps: AppDeps, getOpenApi: () => unknown, metrics?: 
     ...goalsRoutes(goals),
     ...weightRoutes(weight),
     ...devicesRoutes(deps),
+    ...foodsRoutes(foods),
     ...mealsRoutes(meals),
     ...dashboardRoutes(dashboard),
     ...analyticsRoutes(analytics),

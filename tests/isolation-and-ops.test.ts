@@ -106,8 +106,8 @@ describe('OpenAPI document', () => {
         checked += 1;
       }
     }
-    // 23 authenticated operations: me (4), onboarding/complete, goals (3), weight (3), devices (2), meals (8), dashboard, analytics.
-    expect(checked).toBe(23);
+    // 25 authenticated operations: me (4), onboarding/complete, goals (3), weight (3), devices (2), meals (9), foods, dashboard, analytics.
+    expect(checked).toBe(25);
   });
 
   it('serves Swagger UI at /docs', async () => {
@@ -157,6 +157,15 @@ describe('ops endpoints', () => {
     expect(denied.headers['access-control-allow-origin']).toBeUndefined();
     const none = await ctx.http.get('/health').set('Origin', 'https://app.example.com');
     expect(none.headers['access-control-allow-origin']).toBeUndefined();
+
+    // The browser may reuse a preflight answer for 10 minutes instead of asking before every request.
+    const preflight = await strict.http
+      .options('/api/v1/me')
+      .set('Origin', 'https://app.example.com')
+      .set('Access-Control-Request-Method', 'GET')
+      .set('Access-Control-Request-Headers', 'authorization');
+    expect(preflight.status).toBe(204);
+    expect(preflight.headers['access-control-max-age']).toBe('600');
   });
 
   it('/metrics exists only when enabled', async () => {

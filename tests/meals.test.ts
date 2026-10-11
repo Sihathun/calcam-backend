@@ -73,7 +73,7 @@ describe('POST /meals/analyze', () => {
       ctx.analyzer.analyze = original;
     }
     const meal = await ctx.deps.prisma.meal.findFirstOrThrow({ where: { userId: u.id } });
-    expect(meal.aiRaw).toMatchObject({ promptVersion: 'meal-analysis.v2', provider: 'fake' });
+    expect(meal.aiRaw).toMatchObject({ promptVersion: 'meal-analysis.v3', provider: 'fake' });
   });
 
   it('sends a push notification with the meal id when analysis completes', async () => {

@@ -60,7 +60,7 @@ Then, in another terminal:
 
 ```bash
 npm run migrate
-npm run catalog:seed       # the Khmer food catalog (50 dishes); run again after editing prisma/data/khmer-dishes.json
+npm run catalog:seed       # the Khmer food catalog (65 dishes); run again after editing prisma/data/khmer-dishes.json
 npm run seed               # optional: demo@example.com / Password123! with a week of meals
 npm run dev
 ```
@@ -86,7 +86,7 @@ API=http://localhost:3000
 TOKEN=$(curl -s $API/api/v1/auth/register -H 'content-type: application/json' -d '{
   "email": "me@example.com", "password": "correct horse battery",
   "onboarding": {
-    "sex": "female", "workoutsPerWeek": "0-2", "heightCm": 167.6, "weightKg": 54.0,
+    "sex": "female", "workoutsPerWeek": "light", "heightCm": 167.6, "weightKg": 54.0,
     "birthDate": "2001-01-01", "goal": "maintain", "diet": "balanced",
     "timezone": "Asia/Phnom_Penh"
   }
@@ -121,7 +121,8 @@ All paths below are under `/api/v1` unless noted. Everything except the rows mar
 | **Goals** | `GET /me/goals`, `PUT /me/goals` (pencil edits), `POST /me/goals/recalculate` |
 | **Weight** | `POST /me/weight-logs`, `GET /me/weight-logs?from=&to=`, `DELETE /me/weight-logs/:id` |
 | **Devices** | `POST /me/devices` (FCM token), `DELETE /me/devices/:token` |
-| **Meals** | `POST /meals/analyze` (photo), `POST /meals/barcode`, `POST /meals` (manual, or `description` for an AI estimate), `GET /meals/:id`, `GET /meals?date=&limit=&cursor=`, `PATCH /meals/:id`, `POST /meals/:id/fix`, `DELETE /meals/:id` |
+| **Foods** | `GET /foods` (the catalog for the food picker, with the user's own corrected values and recent foods); photos are public files at `/food-photos/<slug>.webp` (`npm run foods:photos` downloads them from `prisma/data/food-photos/sources.json`) |
+| **Meals** | `POST /meals/analyze` (photo), `POST /meals/barcode`, `POST /meals/from-food` (a food picked from the list), `POST /meals` (manual, or `description` for an AI estimate), `GET /meals/:id`, `GET /meals?date=&limit=&cursor=`, `PATCH /meals/:id`, `POST /meals/:id/fix`, `DELETE /meals/:id` |
 | **Dashboard** | `GET /dashboard/daily?date=today\|yesterday\|YYYY-MM-DD` |
 | **Analytics** | `GET /analytics/summary?range=7d\|30d\|90d` |
 | **Ops** (server root) | `GET /health`, `GET /ready`, `GET /docs`, `GET /openapi.json`, `GET /metrics` (when `METRICS_ENABLED=true`) |
@@ -141,8 +142,10 @@ The committed spec is [`openapi/openapi.json`](openapi/openapi.json). A test fai
 ### How a meal is analysed
 
 ```text
-phone ──POST /meals/analyze──> API ──> checks magic bytes, resizes to 1280 px, strips EXIF, stores image + thumbnail
-                                  └──> creates Meal(status=queued) ──> enqueues job ──> returns 202 {meal}
+phone ──POST /meals/analyze──> API ──> checks magic bytes, resizes to 1280 px, strips EXIF
+                                  └──> creates Meal(status=queued) ──> enqueues job WITH the photo ──> returns 202 {meal}
+                                  └──> stores image + thumbnail in the background (not in front of the analysis)
+                                       (with ?wait=N the request instead waits up to N s and returns 200 {meal} when done)
                                                                                    │
 worker <───────────────────────────── BullMQ (Redis) ───────────────────────────────┘
   same photo as an earlier meal of this user? -> reuse its dishes and portions (no model call)
@@ -150,8 +153,14 @@ worker <────────────────────────
   -> nutrition = reference values x portion -> saves the meal and its components -> push "Your meal is ready"
 ```
 
-**The model identifies, the server counts.** The prompt (`meal-analysis.v2`) lists the Khmer food catalog
-(`prisma/data/khmer-dishes.json`, 50 dishes with sources, loaded by `npm run catalog:seed`) plus the most used
+**Fast path:** the upload hands the processed photo to the job, so the worker never downloads it, and storage runs in
+parallel with the analysis. `POST /meals/analyze` takes an optional `wait` (0 to 25 seconds, as a form field or query
+parameter): the request is held open and answers `200` with the finished meal (`completed` or `failed`) as soon as it
+exists, otherwise `202` and you poll `GET /meals/{id}` as before. If storage fails the meal still completes (without a
+photo); the failure is logged. With BullMQ the photo travels in the job (base64, removed when the job completes).
+
+**The model identifies, the server counts.** The prompt (`meal-analysis.v3`) lists the Khmer food catalog
+(`prisma/data/khmer-dishes.json`, 65 dishes with sources, loaded by `npm run catalog:seed`) plus the most used
 learned dishes. For each dish in the photo the model answers with a listed slug (or `new`) and a portion step
 (0.25 to 3 times the standard serving). The server takes the dish's reference values, or this user's own corrected
 values for it (`UserDishOverride`), and multiplies them by the portion. A dish the catalog lacks becomes a
@@ -190,7 +199,7 @@ Progress is stage-based on purpose; it is never a fake smooth percentage.
 calorie floors and the age edge cases), plus every combination of sex, goal, diet and activity.
 
 1. **BMR** (Mifflin-St Jeor): `10*kg + 6.25*cm - 5*age + 5` (male), `- 161` (female), `- 78` for "other" (the midpoint).
-2. **Activity multiplier** from workouts per week: `0-2` -> light 1.375, `3-5` -> moderate 1.55, `6+` -> active 1.725.
+2. **Activity multiplier** from how often the user exercises (`workoutsPerWeek`, the five levels of tdeecalculator.net): `sedentary` 1.2, `light` 1.375 (1-2 days a week), `moderate` 1.55 (3-5 days), `heavy` 1.725 (6-7 days), `athlete` 1.9 (twice a day).
 3. **Goal:** lose -15%, maintain 0, gain +10% of TDEE.
 4. **Safety:** a "lose" plan never goes below 1500 kcal (male) or 1200 (female, other), and is refused with
    `422 GOAL_NOT_SUPPORTED` when BMI is under 18.5. Under-13s get `422 UNDER_MINIMUM_AGE`. User edits are clamped to
@@ -261,6 +270,12 @@ Set `AI_PROVIDER` to `anthropic` (default), `openai` (also works with any OpenAI
 `OPENAI_BASE_URL`), `gemini` (Google, needs `GEMINI_API_KEY`) or `fake`. `AI_MODEL` picks the model; the defaults are
 `claude-opus-5-5` for Anthropic and `gemini-3.8-flash` for Gemini. Gemini runs at temperature 0 with a strict JSON
 schema; `AI_EFFORT` sets its thinking level. Setting a smaller model is the first thing to try if per-photo cost matters.
+
+Gemini models are often briefly overloaded (`503`), out of per-model quota (`429`), or stuck until the deadline
+(`504`; the SDK sends `AI_TIMEOUT_MS` to Google as `X-Server-Timeout`). On any of these the analyzer tries
+`AI_FALLBACK_MODEL` (default `gemini-3.1-flash-lite`, its own capacity and quota) in the same attempt, before the
+queue retries. Keep `AI_TIMEOUT_MS` around 25000 so a stuck call fails over instead of using a whole minute. A free
+tier key hits `429` quickly with several users; enable billing on the Google AI Studio project for production.
 
 To add another provider, implement the one-method `MealAnalyzer` interface in `src/lib/analyzer/types.ts`, add it to
 `createAnalyzer` in `src/lib/analyzer/index.ts`, and add the name to `AI_PROVIDER` in `src/config/env.ts`. The worker

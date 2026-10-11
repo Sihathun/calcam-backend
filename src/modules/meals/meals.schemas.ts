@@ -98,11 +98,18 @@ export const mealListSchema = z.object({
 // ---------- requests ----------
 
 /** Multipart text fields that accompany the image. */
+/** Seconds the upload request may wait for the analysis to finish before answering 202 (spec 0003). */
+export const MAX_ANALYZE_WAIT_S = 25;
+const waitSeconds = z.coerce.number().int().min(0).max(MAX_ANALYZE_WAIT_S).optional();
+
 export const analyzeFieldsSchema = z.object({
   loggedAt: isoInput.optional(),
   source: z.enum(['camera', 'gallery']).optional(),
   hint: z.string().trim().max(300).optional(),
+  wait: waitSeconds.describe('Wait up to this many seconds for the result (0 to 25). Answers 200 when it is ready.'),
 });
+
+export const analyzeQuerySchema = z.object({ wait: waitSeconds });
 
 export const barcodeBodySchema = z.object({
   barcode: z.string().regex(/^\d{8,14}$/, 'Expected 8 to 14 digits'),
@@ -132,6 +139,13 @@ export const createMealBodySchema = z
       if (v[key] === undefined) ctx.addIssue({ code: 'custom', path: [key], message: 'Required for manual entry (or send a description)' });
     }
   });
+
+/** Logs one catalog food. The food's values for one standard serving are copied into the meal. */
+export const fromFoodBodySchema = z.object({
+  dishSlug: z.string().trim().min(1).max(120),
+  quantity: quantity.optional(),
+  loggedAt: isoInput.optional(),
+});
 
 export const patchMealBodySchema = z
   .object({

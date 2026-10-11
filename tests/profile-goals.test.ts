@@ -53,10 +53,10 @@ describe('PATCH /me/profile', () => {
     const user = await registerUser(ctx);
     const before = (await ctx.http.get(`${api}/me/goals`).set(user.auth)).body;
 
-    const res = await ctx.http.patch(`${api}/me/profile`).set(user.auth).send({ workoutsPerWeek: '6+' });
+    const res = await ctx.http.patch(`${api}/me/profile`).set(user.auth).send({ workoutsPerWeek: 'heavy' });
     expect(res.status).toBe(200);
-    expect(res.body.profile.workoutsPerWeek).toBe('6+');
-    expect(res.body.profile.activityLevel).toBe('active');
+    expect(res.body.profile.workoutsPerWeek).toBe('heavy');
+    expect(res.body.profile.activityLevel).toBe('heavy');
     expect(res.body.recalculation.suggested).toBe(true);
     expect(res.body.recalculation.plan.plan.calories).toBeGreaterThan(before.calories);
 
@@ -99,6 +99,24 @@ describe('PATCH /me/profile', () => {
     expect(wrongWay.body.error.code).toBe('INVALID_TARGET_WEIGHT');
     const back = await ctx.http.patch(`${api}/me/profile`).set(user.auth).send({ goal: 'maintain' });
     expect(back.body.profile.targetWeightKg).toBe(70); // maintain = current weight
+  });
+
+  it('lets a new goal clear the old target, so the old target is not validated against the new goal', async () => {
+    const user = await registerUser(ctx, { onboarding: onboardingPayload({ weightKg: 70 }) });
+    await ctx.http.patch(`${api}/me/profile`).set(user.auth).send({ goal: 'lose', targetWeightKg: 62 });
+    const res = await ctx.http.patch(`${api}/me/profile`).set(user.auth).send({ goal: 'gain', targetWeightKg: null });
+    expect(res.status).toBe(200);
+    expect(res.body.profile).toMatchObject({ goal: 'gain', targetWeightKg: null });
+  });
+
+  it('offers a recalculation with new macros when only the diet changes', async () => {
+    const user = await registerUser(ctx);
+    const before = (await ctx.http.get(`${api}/me/goals`).set(user.auth)).body;
+    const res = await ctx.http.patch(`${api}/me/profile`).set(user.auth).send({ diet: 'keto' });
+    expect(res.status).toBe(200);
+    expect(res.body.recalculation.suggested).toBe(true);
+    expect(res.body.recalculation.plan.plan.carbsG).toBeLessThan(before.carbsG);
+    expect((await ctx.http.get(`${api}/me/goals`).set(user.auth)).body.id).toBe(before.id);
   });
 
   it('is 409 before onboarding and 400 for an empty body', async () => {
@@ -150,7 +168,7 @@ describe('goals', () => {
     expect(res.body.source).toBe('calculated');
     expect(res.body.calories).toBeLessThan(2500);
     const preview = await ctx.http.post(`${api}/onboarding/plan-preview`).send({
-      sex: 'female', birthDate: '2001-01-01', heightCm: 167.6, weightKg: 60, workoutsPerWeek: '0-2', goal: 'maintain', diet: 'balanced',
+      sex: 'female', birthDate: '2001-01-01', heightCm: 167.6, weightKg: 60, workoutsPerWeek: 'light', goal: 'maintain', diet: 'balanced',
     });
     expect(res.body.calories).toBe(preview.body.plan.calories);
   });

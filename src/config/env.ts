@@ -59,7 +59,12 @@ const EnvSchema = z.object({
 
   AI_PROVIDER: z.enum(['anthropic', 'openai', 'gemini', 'fake']).default('anthropic'),
   AI_MODEL: z.string().optional(),
+  // Tried at once when AI_MODEL answers with a temporary error (overloaded, quota, timeout). Gemini only.
+  // Defaults to gemini-3.1-flash-lite for AI_PROVIDER=gemini; "none" turns the fallback off.
+  AI_FALLBACK_MODEL: z.string().optional(),
   AI_EFFORT: z.enum(['low', 'medium', 'high', 'xhigh', 'max']).optional(),
+  // Gemini only: tokens per image (low 280, medium 560, high 1120, default = the model's own, 1120 on Gemini 3).
+  AI_MEDIA_RESOLUTION: z.enum(['low', 'medium', 'high', 'default']).default('medium'),
   AI_MIN_CONFIDENCE: num(0.3),
   AI_TIMEOUT_MS: int(60000),
   AI_MAX_CALORIES_PER_SERVING: int(5000),
@@ -174,7 +179,9 @@ export interface Config {
   ai: {
     provider: Env['AI_PROVIDER'];
     model: string;
+    fallbackModel?: string;
     effort?: Env['AI_EFFORT'];
+    mediaResolution: Env['AI_MEDIA_RESOLUTION'];
     minConfidence: number;
     timeoutMs: number;
     maxCaloriesPerServing: number;
@@ -200,6 +207,9 @@ export interface Config {
   sentryDsn?: string;
   metricsEnabled: boolean;
 }
+
+/** A lighter Gemini model with its own capacity and quota; as accurate on the food photos we tested, and faster. */
+const DEFAULT_GEMINI_FALLBACK = 'gemini-3.1-flash-lite';
 
 const DEFAULT_MODELS = {
   anthropic: 'claude-opus-5-5',
@@ -266,7 +276,12 @@ export function loadConfig(source: NodeJS.ProcessEnv = process.env): Config {
     ai: {
       provider: e.AI_PROVIDER,
       model: e.AI_MODEL ?? DEFAULT_MODELS[e.AI_PROVIDER],
+      fallbackModel:
+        e.AI_FALLBACK_MODEL === 'none'
+          ? undefined
+          : (e.AI_FALLBACK_MODEL ?? (e.AI_PROVIDER === 'gemini' ? DEFAULT_GEMINI_FALLBACK : undefined)),
       effort: e.AI_EFFORT,
+      mediaResolution: e.AI_MEDIA_RESOLUTION,
       minConfidence: e.AI_MIN_CONFIDENCE,
       timeoutMs: e.AI_TIMEOUT_MS,
       maxCaloriesPerServing: e.AI_MAX_CALORIES_PER_SERVING,

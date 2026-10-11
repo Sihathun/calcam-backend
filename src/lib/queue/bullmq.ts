@@ -18,17 +18,19 @@ export class BullJobQueue implements JobQueue {
     this.accounts = new Queue(ACCOUNT_QUEUE, { connection });
   }
 
-  async enqueueMealAnalysis(mealId: string): Promise<void> {
+  async enqueueMealAnalysis(mealId: string, image?: Buffer): Promise<void> {
     await this.meals.add(
       'analyze',
-      { mealId },
+      // The photo (about 100 KB) rides along so the worker skips the storage download (spec 0003).
+      image ? { mealId, image: image.toString('base64') } : { mealId },
       {
         // A fresh id per enqueue, so a "Fix Results" re-run of the same meal is never deduplicated.
         jobId: `meal-${mealId}-${randomUUID()}`,
         attempts: this.config.queue.attempts,
         backoff: { type: 'exponential', delay: this.config.queue.backoffMs },
-        removeOnComplete: { count: 1000 },
-        removeOnFail: { count: 5000 },
+        // A job carrying a photo leaves Redis as soon as it is done, and within a day if it failed.
+        removeOnComplete: image ? true : { count: 1000 },
+        removeOnFail: image ? { age: 24 * 3600 } : { count: 5000 },
       },
     );
   }
@@ -65,10 +67,11 @@ export function startBullWorkers(
   const mealWorker = new Worker(
     MEAL_QUEUE,
     async (job) =>
-      processors.analyzeMeal(job.data.mealId as string, {
-        attempt: job.attemptsMade + 1,
-        maxAttempts: job.opts.attempts ?? 1,
-      }),
+      processors.analyzeMeal(
+        job.data.mealId as string,
+        { attempt: job.attemptsMade + 1, maxAttempts: job.opts.attempts ?? 1 },
+        typeof job.data.image === 'string' ? Buffer.from(job.data.image, 'base64') : undefined,
+      ),
     { connection, concurrency: config.queue.concurrency },
   );
   const accountWorker = new Worker(

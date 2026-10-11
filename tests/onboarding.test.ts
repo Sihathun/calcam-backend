@@ -16,9 +16,11 @@ describe('GET /onboarding/options', () => {
       { code: 'other', label: 'Other' },
     ]);
     expect(res.body.workoutsPerWeek).toEqual([
-      { code: '0-2', label: '0 - 2', description: 'Workouts now and then' },
-      { code: '3-5', label: '3 - 5', description: 'A few workouts per week' },
-      { code: '6+', label: '6+', description: 'Dedicated athlete' },
+      { code: 'sedentary', label: 'Sedentary', description: 'Office job, little or no exercise' },
+      { code: 'light', label: 'Light exercise', description: '1-2 days per week' },
+      { code: 'moderate', label: 'Moderate exercise', description: '3-5 days per week' },
+      { code: 'heavy', label: 'Heavy exercise', description: '6-7 days per week' },
+      { code: 'athlete', label: 'Athlete', description: 'Twice per day' },
     ]);
     expect(res.body.referralSources.map((r: any) => r.code)).toEqual([
       'instagram', 'facebook', 'tiktok', 'youtube', 'google', 'x', 'friend_or_family', 'play_store',
@@ -43,7 +45,7 @@ describe('POST /onboarding/plan-preview', () => {
     birthDate: '2001-01-01',
     heightCm: 167.6,
     weightKg: 54,
-    workoutsPerWeek: '0-2',
+    workoutsPerWeek: 'light',
     goal: 'maintain',
     diet: 'balanced',
   };
@@ -94,7 +96,7 @@ describe('register with the onboarding payload', () => {
     expect(me.body.timezone).toBe('Asia/Phnom_Penh');
     expect(me.body.profile).toMatchObject({
       sex: 'female',
-      workoutsPerWeek: '0-2',
+      workoutsPerWeek: 'light',
       heightCm: 167.6,
       heightUnitPref: 'ft_in',
       weightKg: 54,
@@ -132,11 +134,11 @@ describe('register with the onboarding payload', () => {
 
   it('keeps survey answers out of the plan formula', async () => {
     const a = await ctx.http.post('/api/v1/onboarding/plan-preview').send({
-      sex: 'male', birthDate: '1990-05-05', heightCm: 180, weightKg: 80, workoutsPerWeek: '3-5', goal: 'gain', diet: 'keto',
+      sex: 'male', birthDate: '1990-05-05', heightCm: 180, weightKg: 80, workoutsPerWeek: 'moderate', goal: 'gain', diet: 'keto',
       accomplishment: 'boost_energy_mood', referralSource: 'google',
     });
     const b = await ctx.http.post('/api/v1/onboarding/plan-preview').send({
-      sex: 'male', birthDate: '1990-05-05', heightCm: 180, weightKg: 80, workoutsPerWeek: '3-5', goal: 'gain', diet: 'keto',
+      sex: 'male', birthDate: '1990-05-05', heightCm: 180, weightKg: 80, workoutsPerWeek: 'moderate', goal: 'gain', diet: 'keto',
       accomplishment: 'feel_better_body', referralSource: 'x',
     });
     expect(a.body.plan).toEqual(b.body.plan);

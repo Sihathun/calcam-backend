@@ -1,16 +1,17 @@
 import type { Prisma } from '@prisma/client';
 import type { WorkerDeps } from '../../deps';
 import type { AnalyzerInput, AnalyzerOutput } from '../../lib/analyzer';
-import { PROMPT_VERSION } from '../../lib/analyzer/prompts/meal-analysis.v2';
+import { PROMPT_VERSION } from '../../lib/analyzer/prompts/meal-analysis.v3';
 import { aiMealSchema, type AiMeal } from '../../lib/analyzer/schema';
 import type { MealErrorCode } from '../../lib/enums';
 import { TransientError } from '../../lib/errors';
+import { emitMealSettled } from '../../lib/meal-events';
 import { notifyMeal } from '../../lib/notify';
 import type { JobAttempt } from '../../lib/queue';
 import { createDishResolver, summarize, type ResolvedComponent } from './dish-resolver';
 
 /** Progress is stage-based on purpose: the client never sees fake smooth percentages. */
-const PROGRESS = { imageReady: 20, modelAnswered: 50, validated: 90, done: 100 } as const;
+const PROGRESS = { imageReady: 20, modelAnswered: 50, done: 100 } as const;
 
 class SchemaViolation extends Error {}
 
@@ -50,11 +51,15 @@ export function createAnalysisProcessor(deps: WorkerDeps) {
     );
   }
 
-  const setStage = (id: string, status: 'analyzing', progress: number) =>
-    prisma.meal.updateMany({
-      where: { id, deletedAt: null, status: { in: [...OPEN] } },
-      data: { status, progress },
-    });
+  /**
+   * Progress for the Home card. Not awaited: each write is a database round trip (about 90 ms to a remote
+   * database) and nothing waits on it. The status guard means a late write can never reopen a finished meal.
+   */
+  const setStage = (id: string, status: 'analyzing', progress: number) => {
+    prisma.meal
+      .updateMany({ where: { id, deletedAt: null, status: { in: [...OPEN] } }, data: { status, progress } })
+      .catch((err: unknown) => logger.warn({ mealId: id, err: (err as Error).message }, 'progress update failed'));
+  };
 
   /** One provider call, validated against the strict schema. */
   async function callAndValidate(input: AnalyzerInput): Promise<{ output: AnalyzerOutput; ai: AiMeal }> {
@@ -64,7 +69,7 @@ export function createAnalysisProcessor(deps: WorkerDeps) {
     return { output, ai: parsed.data };
   }
 
-  return async function analyzeMeal(mealId: string, attempt: JobAttempt): Promise<void> {
+  return async function analyzeMeal(mealId: string, attempt: JobAttempt, handedImage?: Buffer): Promise<void> {
     const meal = await prisma.meal.findFirst({
       where: { id: mealId, deletedAt: null },
       include: { corrections: { orderBy: { createdAt: 'asc' } }, user: { select: { locale: true } } },
@@ -84,6 +89,7 @@ export function createAnalysisProcessor(deps: WorkerDeps) {
           : { status: 'failed', progress: 0, errorCode: code },
       });
       if (res.count) {
+        emitMealSettled(mealId);
         await notifyMeal(deps, meal.userId, locale, 'failed', {
           mealId,
           status: hadResult ? 'completed' : 'failed',
@@ -123,7 +129,8 @@ export function createAnalysisProcessor(deps: WorkerDeps) {
           },
         });
         if (!res.count) return 0;
-        await tx.mealComponent.deleteMany({ where: { mealId } });
+        // Only a re-analysis (Fix Results) has components to replace; a first analysis skips a database round trip.
+        if (hadResult) await tx.mealComponent.deleteMany({ where: { mealId } });
         await tx.mealComponent.createMany({
           data: components.map((c, position) => ({
             mealId,
@@ -140,11 +147,14 @@ export function createAnalysisProcessor(deps: WorkerDeps) {
         });
         return res.count;
       });
-      if (done) await notifyMeal(deps, meal.userId, locale, 'ready', { mealId, status: 'completed' });
+      if (done) {
+        emitMealSettled(mealId);
+        await notifyMeal(deps, meal.userId, locale, 'ready', { mealId, status: 'completed' });
+      }
     };
 
     try {
-      await setStage(mealId, 'analyzing', PROGRESS.imageReady);
+      setStage(mealId, 'analyzing', PROGRESS.imageReady);
 
       // A first analysis without a note can reuse an identical earlier photo; a fix or a note always asks the model.
       const reusable = meal.source === 'photo' && !hadResult && !meal.hint && meal.corrections.length === 0;
@@ -156,8 +166,10 @@ export function createAnalysisProcessor(deps: WorkerDeps) {
 
       let image: AnalyzerInput['image'];
       if (meal.source === 'photo') {
-        if (!meal.imageKey) return await fail('PROVIDER_ERROR', new Error('photo meal has no image'));
-        image = { data: await storage.get(meal.imageKey), mimeType: 'image/jpeg' };
+        // A fresh upload hands the photo over with the job; only a re-analysis (Fix Results) reads storage.
+        if (handedImage) image = { data: handedImage, mimeType: 'image/jpeg' };
+        else if (meal.imageKey) image = { data: await storage.get(meal.imageKey), mimeType: 'image/jpeg' };
+        else return await fail('PROVIDER_ERROR', new Error('photo meal has no image'));
       }
       const input: AnalyzerInput = {
         dishes: await resolver.promptEntries(),
@@ -189,7 +201,7 @@ export function createAnalysisProcessor(deps: WorkerDeps) {
         return await fail('PROVIDER_ERROR', err);
       }
 
-      await setStage(mealId, 'analyzing', PROGRESS.modelAnswered);
+      setStage(mealId, 'analyzing', PROGRESS.modelAnswered);
 
       const { ai, output } = result;
       if (!ai.isFood) return await fail('NOT_FOOD');
@@ -198,7 +210,6 @@ export function createAnalysisProcessor(deps: WorkerDeps) {
       if (ai.dishes.length === 0) return await fail('LOW_CONFIDENCE');
 
       const components = await resolver.resolve(meal.userId, mealId, ai.dishes);
-      await setStage(mealId, 'analyzing', PROGRESS.validated);
       await save(components, {
         promptVersion: PROMPT_VERSION,
         provider: output.provider,

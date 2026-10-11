@@ -63,8 +63,8 @@ describe('normalizeDishName', () => {
 
 describe('the Khmer food catalog file', () => {
   const dishes = loadCatalog();
-  it('has 50 unique dishes whose macros add up to their calories', () => {
-    expect(dishes).toHaveLength(50);
+  it('has 65 unique dishes whose macros add up to their calories', () => {
+    expect(dishes).toHaveLength(65);
     for (const d of dishes) {
       const fromMacros = 4 * d.proteinG + 4 * d.carbsG + 9 * d.fatG;
       expect(Math.abs(fromMacros - d.calories) / d.calories, d.slug).toBeLessThanOrEqual(0.12);

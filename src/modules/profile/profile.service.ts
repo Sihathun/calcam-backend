@@ -4,7 +4,6 @@ import { toProfileDto } from '../../lib/dto';
 import type { Accomplishment, Diet, GoalType, HeightUnit, ReferralSource, Sex, WeightUnit, WorkoutsPerWeek } from '../../lib/enums';
 import { conflict, notFound } from '../../lib/errors';
 import { latestWeightKg, loadMe } from '../../lib/me';
-import { workoutsToDb } from '../../lib/mappers';
 import { calculatePlan } from '../../lib/plan-engine';
 import type { GoalsService } from '../goals/goals.service';
 import { profileToPlanInput } from '../goals/goals.service';
@@ -63,7 +62,7 @@ export function createProfileService(deps: AppDeps, goals: GoalsService) {
       const data: Prisma.ProfileUpdateInput = {
         ...profilePatch,
         birthDate: patch.birthDate ? new Date(`${patch.birthDate}T00:00:00.000Z`) : undefined,
-        workoutsPerWeek: patch.workoutsPerWeek ? workoutsToDb(patch.workoutsPerWeek) : undefined,
+        workoutsPerWeek: patch.workoutsPerWeek,
       };
       if (patch.goal === 'maintain') data.targetWeightKg = null;
 
@@ -73,8 +72,10 @@ export function createProfileService(deps: AppDeps, goals: GoalsService) {
           ...current,
           ...profilePatch,
           birthDate: patch.birthDate ? new Date(`${patch.birthDate}T00:00:00.000Z`) : current.birthDate,
-          workoutsPerWeek: patch.workoutsPerWeek ? workoutsToDb(patch.workoutsPerWeek) : current.workoutsPerWeek,
-          targetWeightKg: patch.goal === 'maintain' ? null : (patch.targetWeightKg ?? current.targetWeightKg),
+          workoutsPerWeek: patch.workoutsPerWeek ?? current.workoutsPerWeek,
+          // An explicit null clears the target (a new goal drops the one chosen for the old goal); only undefined keeps it.
+          targetWeightKg:
+            patch.goal === 'maintain' ? null : patch.targetWeightKg !== undefined ? patch.targetWeightKg : current.targetWeightKg,
         };
         const plan = calculatePlan(profileToPlanInput(merged, weightNow), config.plan, clock());
         data.activityLevel = plan.activityLevel;

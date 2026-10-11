@@ -1,4 +1,4 @@
-import type { ActivityLevel, Diet, GoalType, Sex, WorkoutsPerWeek } from '../lib/enums';
+import type { ActivityLevel, Diet, GoalType, Sex } from '../lib/enums';
 
 export interface MacroSplit {
   protein: number;
@@ -24,7 +24,6 @@ export interface PlanConfig {
   maxAge: number;
   /** Mifflin-St Jeor sex offsets. See the note on defaultPlanConfig for "other". */
   bmrOffset: Record<Sex, number>;
-  workoutsToActivity: Record<WorkoutsPerWeek, ActivityLevel>;
   activityMultiplier: Record<ActivityLevel, number>;
   /** Fraction of TDEE added to (or removed from) the daily target. */
   goalAdjustment: Record<GoalType, number>;
@@ -48,8 +47,8 @@ export const defaultPlanConfig: PlanConfig = {
   minAge: 13,
   maxAge: 120,
   bmrOffset: { male: 5, female: -161, other: -78 },
-  workoutsToActivity: { '0-2': 'light', '3-5': 'moderate', '6+': 'active' },
-  activityMultiplier: { light: 1.375, moderate: 1.55, active: 1.725 },
+  // The five levels and multipliers of tdeecalculator.net.
+  activityMultiplier: { sedentary: 1.2, light: 1.375, moderate: 1.55, heavy: 1.725, athlete: 1.9 },
   goalAdjustment: { lose: -0.15, maintain: 0, gain: 0.1 },
   loseCalorieFloor: { male: 1500, female: 1200, other: 1200 },
   minBmiForLose: 18.5,
